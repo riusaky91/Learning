@@ -344,6 +344,7 @@ el primero tendrá los numeros ordenados en forma ascendente y el segundo de for
 
 let arr = [ 7, 5,7,8,6 ];
 console.log(arr.sort((a,b)=>b-a));
+console.log(arr.sort((a,b)=>a-b));
 
 
 /*
