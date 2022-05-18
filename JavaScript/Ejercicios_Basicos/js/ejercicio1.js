@@ -344,6 +344,9 @@ el primero tendrá los numeros ordenados en forma ascendente y el segundo de for
 
 const orden = (arreglo = undefined) =>{
 
+    if(!arreglo) return console.warn("Ingrese un valor por favor");
+    if(!(arreglo instanceof Array)) return console.warn("ingrese un arreglo por favor");
+    arreglo.forEach(e=> { if(typeof e !== `number`) return console.error("Ingrese un numero por favor")  } )
     return console.log(`asc: [${arreglo.sort((a,b)=>a-b)}], desc: [${arreglo.sort((a,b)=>b-a)}]`);
 }
 
@@ -354,22 +357,28 @@ const orden = (arreglo = undefined) =>{
 pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
 */
 
-let data = [1,2,6,1,2,5,9,'33','33'];
 
-    const dataArr = new Set(data);
-
+const duplicados = (arreglo = undefined) =>{
+    if(!arreglo) return console.warn("Ingrese un valor por favor");
+    if(!(arreglo instanceof Array)) return console.warn("ingrese un arreglo por favor");
+    const dataArr = new Set(arreglo);
     let result = [...dataArr];
+    return console.log(result);
+}
 
-    console.log(result); //[1,2,6,5,9,'33']
+//duplicados(["x", 10, "x", 2, "10", 10, true, true]);
+
 
 /*
 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
 */
-
-let total = [ 0, 1, 2, 3 ].reduce(
-    ( previousValue, currentValue ) => previousValue + currentValue,
-    0
-  )
-
-  console.log(total)
   
+const promedio = (arreglo = undefined) => {
+    if(!arreglo) return console.warn("Ingrese un valor por favor");
+    if(!(arreglo instanceof Array)) return console.warn("ingrese un arreglo por favor");
+    arreglo.forEach(e=> { if(typeof e !== `number`) return console.error("Ingrese un numero por favor")  } )
+    let suma = arreglo.reduce((a,b)=>a+=b)
+    return console.log(suma / arreglo.length)
+} 
+
+promedio([9,8,7,6,5,4,3,2,1,0]);
