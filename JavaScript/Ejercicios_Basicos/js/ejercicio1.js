@@ -361,7 +361,7 @@ pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "
 const duplicados = (arreglo = undefined) =>{
     if(!arreglo) return console.warn("Ingrese un valor por favor");
     if(!(arreglo instanceof Array)) return console.warn("ingrese un arreglo por favor");
-    const dataArr = new Set(arreglo);
+    const dataArr = new Set(arreglo);// Set tipo de dato que no permite duplicados
     let result = [...dataArr];
     return console.log(result);
 }
@@ -377,8 +377,35 @@ const promedio = (arreglo = undefined) => {
     if(!arreglo) return console.warn("Ingrese un valor por favor");
     if(!(arreglo instanceof Array)) return console.warn("ingrese un arreglo por favor");
     arreglo.forEach(e=> { if(typeof e !== `number`) return console.error("Ingrese un numero por favor")  } )
-    let suma = arreglo.reduce((a,b)=>a+=b)
+    let suma = arreglo.reduce((a,b)=>a+=b)//Funcion reductora
     return console.log(suma / arreglo.length)
 } 
 
 promedio([9,8,7,6,5,4,3,2,1,0]);
+
+/*
+
+27) Programa una clase llamada Pelicula.
+
+La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+  - Todos los datos del objeto son obligatorios.
+  - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+     7 restantes números.
+  - Valida que el título no rebase los 100 caracteres.
+  - Valida que el director no rebase los 50 caracteres.
+  - Valida que el año de estreno sea un número entero de 4 dígitos.
+  - Valida que el país o paises sea introducidos en forma de arreglo.
+  - Valida que los géneros sean introducidos en forma de arreglo.
+  - Valida que los géneros introducidos esten dentro de los géneros 
+     aceptados*.
+  - Crea un método estático que devuelva los géneros aceptados*.
+  - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+    decimal de una posición.
+  - Crea un método que devuelva toda la ficha técnica de la película.
+  - Apartir de un arreglo con la información de 3 películas genera 3 
+    instancias de la clase de forma automatizada e imprime la ficha técnica 
+    de cada película.
+
+    */
+
+
