@@ -381,7 +381,7 @@ const promedio = (arreglo = undefined) => {
     return console.log(suma / arreglo.length)
 } 
 
-promedio([9,8,7,6,5,4,3,2,1,0]);
+//promedio([9,8,7,6,5,4,3,2,1,0]);
 
 /*
 
@@ -405,7 +405,110 @@ La clase recibirá un objeto al momento de instanciarse con los siguentes datos:
   - Apartir de un arreglo con la información de 3 películas genera 3 
     instancias de la clase de forma automatizada e imprime la ficha técnica 
     de cada película.
+*/
 
-    */
+
+
+class Pelicula{//Creación clase pelicula
+    constructor(movie){//constructor metodo adicionando un parametro
+        
+        this.validacionID(movie.id_IMDB);
+        this.validacionTitulo(movie.titulo);
+        this.validacionDirector(movie.director);
+        this.validacionAñoEstreno(movie.año_estreno);
+        this.validacionPaisOrigen(movie.pais_origen);
+        this.validacionGeneros(movie.generos);
+        this.validacionCalificacionIMDB (movie.calificacion_IMDB);
+        
+    }
+
+    validacionID = (id = "" ) => {
+        if(id === "" ) return console.warn("Ingrese un id por favor");
+        if(id <= 9 ) return console.warn("Ingrese un id que tenga mas de 9 caracteres");
+    }
+
+    validacionTitulo = (titulo = "") => {
+        if(titulo === "" ) return console.warn("Ingrese un titulo por favor");
+        if(titulo.length >= 100 ) return console.warn("Ingrese un titulo que tenga menos de 100 caracteres");
+    }
+
+    validacionDirector = (director = "") => {
+        if(director === "" ) return console.warn("Ingrese un director por favor");
+        if(director.length >= 50 ) return console.warn("Ingrese un director que tenga menos de 50 caracteres");
+    }
+
+    validacionAñoEstreno = (año_estreno = undefined) => {
+        if(año_estreno === undefined ) return console.warn("Ingrese un año de estreno por favor");
+        if(typeof año_estreno !== `number`) return console.warn("Ingrese un valor nuemrico por favor");
+        if(año_estreno <= 999 ) return console.warn("Ingrese un año de 4 digitos");
+    }
+
+    validacionPaisOrigen = (pais_origen = undefined) => {
+        if(pais_origen === "" ) return console.warn("Ingrese un pais de origen por favor");
+        if(!(pais_origen instanceof Array) ) return console.warn("Ingrese uno o varios paises de origen como arreglos por favor");
+    }
+
+    validacionGeneros = (generos = undefined) => {
+        if(generos === undefined ) return console.warn("Ingrese un genero por favor");
+        if(!(generos instanceof Array) ) return console.warn("Ingrese uno o varios generos como arreglos por favor");
+    }
+
+    validacionCalificacionIMDB = (calificacion_IMDB = undefined) => {
+        if(calificacion_IMDB === undefined ) return console.warn("Ingrese una calificacion por favor");
+        if(calificacion_IMDB > 10 || calificacion_IMDB < 0) return console.warn("la calificavion debe esta entre 0 y 10");
+    }
+
+    static listaGeneros() {
+      return [`accion`, `comedia`, `terror`, `parodia`, `experimental`];
+    }
+
+    
+
+    fichaTecnica = () => {
+        return ficha = {
+            id_IMDB : movie.id_IMDB,
+            titulo : movie.titulo,
+            director : movie.director,
+            año_estreno : movie.año_estreno,
+            pais_origen : movie.pais_origen,
+            generos : movie.generos,
+            calificacion_IMDB : movie.calificacion_IMDB
+        } 
+    }
+
+  }
+
+  movie1 = { 
+    id_IMDB : "TI34444751",
+    titulo : "titanic",
+    director : "carl",
+    año_estreno : 2021,
+    pais_origen : ["USA", "Inglaterra"],
+    generos : ["drama", "accion"],
+    calificacion_IMDB : 6
+  }
+
+  movie2 = { 
+    id_IMDB : "LL34444751",
+    titulo : "avengers",
+    director : "trend",
+    año_estreno : 2020,
+    pais_origen : ["Colombia"],
+    generos : ["drama", "accion"],
+    calificacion_IMDB : 9
+  }
+
+  movie3 = { 
+    id_IMDB : "AA34444751",
+    titulo : "Ametiville",
+    director : "lois",
+    año_estreno : 2020,
+    pais_origen : ["USA"],
+    generos : ["terror"],
+    calificacion_IMDB : 3
+  }
+
+  const pelicula = new Pelicula(movie1);
+
 
 
