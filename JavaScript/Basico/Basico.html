@@ -110,7 +110,7 @@
                 email: "marlon@gmail.com",
                 cel: 3158992518
             },
-            saludar: function(){
+            saludar: function (){
                 console.log("hola soy un funcion dentro de un objeto (metodo)");
             },
             decirNombre: function(){
@@ -194,7 +194,7 @@
 
         let arregli = [10,20,30,40,50];
 
-        arregli.forEach(element => {//Cuando solo vamos a utilizar el elemento quitamos el parentesis y podemos usar un arrow function
+        arregli.forEach(element=>{//Cuando solo vamos a utilizar el elemento quitamos el parentesis y podemos usar un arrow function
             console.log(element + "For each");
         });
 
@@ -219,7 +219,7 @@
             fdsf
             console.log("Se agrega el codigo a evaluar");
         } catch (error) {
-            console.log("Captura cualquier error surgido o lanzado enb le try", error);
+            console.log("Captura cualquier error surgido o lanzado en el try", error);
         }finally{
             console.log("Siempre se ejecutar al final de try catch");
         }
@@ -264,6 +264,8 @@
         
         const [one, two , three] = numbers;// con destructuracion
 
+        console.log(one,two,three);
+
         const señor = {
             name : "leo",
             apellido : "estupiñan",
@@ -296,10 +298,10 @@
         console.log("Parámetros REST & Operador Spread");
         console.log(" ");
 
-        function plus(a,b, ...c) {//Parametro rest el cual es indeterminado en cantidad y valor
+        function plus(a,b, ...c) {//Dentro de esta función hay un Parametro rest el cual es indeterminado en cantidad y valor
             let resultado = a+b;
 
-            c.forEach(function (n) {//recorremos el parametro rest como un arreglo ya que puede se uno o muchos
+            c.forEach(n => {//recorremos el parametro rest como un arreglo ya que puede ser uno o muchos y lo sumamos al resultado anterior
                 resultado += n
             })
             return resultado;
@@ -330,7 +332,6 @@
 
         const saludir = nombre => console.log(`Hola ${nombre}`); //arrow Function de una sola linea con un parametro sin ()
 
-
         const sumar = function (a, b) {//Function expresada con 2 parametros y return
             return a + b;
         }
@@ -342,6 +343,7 @@
         console.log("Dos");
         console.log("Tres");
         }
+        
         
         const numeros = [1, 2, 3, 4, 5];
         numeros.forEach((el, index) => console.log(`${el} esta en la posición ${index}`));//metodo forEach con arrow Function en una sola linea

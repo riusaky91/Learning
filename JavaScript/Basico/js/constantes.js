@@ -6,7 +6,7 @@ let pass= "12347";
 
 
 
-export default function saludar() {//exportando por defecto solo s epuede usar una vez
+export default function saludar() {//exportando por defecto solo se puede usar una vez
     console.log("hola");
 }
 
@@ -18,4 +18,4 @@ export class Saludar {
   }
 
   const password = "qwerty";
-//export default password; // solo s epuede despues de inicializar la variable
+//export default password; // solo se puede despues de inicializar la variable

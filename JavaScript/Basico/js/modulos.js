@@ -1,5 +1,5 @@
 import {aritmetica as a} from "./aritmetica.js";//Importacion de objeto
-import saludar, { Saludar, pi, usuario } from "./constantes.js";////Importacion de variable pi desde otro javascript, la variable por defecto sale de la desetructuracion 
+import saludar, { Saludar, pi, usuario } from "./constantes.js";////Importacion de variable pi desde otro javascript, saludar es un metodo por defecto sale de la desetructuracion 
 
 
 console.log("modulos .js");
