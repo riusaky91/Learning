@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermedio</title>
+</head>
+<body>
+    <h1>Asincronia en Javascript</h1>
+    <script>
+        console.log("***************************************************************************************************");
+        console.log("Asincronia en java script");
+        console.log(" ");
+
+        console.log("Inicio");
+        setTimeout(()=>{//Metodo que ejecuta un bloque de codigo en un tiempo especificado 
+            console.log("ejecucion de un setTimeOut, se ejecuta una sola vez")
+        },3000)//Tiempo de ejecucion en milisigendos
+        
+        let intervaloTiempo = setInterval(()=>{//Metodo que ejecuta indefinidamente un bloque de codigo cada cierto intervalo de tiempo
+            console.log("ejecucion de un setInterval, se ejecuta indefinidamente cada cierto intervalo de tiempo")
+        },3000)//Tiempo de ejecucion en milisegundos
+
+        let temporizador = setInterval(()=>{//Metodo que ejecuta indefinidamente un bloque de codigo cada cierto intervalo de tiempo
+            console.log(new Date().toLocaleTimeString())//Imprime como string el tiempo actual en un tervalo de 1 segundo
+        },1000)//Tiempo de ejecucion en milisegundos
+
+
+        clearTimeout(temporizador);//Limpia y detiene el temporizador creado
+        clearTimeout(intervaloTiempo);
+
+
+        console.log("***************************************************************************************************");
+        console.log("Asincronía y el Event Loop");
+        console.log(" ");
+
+        
+
+    </script>
+</body>
+</html>
