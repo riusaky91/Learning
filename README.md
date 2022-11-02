@@ -1,2 +1,2 @@
 # Learning
-Aprendizaje de lenguajes POOt
+Aprendizaje de lenguajes POO
