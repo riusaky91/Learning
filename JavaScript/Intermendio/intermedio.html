@@ -35,6 +35,28 @@
         console.log("Asincronía y el Event Loop");
         console.log(" ");
 
+        console.log("Codigo Sincrono y Bloqueante");
+        console.log(" ");
+
+        (()=>{
+            console.log("Inicio");
+
+            const uno = ()=>{ 
+                console.log("uno");
+                dos();
+                console.log("tres");
+            }
+
+            const dos =  () => console.log("dos");
+
+            uno()
+            console.log("fin");
+
+        })();
+
+
+        console.log("Codigo Asincrono y no Bloqueante");
+        console.log(" ");
         
 
     </script>
