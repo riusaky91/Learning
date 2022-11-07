@@ -12,7 +12,7 @@
         console.log("***************************************************************************************************");
         console.log("Asincronia en java script");
         console.log(" ");
-
+        /*
         console.log("Inicio");
         setTimeout(()=>{//Metodo que ejecuta un bloque de codigo en un tiempo especificado 
             console.log("ejecucion de un setTimeOut, se ejecuta una sola vez")
@@ -30,14 +30,14 @@
         clearTimeout(temporizador);//Limpia y detiene el temporizador creado
         clearTimeout(intervaloTiempo);
 
-
+        */
         console.log("***************************************************************************************************");
         console.log("Asincronía y el Event Loop");
         console.log(" ");
 
         console.log("Codigo Sincrono y Bloqueante");
         console.log(" ");
-
+        /*
         (()=>{
             console.log("Inicio");
 
@@ -58,6 +58,183 @@
         console.log("Codigo Asincrono y no Bloqueante");
         console.log(" ");
         
+
+        (()=>{
+        
+            console.log("inicio");
+
+            const dos = () =>{
+                setTimeout(()=>{
+                    console.log("Dos")
+                }, 1000)
+            }
+
+            const uno = () =>{
+                setTimeout(()=>{
+                    console.log("Uno")//Al estar en un metodo asincrono se va a la pila de tareas y se ejecuta de ultimo
+                }, 0);
+                dos();
+                console.log("tres");
+            }
+
+            uno();
+            console.log("Fin");
+
+        })();
+
+        */
+        console.log("***************************************************************************************************");
+        console.log("Callbacks");
+        /*Un callback explicado como analogía sería:
+        Supongamos que nos encontramos hablando por teléfono. Al estar hablando nos surge una situación por resolver de manera inmediata.
+        Ponemos la llamada en espera, realizamos lo que tenemos que hacer y cuando terminamos, volvemos a la llamada que dejamos en espera.
+        Un callback es una función que será ejecutada cuando una operación asíncrona se haya completado. En el caso de la analogía, seria esa 
+        situación urgente, y cuando este hecho, ejecutará el callback.
+        */
+        console.log(" ");
+
+        /*
+        function cuadradoCallback(value, callback){//creo funcion con dos parametros (un valor, y un metodo)
+            setTimeout(() => {//funcion asicrona que se ejecutara despues simulando una peticion a una API o BD
+                callback(value,value*value)//el metodo tiene dos parametros (un valor, potencia del valor)
+            }, 0 | Math.random()*1000);//temporizador dinamico si no es 0 es un numero aleatorio (0-10)
+        }
+
+        cuadradoCallback(0, (value,result)=>{
+            console.log("inicia Callback");
+            console.log(`Callback ${value}, ${result}`)
+                
+            cuadradoCallback(1, (value,result)=>{// no se va ejecutar hasta que la funcion anterior se ejecute Callback Hell
+                
+                console.log(`Callback ${value}, ${result}`)
+                    
+                cuadradoCallback(2, (value,result)=>{// no se va ejecutar hasta que la funcion anterior se ejecute
+                    
+                    console.log(`Callback ${value}, ${result}`)
+
+                    cuadradoCallback(3, (value,result)=>{// no se va ejecutar hasta que la funcion anterior se ejecute
+                    
+                        console.log(`Callback ${value}, ${result}`)
+                    
+                    })
+                    
+                })
+                
+            })
+
+        })
+
+        */
+        console.log("***************************************************************************************************");
+        console.log("Promesas");//Mejora de los callbacks
+        console.log(" ");
+
+        /*
+        function cuadradoPromise(value){
+            if(typeof value !== "number"){
+                return Promise.reject(`Error, el valor ${value} ingresado no es un numero` );//Utilizando metoddo estatico reject de una promesa
+            }
+            return new Promise((resolve,reject)=>{//Dos parametros de una promesa
+                setTimeout(() => {
+                    resolve({
+                        value:value,
+                        result: value*value
+                    })
+                }, 0 | Math.random()*1000);
+
+            })
+        }
+
+        cuadradoPromise(0)
+            .then((obj)=>{//En caso de que la ejecución de la promesa sea exitosa
+                //console.log(obj)
+                console.log('Inicio promesa');
+                console.log(`Promesa ${obj.value},${obj.result}`)
+                return cuadradoPromise(1);
+            })
+            .then((obj)=>{//En caso de que la ejecución de la promesa sea exitosa
+                //console.log(obj)
+                console.log('Inicio promesa');
+                console.log(`Promesa ${obj.value},${obj.result}`)
+                return cuadradoPromise(2);
+            })
+            .then((obj)=>{//En caso de que la ejecución de la promesa sea exitosa
+                //console.log(obj)
+                console.log('Inicio promesa');
+                console.log(`Promesa ${obj.value},${obj.result}`)
+                return cuadradoPromise("3");
+            })
+            .catch(err => console.error(err));//En caso de que se enceuntre un error en la ejecución de las promesas
+        */
+
+        console.log("***************************************************************************************************");
+        console.log("Async - Await");
+        console.log(" ");
+        
+        function cuadradoPromise(value){
+            if(typeof value !== "number"){
+                return Promise.reject(`Error, el valor ${value} ingresado no es un numero` );//Utilizando metoddo estatico reject de una promesa
+            }
+            return new Promise((resolve,reject)=>{//Dos parametros de una promesa
+                setTimeout(() => {
+                    resolve({
+                        value:value,
+                        result: value*value
+                    })
+                }, 0 | Math.random()*1000);
+
+            })
+        }
+
+        async function funcionAsincronaDeclarada(){//Función asincrona en Javascript
+            try {
+                console.log("Inicio de Funcion Async")
+                let obj = await cuadradoPromise(0);//espera el resultado de la ejecuoón antes de 
+                console.log(`Funcion Async ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise(1);
+                console.log(`Funcion Async ${obj.value},${obj.result}`); 
+
+                obj = await cuadradoPromise("2");
+                console.log(`Funcion Async ${obj.value},${obj.result}`); 
+
+                obj = await cuadradoPromise(3);
+                console.log(`Funcion Async ${obj.value},${obj.result}`); 
+
+            } catch (error) {
+                console.error(err);
+            } 
+
+        }
+
+        funcionAsincronaDeclarada();
+
+        const funcionAsincronaExpresada = async()=> {//Función asincrona en Javascript
+            try {
+                console.log("Inicio de Funcion Async")
+                let obj = await cuadradoPromise(4);//espera el resultado de la ejecuoón antes de 
+                console.log(`Funcion Async ${obj.value},${obj.result}`);
+
+                obj = await cuadradoPromise(5);
+                console.log(`Funcion Async ${obj.value},${obj.result}`); 
+
+                obj = await cuadradoPromise(6);
+                console.log(`Funcion Async ${obj.value},${obj.result}`); 
+
+                obj = await cuadradoPromise(7);
+                console.log(`Funcion Async ${obj.value},${obj.result}`); 
+
+            } catch (error) {
+                console.error(err);
+            } 
+
+           
+
+        }
+
+        funcionAsincronaExpresada();
+
+
 
     </script>
 </body>
