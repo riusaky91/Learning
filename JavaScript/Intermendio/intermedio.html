@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Asincronia en Javascript</h1>
+    <h1>Nuevos tipos de Datos</h1>
     <script>
         console.log("***************************************************************************************************");
         console.log("Asincronia en java script");
@@ -171,6 +172,7 @@
         console.log("Async - Await");
         console.log(" ");
         
+        /*
         function cuadradoPromise(value){
             if(typeof value !== "number"){
                 return Promise.reject(`Error, el valor ${value} ingresado no es un numero` );//Utilizando metoddo estatico reject de una promesa
@@ -234,7 +236,211 @@
 
         funcionAsincronaExpresada();
 
+        */
 
+        console.log("***************************************************************************************************");
+        console.log("Nuevos tipos de datos");
+        console.log(" ");
+
+        console.log("***************************************************************************************************");
+        console.log("Symbol");//crea elemntos provados dentro de un objeto con identificadores unicos
+        console.log(" ");
+
+
+        let id = Symbol("hola");
+        let id2 = Symbol("hola");//Variable tipo sin operador new
+
+        console.log(id === id2);//False Un tipo symbol crea una referencia unica por lo tanto estas dos variables no son iguales
+        console.log(typeof id, typeof id2);
+
+        const NOMBRE = Symbol();
+        const SALUDAR = Symbol();
+
+        const persona = {
+            [NOMBRE]:"Leo"//Propiedad privada declarando symbol dentro de un objeto
+        }
+
+        console.log(persona);
+
+        persona.NOMBRE = "Marlon ";
+
+        console.log(persona.NOMBRE);//Llamo a mi nueva propiedad
+        console.log(persona[NOMBRE]);//Llamo a mi propiedad Symbol
+
+        persona[SALUDAR] = function(){console.log("Hola mundo");}//Añadiendo una nueva propiedad symbol dentro de mi objeto
+
+        console.log(persona);
+        persona[SALUDAR]();//Ejecucion de metodo Symbol creado 
+
+        for (let iterator in persona) {//recorriendo objeto
+            console.log(iterator)
+        }
+
+        console.log(Object.getOwnPropertySymbols(persona));//Listar simbolos dentro de un objeto
+
+        console.log("***************************************************************************************************");
+        console.log("Sets");//arreglo que solo acepta valores unicos
+        console.log(" ");
+
+
+        const set = new Set([1,2,3,4,2,4,{}, true, true])
+
+        console.log(set);
+        console.log(set.size);
+
+        set.add(1);
+        set.add(true);
+        set.add(false);
+
+        console.log(set);
+        console.log(set.size);
+
+        for (const i of set) {
+            console.log(`Recorriendo set con for of: ${i}`)
+        }
+
+        set.forEach(element => {
+            console.log(`Recorriendo set con for each: ${element}`)
+        });
+
+        arr = Array.from(set);//convirtiendo variable de tipo set un arreglo para visualizar las posiciones
+        console.log(arr[0]);
+
+        set.delete(false);//eliminando valor de set
+        console.log(set)
+
+        console.log(set.has(19))//valida si 19 existe en set
+
+        set.clear();//limpia el set de valores
+
+        console.log(set);
+
+
+        console.log("***************************************************************************************************");
+        console.log("Maps");//Objetos que sirven para almacenar valores (coleccion de datos clave y valor)
+                            // a diferencia de un objeto la llave puede ser un tipo diferente string
+        console.log(" ");
+
+        const mapa = new Map();
+
+        mapa.set("nombre", "Leo");
+        mapa.set("apellido", "estupiñan");
+        mapa.set("edad", 31);
+
+        console.log(mapa)
+        console.log(mapa.size)
+        console.log(mapa.has("nombre"));//validando existe esa llave
+        console.log(mapa.get("apellido"));//tare un valor de mapa con la llave
+        mapa.delete("apellido");//Eliminado propiedad de un mapa
+        console.log(mapa);
+
+        for (const [llave,valor] of mapa) {//iterando un Map
+            console.log(`Llave: ${llave}, Valor: ${valor}`)
+        }
+
+
+        const mapa2 = new Map([//inicializando mapa
+            ["nombre","nei"],
+            ["edad","3"],
+            [13,"trece"]
+        ])
+
+        console.log(mapa2);
+
+        const llavesMapa2 = [...mapa2.keys()];//Destructuro para ver las llaves de un Map
+
+        console.log(llavesMapa2)
+
+        console.log("***************************************************************************************************");
+        console.log("WeakSets & WeakMaps");//ayudan al rendimiento de navegado y de la aplicación
+        console.log(" ");
+        
+        const ws = new WeakSet();//no sepuiede inicializar si el uso del metodo add
+
+        let valor1 = {"valor": 1}
+        let valor2 = {"valor": 2}
+        let valor3 = {"valor": 3}
+
+        ws.add(valor1);//solo se pueden añadir objetos 
+        ws.add(valor2)
+        ws.add(valor3)
+
+        console.log(ws);
+
+        console.log(ws.has(valor1));//existe
+
+        ws.delete(valor2);
+        
+        console.log(ws)
+
+        /*
+        setInterval(() => {
+           console.log(ws) 
+        }, 1000);
+
+        setTimeout(() => {//se limpian las referencias 
+            valor1 = null;
+            valor2 = null;
+            valor3 = null;
+        }, 5000);
+
+        */
+
+        const wm = new WeakMap();
+
+        let llave1 = {};
+        let llave2 = {};
+        let llave3 = {};
+
+        wm.set(llave1,1);
+
+        console.log(wm);
+
+        console.log(wm.has(llave1));//existe
+
+        console.log(wm.get(llave1))//imprmo elemento
+
+        wm.set(llave3,3)//agrego elemenot
+
+        wm.delete(llave3)//elimino elemento
+
+        console.log(wm)
+
+        /*
+        setInterval(() => {
+           console.log(wm) 
+        }, 1000);
+
+        setTimeout(() => {//se limpian las referencias 
+            llave1 = null;
+            llave2 = null;
+            llave3 = null;
+        }, 5000);
+
+        */
+
+        console.log("***************************************************************************************************");
+        console.log("Iterables & Iterators ");//los iterables son estructuras de datos lineal que sus elemento son publicos y se pueden recorrer el iterador es le mecanismo para recorrer
+
+        const iterableArray = [1,2,3,4,5];//Puede ser una cadena de texto, un arreglo, un map, un objeto, un set, etc.
+        const iterableString = "Hola mundo";
+
+        const iterador = iterableArray[Symbol.iterator]();//accediendo al iterador del iterable
+
+        const iterador2 = iterableString[Symbol.iterator]();
+
+        console.log(iterableString);
+        console.log(iterador);
+        console.log(iterador2);
+
+        console.log(iterador.next())//imprime dos parametros el valor y si quedan elemento todavia por iterar false, si no true
+
+        let next = iterador.next();
+
+        while(!next.done){//Mientras sea false
+            console.log(next.value)//imprime el valor
+            next = iterador.next();//vuelvo asignar el valor de next al siguiente valor para que se pueda recorrer
+        }
 
     </script>
 </body>
