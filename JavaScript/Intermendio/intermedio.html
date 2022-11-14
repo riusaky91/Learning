@@ -606,24 +606,63 @@
 
         console.log(this);
 
-        this.lugar = "contexto global";
+        this.lugar = "contexto global";//añado mi variable al contexto global
 
         function saludarte(saludo, aQuien){
-            console.log(this.lugar);
+            console.log(`${saludo} ${aQuien} desde el ${this.lugar}`);
         }
 
-        saludarte();
+        saludarte("Holu", "Leo");
 
         const obje = {
             lugar: "contexto obje"
-
         }
 
-        saludarte.call(obje);
-        saludarte.apply(obje);
+        saludarte.call(obje, "Hola", "Marlon");//Ejecuta el contexto de mi objeto con los parametros
+        saludarte.apply(obje, ["Adios", "Estupiñan"]);//Ejecuta el contexto de mi objeto con los parametros como arrreglo
 
 
-        //------en proceso
+        const people = {
+            nombre: "Leo",
+            saludar: function () {
+                console.log(`Hola ${this.nombre}`);
+            }
+        }
+
+        people.saludar();
+
+
+        const otherPeole = {
+            saludar : people.saludar.bind(people)//Enlazo el contexto del objeto persona desde otro objeto
+        }
+
+        otherPeole.saludar();
+
+        console.log("***************************************************************************************************");
+        console.log("JSON");//Formato ligero de intercambio de datos
+        console.log(" ");
+
+        const json = {
+            nombre: "Marlon",
+            apellido: "Estupiñan",
+            edad: 32,
+            hobbies: ["Play", "Footbal", "Programación"],
+            contactos : {
+                Familiar: ["Marlon", "Patricia"],
+                Personal: ["Caco", "Ivan", "Jonathan"]
+            } 
+        }
+
+        console.log(json);
+        console.log(JSON);//Paser y stringify propiedades de JSON
+        console.log(JSON.parse("{}"));
+        console.log(JSON.parse("[]"));//Identifica y analiza el tipo de dato que esta dentro del String y lo convierte
+        console.log(JSON.parse("null"));
+
+        console.log(JSON.stringify(json));//Identifica y analiza el tipo de dato y lo convierte a cadena de texto
+        console.log(JSON.stringify({}));
+        console.log(JSON.stringify([]));
+        console.log(JSON.stringify(json.edad));
 
     </script>
 </body>

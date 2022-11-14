@@ -1,0 +1,12 @@
+
+
+{
+    "nombre": "Marlon",
+    "apellido": "Estupiñan",
+    "edad": "32",
+    "hobbies": ["Play", "Footbal", "Programación"],
+    "contactos" : {
+        "Familiar": ["Marlon", "Patricia"],
+        "Personal": ["Caco", "Ivan", "Jonathan"]
+    } 
+}
