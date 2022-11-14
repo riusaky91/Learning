@@ -421,6 +421,7 @@
 
         console.log("***************************************************************************************************");
         console.log("Iterables & Iterators ");//los iterables son estructuras de datos lineal que sus elemento son publicos y se pueden recorrer el iterador es le mecanismo para recorrer
+        console.log(" ");
 
         const iterableArray = [1,2,3,4,5];//Puede ser una cadena de texto, un arreglo, un map, un objeto, un set, etc.
         const iterableString = "Hola mundo";
@@ -433,7 +434,7 @@
         console.log(iterador);
         console.log(iterador2);
 
-        console.log(iterador.next())//imprime dos parametros el valor y si quedan elemento todavia por iterar false, si no true
+        console.log(iterador.next())//imprime dos parametros: el valor , si quedan elemento todavia por iterar false, si no true
 
         let next = iterador.next();
 
@@ -441,6 +442,188 @@
             console.log(next.value)//imprime el valor
             next = iterador.next();//vuelvo asignar el valor de next al siguiente valor para que se pueda recorrer
         }
+
+        console.log("***************************************************************************************************");
+        console.log("Generators ");//Convierte el codigo de  una funcion en iterable
+        console.log(" ");
+
+        function* iterableG(){//Funcion generador
+            yield "hola";//tiene  la  misma funcionalidad del return pero se puede ejecutar varias veces dentro de una funciòn,
+            console.log("Hola consola");
+            yield "hola2";//Continua la ejecuciòn depues de haberlo detenido y la detiene nuevamente luego de devolver esta linea
+            console.log("Seguimos con mas instrucciones de nuestro codigo");
+            yield "hola3";
+            yield "hola4";
+        }
+
+        
+
+        let iteradorG = iterableG();//Inicializamos la funcion en una variable
+
+        /*console.log(iteradorG.next());//Iterando linea por linea del metodo
+        console.log(iteradorG.next());
+        console.log(iteradorG.next());
+        console.log(iteradorG.next());*/
+
+
+        for (const iterator of iteradorG) {//recorriendo generador
+            console.log(iterador);
+        }
+
+        const arri = [...iterableG()];//guardando los valores de la funcion generadora en un arreglo
+        console.log(arri);
+
+
+        /*function cuadradoG (valor ){//Funcion que saca el cuadrado de un valor simulando datos de un API
+            setTimeout(() => {
+               return console.log({valor: valor, resultado : valor*valor}); 
+            }, Math.random() * 1000);//tiempo de ejecuciòn aleatorio
+        }
+
+        function* generadorC(){//Funcion generador asincrona no bloqueante
+            console.log("inicio generador");
+            yield cuadradoG(0);
+            yield cuadradoG(1);
+            yield cuadradoG(2);
+            yield cuadradoG(3);
+            yield cuadradoG(4);
+            console.log("termina generador");
+        }
+
+        let genc = generadorC();
+        
+        for (const iterator of genc) {//Ejecucion de funcion generador con asincronia no bloqueante
+            console.log(iterador);
+        }*/
+
+        console.log("***************************************************************************************************");
+        console.log("Proxies");//Medio de vinculanción entre el objeto y su copia tiene el comportamiento de la instanciacion de objetos
+        console.log(" ");
+
+        const person = {
+            nombre: "",
+            apellido: "",
+            edad: 0
+        }
+
+        const manejador = {
+
+            
+
+            set(obj, prop, valor){//validación del handler 
+                if(Object.keys(obj).indexOf(prop)===-1)//en el caso de que se le asigne una propiedad adicional al proxy de persona
+                    return console.error(`La propiedad ${prop} no existe en el objeto persona`)
+                obj[prop]=valor;//al objeto en las propiedades se le van aplicar los valores asignador
+            }
+
+        }
+
+        const leito = new Proxy(person,manejador)//Proxy recibe dos parametro (objeto y el handler)
+        leito.nombre="Leonardo";
+        leito.apellido = "Estupiñan";
+        leito.edad = 31;
+        leito.red = "facebook"
+        console.log(leito);
+        console.log(person);
+
+        console.log("***************************************************************************************************");
+        console.log("Propiedades Dinámicas de los Objetos");//El uso de corchetes [] me permite generar una porpiedad dinamica a objetos ya inicializados
+        console.log(" ");
+
+        let aleatorio = Math.round(Math.random() *100+5);
+
+        const objUsuarios = {
+            [`id_${aleatorio}`] : "Valor aleatorio"//Propiedad dinamica dentro de mi objeto que genera un numero aleatorio superior a la cantidad de parametros que se van asignar posteriormente
+        };//objeto con propiedad dinamica
+        const usuarios = ["pedro", "juan", "pablo", "leo", "luz"];//arreglo simulando API
+        
+        usuarios.forEach((usuario,index) => objUsuarios[`id_${index}`]= usuario);//generó una propiedad dinamica utilizando corchetes [] con el id de key y el nombre de valor recorriendo el arreglo
+
+        console.log(objUsuarios);
+
+        console.log("***************************************************************************************************");
+        console.log("This");//Manejo de contextos y scopes dentro del codigo
+        console.log(" ");
+
+        console.log(this);//refencia la objeto global del navegador
+        console.log(window);
+        console.log(this === window);
+
+        this.nombre = "Contexto Global";//Variable asignada al contexto global
+        console.log(this.nombre);
+
+        function imprimir() {
+            console.log(this.nombre);
+        }
+
+        imprimir();
+
+        const obj ={
+            nombre: "Contexto obj",
+            imprimir: function () {
+                console.log(this.nombre);
+            }
+        }
+
+        obj.imprimir();//referencia al contexto del objeto
+
+        const obj2 = {
+            nombre: "Contexto Objeto 2",
+            imprimir: imprimir//asigno a mi parametro imprimir la funcion imprimir se puede abreviar solo escribiendo imprimir ya que tienen el mismo nombre
+        }
+
+        obj2.imprimir();//ejecuta el nombre dentro del scope o contexto obj2
+
+
+        const obj3 ={
+            nombre: "Contexto obj3",
+            imprimir: () => {
+                console.log(this.nombre);
+            }
+        }
+
+        obj3.imprimir();//La arrow function no maneja su propio scope por lo tanto imprime el contexto global
+
+        function Personas (nombre) {
+            this.nombre = nombre;
+
+            /*
+            return function (){//Toma el contexto global al ser una funcion anonima y crear su propio scope
+                console.log(this.nombre);
+            }*/
+
+            return () => console.log(this.nombre);//al no crear un scope interno toma el contexto de nombre del constructor
+        }
+
+
+        let marlon = new Personas("Marlon");
+
+        marlon();//ejecuto mi instancia como metodo ya que el constructir retorna una funcion
+
+        console.log("***************************************************************************************************");
+        console.log("call, apply, bind");//sirven para obtener la referencia de un scope y reutilizarlo
+        console.log(" ");
+
+        console.log(this);
+
+        this.lugar = "contexto global";
+
+        function saludarte(saludo, aQuien){
+            console.log(this.lugar);
+        }
+
+        saludarte();
+
+        const obje = {
+            lugar: "contexto obje"
+
+        }
+
+        saludarte.call(obje);
+        saludarte.apply(obje);
+
+
+        //------en proceso
 
     </script>
 </body>
