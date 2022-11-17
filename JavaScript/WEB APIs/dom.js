@@ -30,7 +30,7 @@ document.write("<h2>Hola Mundo desde el DOM</h2>")
 
 
 console.log("***************************************************************************************************");
-console.log("Nodos, Elementos y Selectores");//DOM
+console.log("Nodos, Elementos y Selectores");
 console.log(" ");
 
 console.log(document.getElementsByTagName("li"));//Trae todos los elmentos del html li --Ya no se utiliza
@@ -44,3 +44,36 @@ document.querySelectorAll("a").forEach(element => console.log(element));//recorr
 console.log(document.querySelector(".card"));
 console.log(document.querySelectorAll(".card")[2]);//comportamiento de arreglo
 console.log(document.querySelectorAll("#menu li"));//Dentro del id menu tarer todas las etiquetas li
+
+
+console.log("***************************************************************************************************");
+console.log("Atributos y Data-Attributess");
+console.log(" ");
+
+
+console.log(document.documentElement.lang);//Accediendo al valor atributo lang de la etiqueta html
+console.log(document.documentElement.getAttribute("lang"));//otra manera de acceder al valor de un atributo de la etiquieta html
+console.log(document.querySelector(".link-dom").href);//trae la url del atributo
+console.log(document.querySelector(".link-dom").getAttribute("href"));//trae el valor del atributo forma correcta
+document.documentElement.lang = "es";//modificando valor de atributo
+document.documentElement.setAttribute("lang","es-CO");//modificando el valor de un atributo de forma correcta
+console.log(document.documentElement.getAttribute("lang"));
+
+const $linkDom = document.querySelector(".link-dom");//declarando constante con el metodo para traer la clase de mi enlace con el DOM $variables del DOM
+
+$linkDom.setAttribute("target", "_blank");//Modificando valores de la etiqueta añadiendo un nuevo atributo
+$linkDom.setAttribute("rel", "noopener");//Para evitar que se abran dependencias agenas
+$linkDom.setAttribute("href", "https://aprendejavascript.org/");
+console.log($linkDom.hasAttribute("rel"));//vlaidando si exsite el atributo
+$linkDom.removeAttribute("rel");
+console.log($linkDom.hasAttribute("rel"));
+
+//Data atributes
+
+console.log($linkDom.getAttribute("data-description"));
+console.log($linkDom.dataset);//validado los data-atributes de mi etiqueta
+console.log($linkDom.dataset.description);
+$linkDom.setAttribute("data-description", "Modelo de objeto del documento");
+console.log($linkDom.dataset.description);
+$linkDom.dataset.description= "Modificando data-atribute"
+console.log($linkDom.dataset.description);
