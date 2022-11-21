@@ -109,3 +109,57 @@ $html.style.setProperty("--dark-color", "black")//modificando la propiedad de la
 
 varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");//accediendo nuevamente a la nueva variable modificada
 $body.style.setProperty("background-color", varDarkColor)//seteando la propiedad actualizada
+
+console.log("***************************************************************************************************");
+console.log("Clases CSS");
+console.log(" ");
+
+const $card = document.querySelector(".card");
+
+console.log($card);
+console.log($card.className);//Valor de la clases 
+console.log($card.classList);//DomtokenList con tres atributos definidores
+console.log($card.classList.contains("rotate-45"));//valida si tiene implementada la clase (boolean)
+$card.classList.add("rotate-45");//añadiendo clase 
+console.log($card.classList.contains("rotate-45"));
+$card.classList.remove("rotate-45");//quita un clase
+$card.classList.toggle("rotate-45");//valida si tiene o no la clase en caso de tenerla no agrega nada, en caso contrario si agrega la clase dark mode
+$card.classList.replace("rotate-45", "rotate-135");//Remplaza una clase con otra
+$card.classList.add("opacity-80","sepia")//añadiendo mas de una clase
+
+console.log("***************************************************************************************************");
+console.log("Texto y HTML");
+console.log(" ");
+
+const $whatIsDom = document.getElementById("que-es");
+
+let text = ` <p>
+El Modelo de Objetos del Documento (<b><i>DOM - Document Object Model </i></b>) es un                    
+API para documentos HTML y XML.
+</p>
+<p>
+Éste provée una representación estructural del documento, permitiendo modificar su contenido y presentación visual mediante código JS.
+</p>
+<p>
+    <mark> El DOM no es parte de la especificación de JavaScript, es una API para los navegadores.</mark>
+</p>`;
+
+
+$whatIsDom.textContent = text;//reemplazando contenido textual del <p>
+$whatIsDom.innerHTML = text;//reemplazando contenido del <p> adaptando el contenido HTML en un contenedor general
+$whatIsDom.outerHTML = text;//reemplaza el elemento por contenido sin modificaciones ni agregaciones
+
+console.log("***************************************************************************************************");
+console.log("Traversing: Recorriendo el DOM");//recorriendo los elementos o etiquetas HTML con el DOM
+console.log(" ");
+
+const $cards = document.querySelector(".cards");
+
+console.log($cards);
+console.log($cards.children);//Arreglo de Hijos
+console.log($cards.parentElement);//padre de elemento
+console.log($cards.firstElementChild);//primer elemento hijo
+console.log($cards.lastElementChild);//ultimo elemento hijo
+console.log($cards.previousElementSibling);//previo elemento hermano 
+console.log($cards.nextElementSibling);//siguiente elemento hermano
+console.log($cards.children[3].closest("section"));//Busca el padre mas cercano que se detalla

@@ -11,6 +11,38 @@
             --yelow-color: yellow;/*Variable css*/
             --dark-color: #222;
         }
+
+        .cards {
+            border: thin solid var(--yelow-color);
+            padding: 1rem;
+        }
+
+        .card {/*Utilizando estilos en las etiquetas que tenegan la clase card*/
+            display: inline-block;/*aplicando margen a la imagen dentro del texto*/
+            background-color: var(--dark-color);/*añadiendo valor de variable css al parametro css*/
+            color: var(--yelow-color);
+        }
+
+        .card figcaption { /* para la etiquetan que tenga clase car y ademas sea figcaption*/
+            padding: 1rem;
+        }
+
+        .rotate-45{
+            transform: rotate(45deg);
+        }
+
+        .rotate-135{
+            transform: rotate(145deg);
+        }
+
+        .opacity-80{
+            opacity: .8;
+        }
+
+        .sepia{
+            filter: sepia(1);
+        }
+
     </style>
 
 </head>
