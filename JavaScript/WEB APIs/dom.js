@@ -30,7 +30,7 @@ document.write("<h2>Hola Mundo desde el DOM</h2>")
 
 
 console.log("***************************************************************************************************");
-console.log("Nodos, Elementos y Selectores");
+console.log("Nodos, Elementos y Selectores");//elementos son las etiquetas html
 console.log(" ");
 
 console.log(document.getElementsByTagName("li"));//Trae todos los elmentos del html li --Ya no se utiliza
@@ -163,3 +163,53 @@ console.log($cards.lastElementChild);//ultimo elemento hijo
 console.log($cards.previousElementSibling);//previo elemento hermano 
 console.log($cards.nextElementSibling);//siguiente elemento hermano
 console.log($cards.children[3].closest("section"));//Busca el padre mas cercano que se detalla
+
+
+console.log("***************************************************************************************************");
+console.log("Creando Elementos y Fragmentos");//los elemento son la etiquietas del codifo html los fragmentos se utilizan para agregar una cantidad importante de elementos sin afectar ele rendimiento de la aplicacion web
+console.log(" ");
+
+const $figure = document.createElement("figure"),//variable que crea elemento figure
+    $img = document.createElement("img"),
+    $figcaption = document.createElement("figcaption"),
+    $figcaptionText = document.createTextNode("Animals"),//Texto de la figcaption
+    $cardts = document.querySelector(".cards");//seleciono la etiqueta que contiene la clase .cards
+
+$img.setAttribute("src", "https://placeimg.com/200/200/animals");//asigno el atributo src al elemento img
+$img.setAttribute("alt", "Animals");
+$figure.classList.add(".card");//agrego la clase .card al elemento figure
+$figcaption.appendChild($figcaptionText);//agrego el nodo de texto a el elemento figcaption
+$figure.appendChild($img);//agrego el nodo de imagen al elemento figure
+$figure.appendChild($figcaption);//agrego el nodo figcaption al elemento figure
+$cardts.appendChild($figure);//agrego el nodo figure al elemento  section que tiene la clase cards
+
+
+//Tecnica para agregar elementos dinamicamente es costsa en memoria cuando son muchos elementos
+const estaciones = ["Primavera", "verano", "otoño"],
+    $ul = document.createElement("ul");
+
+document.body.appendChild($ul);
+estaciones.forEach(element => {//Tecnica para agregar elementos dinamicamente
+    const $li = document.createElement("li");
+    $li.textContent=element;
+    $ul.appendChild($li);
+});
+
+
+//Manejo de fragmentos la forma optima de agregar elementos al DOM
+
+const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio"],
+    $ul3 = document.createElement("ul"),//creando un elmento ul
+    $fragment = document.createDocumentFragment();//creando fragmento
+
+
+meses.forEach(el =>{//recorro el arreglo crweado
+    const $li = document.createElement("li");//creo un elemento li
+    $li.textContent = el;//añado el nodo texto a mi elemento
+    $fragment.appendChild($li)//añado el nodo li al fragment
+});
+
+$ul3.appendChild($fragment);//añado el fragmento al lu
+document.body.appendChild($ul3);//añado el lu al body de la pagina html
+
+
