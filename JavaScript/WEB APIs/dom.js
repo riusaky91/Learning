@@ -212,4 +212,45 @@ meses.forEach(el =>{//recorro el arreglo crweado
 $ul3.appendChild($fragment);//añado el fragmento al lu
 document.body.appendChild($ul3);//añado el lu al body de la pagina html
 
+console.log("***************************************************************************************************");
+console.log("Templates HTML");
+console.log(" ");
 
+const $cards2 = document.querySelector(".cards"),//variable que trae el elemento con la clase cards
+    $template = document.getElementById("template-card").content,//Accedo a el contenido del elemento template de mi html
+    $fragment2 = document.createDocumentFragment(),//Creo un fragmento
+
+    cardContent = [//arreglo con nuevas imagenes en español
+        {
+            title: "Tegnologia",
+            img: "https://placeimg.com/200/200/tech"
+        },
+        {
+            title: "Animales",
+            img: "https://placeimg.com/200/200/animals"
+        },
+        {
+            title: "gente",
+            img: "https://placeimg.com/200/200/people"
+        },
+        {
+            title: "arquitectura",
+            img: "https://placeimg.com/200/200/arch"
+        },
+        {
+            title: "Naturaleza",
+            img: "https://placeimg.com/200/200/nature"
+        }
+    ];
+
+    cardContent.forEach(el =>{//recorro mi arreglo
+        $template.querySelector("img").setAttribute("src", el.img);//le añado a el elemento img de mi template src
+        $template.querySelector("img").setAttribute("alt", el.title);//le añado a el elemento alt de mi template title
+        $template.querySelector("figcaption").textContent = el.title;//le añado al texto de mi figcaption title
+
+        let $clone =document.importNode($template, true);//Clonando toda la estructura interna previamente creada
+
+        $fragment2.appendChild($clone);//agrego el clon creado a el fragmento para no injectar en todo el dom
+    })
+
+    $cards2.appendChild($fragment2);//agrego el gragmento a la clase cards para pintar el DOM
