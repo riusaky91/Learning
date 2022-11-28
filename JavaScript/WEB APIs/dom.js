@@ -254,3 +254,7 @@ const $cards2 = document.querySelector(".cards"),//variable que trae el elemento
     })
 
     $cards2.appendChild($fragment2);//agrego el gragmento a la clase cards para pintar el DOM
+
+console.log("***************************************************************************************************");
+console.log("Modificando Elementos (Old Style)");
+console.log(" ");
