@@ -256,5 +256,45 @@ const $cards2 = document.querySelector(".cards"),//variable que trae el elemento
     $cards2.appendChild($fragment2);//agrego el gragmento a la clase cards para pintar el DOM
 
 console.log("***************************************************************************************************");
-console.log("Modificando Elementos (Old Style)");
+console.log("Modificando Elementos"); //Nueva forma de agregar eliminar reemplazar elñementos dentro de el documento html
 console.log(" ");
+
+/* 
+
+.insertAdjacent... Insertar de manera adyacente elementos
+
+    .insertAdjacentElement(position,el)
+    .insertAdjacentHTML(position,html)
+    .insertAdjacentText(position,text)
+
+
+posiciones:
+
+    beforebegin (hermano anterior)
+    afterbegin (primer hijo)
+    beforeend (ultimo hijo)
+    afterend  (hermano siguiente)
+
+*/
+
+const $cardsTest = document.querySelector(".cards"),//asignado clase card en una variable
+    $newCard = document.createElement("figure");//creando un elemento
+
+    //Imagen aleatoria
+    let $contenCard = `
+        <img src = "https://placeimg.com/200/200/any" alt= "Any">
+        <figcaption></figcaption>
+    `;
+
+    $newCard.classList.add(".card");//añadiendo clase
+    $newCard.insertAdjacentHTML("beforeend",$contenCard);//Insertando atributos html
+    $newCard.querySelector("figcaption").insertAdjacentText("afterbegin","Any")//insertano texto al elemeto figcaption
+    $cardsTest.insertAdjacentElement("afterbegin",$newCard);//insertar como primer hijo el elemento creado
+
+    //Otra forma de insercion
+    /*
+    $cardsTest.prepend($newCard);
+    $cardsTest.append($newCard);
+    $cardsTest.before($newCard);
+    $cardsTest.after($newCard);
+    */
