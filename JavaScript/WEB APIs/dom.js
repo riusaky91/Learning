@@ -287,8 +287,8 @@ const $cardsTest = document.querySelector(".cards"),//asignado clase card en una
     `;
 
     $newCard.classList.add(".card");//añadiendo clase
-    $newCard.insertAdjacentHTML("beforeend",$contenCard);//Insertando atributos html
-    $newCard.querySelector("figcaption").insertAdjacentText("afterbegin","Any")//insertano texto al elemeto figcaption
+    $newCard.insertAdjacentHTML("beforeend",$contenCard);//Insertando atributos html al hermano anterior
+    $newCard.querySelector("figcaption").insertAdjacentText("afterbegin","Any")//insertano texto al elemeto figcaption su primer hijo
     $cardsTest.insertAdjacentElement("afterbegin",$newCard);//insertar como primer hijo el elemento creado
 
     //Otra forma de insercion
@@ -298,3 +298,27 @@ const $cardsTest = document.querySelector(".cards"),//asignado clase card en una
     $cardsTest.before($newCard);
     $cardsTest.after($newCard);
     */
+
+
+console.log("***************************************************************************************************");
+console.log("Manejadores de eventos"); //Funciones que se ejecutan eun evento, los eventos son las Acciones del usuario en el docuemnto HTML 
+console.log(" ");
+
+function holaMundo(){//Event Handler 
+    alert("Hola Mundo");
+    console.log(event);//descripcion del evento click deprecado
+}
+
+const $eventoSemantico = document.getElementById("evento-semantico"),
+$eventoMultiple = document.getElementById("evento-multiple");
+
+$eventoSemantico.onclick = holaMundo;//se asigna al evento onclick la funcion hola mundo sin los parentesis ya que al colocarlos se ejecurar en el init la funcion 
+//solo se puede asignar una funcion a un evento con los manejadores semanticos
+$eventoSemantico.onclick = function (e) {
+    alert("Hola mundo manejador de eventos semantico");
+    console.log(e);
+}
+
+$eventoMultiple.addEventListener("click",holaMundo);//añado en el evento click el metodo holamundo
+$eventoMultiple.addEventListener("click",(e)=>{alert("Hola mundo manejador de eventos multiples")//añado en el evento click  otro metodo anonimo
+console.log(e)});
