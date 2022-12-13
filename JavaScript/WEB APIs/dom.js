@@ -314,7 +314,7 @@ $eventoMultiple = document.getElementById("evento-multiple");
 
 $eventoSemantico.onclick = holaMundo;//se asigna al evento onclick la funcion hola mundo sin los parentesis ya que al colocarlos se ejecurar en el init la funcion 
 //solo se puede asignar una funcion a un evento con los manejadores semanticos
-$eventoSemantico.onclick = function (e) {
+$eventoSemantico.onclick = function (e) {//la e es el evento en si y solo puede recibir un parametro
     alert("Hola mundo manejador de eventos semantico");
     console.log(e);
 }
@@ -322,3 +322,31 @@ $eventoSemantico.onclick = function (e) {
 $eventoMultiple.addEventListener("click",holaMundo);//añado en el evento click el metodo holamundo
 $eventoMultiple.addEventListener("click",(e)=>{alert("Hola mundo manejador de eventos multiples")//añado en el evento click  otro metodo anonimo
 console.log(e)});
+
+console.log("***************************************************************************************************");
+console.log("Eventos con Parámetros y Remover Eventos"); //para usar funciones manejadoras con parametros se una una funciona anonima
+console.log(" ");
+
+function saludar (nombre = "Desconocid@") {
+    alert(`Hola ${nombre}`);
+}
+
+$eventoMultiple.addEventListener("click",holaMundo);//añado en el evento click el metodo holamundo
+$eventoMultiple.addEventListener("click",(e)=>{alert("Hola mundo manejador de eventos multiples")//añado en el evento click  otro metodo anonimo
+console.log(e)});
+
+$eventoMultiple.addEventListener("click",()=>saludar());//Forma de ejecutar una funcion manejadora con parametros dioferentes al evento
+
+const $eventoRemover = document.getElementById("evento-remover");//referenciando elemento boton en una variable
+
+const removeDobleClick = (e)=>{//Funcion para remover evento
+    alert(`Removiendo el evento de tipo ${e.type}`)
+    console.log(e);//imprimo el evento
+    $eventoRemover.removeEventListener("dblclick",removeDobleClick)//funcion pra remover un elemento que se auto referencia
+    $eventoRemover.disabled = true;//atributo html deshabilitando boton
+
+}
+
+$eventoRemover.addEventListener("dblclick",removeDobleClick);//agregando evento con una funcion que despues d ejecutarse elimina el evento
+
+
