@@ -301,7 +301,7 @@ const $cardsTest = document.querySelector(".cards"),//asignado clase card en una
 
 
 console.log("***************************************************************************************************");
-console.log("Manejadores de eventos"); //Funciones que se ejecutan eun evento, los eventos son las Acciones del usuario en el docuemnto HTML 
+console.log("Manejadores de eventos"); //Funciones que se ejecutan en un evento, los eventos son las Acciones del usuario en el docuemnto HTML 
 console.log(" ");
 
 function holaMundo(){//Event Handler 
@@ -335,7 +335,7 @@ $eventoMultiple.addEventListener("click",holaMundo);//añado en el evento click 
 $eventoMultiple.addEventListener("click",(e)=>{alert("Hola mundo manejador de eventos multiples")//añado en el evento click  otro metodo anonimo
 console.log(e)});
 
-$eventoMultiple.addEventListener("click",()=>saludar());//Forma de ejecutar una funcion manejadora con parametros dioferentes al evento
+$eventoMultiple.addEventListener("click",()=>saludar());//Forma de ejecutar una funcion manejadora con parametros diferentes al evento
 
 const $eventoRemover = document.getElementById("evento-remover");//referenciando elemento boton en una variable
 
@@ -347,6 +347,66 @@ const removeDobleClick = (e)=>{//Funcion para remover evento
 
 }
 
-$eventoRemover.addEventListener("dblclick",removeDobleClick);//agregando evento con una funcion que despues d ejecutarse elimina el evento
+$eventoRemover.addEventListener("dblclick",removeDobleClick);//agregando evento con una funcion que despues de ejecutarse elimina el evento
+
+
+console.log("***************************************************************************************************");
+console.log("Flujo de eventos Burbuja y Captura"); //Propagación de un evento que se origina a lo largo del arbol del DOM. Por defecto la propagación del elemento mas interno al mas externo es la fase de burbuja
+console.log(" ");
+
+
+const $divsEventos = document.querySelectorAll(".eventos-flujo div");//Trae todas las divs que estan dentro de eventos flujo
+
+console.log($divsEventos);
+/*
+function flujoEventos(e) {
+    console.log(`Hola te saluda ${this.className}, el click lo originó ${e.target.className}`);//referenciando al nombre de la clase del div y el objeto que origino el evento con su nombre de clase
+}
+*/
+
+$divsEventos.forEach(div => {//asignado evento porcada elemento del arreglo de nodos
+//Fase de Burbuja
+//    div.addEventListener("click", flujoEventos,false);//Fase Burbuja se activa en el 3 parametro como false y fase de captura se asigna el valor true
+//Fase de captura
+
+//div.addEventListener("click", flujoEventos,true);//fase de captura del elemento mas externo al elemento mas interno
+
+/*div.addEventListener("click", flujoEventos,{//tambien en el tercer parametre se puede a;adir un objeto con las siguientes caracteristicas
+    capture: false,    //asignando fase de burbuja
+    once: true // el evento solo se ejecutara una vez
+});
+*/
+});
+
+
+console.log("***************************************************************************************************");
+console.log("stopPropagation & preventDefault"); //Interrupcion de la propagacion de eventos burbuja o captura / cancela la accion que tiene por defecto el elemento 
+console.log(" ");
+
+const $linksEventos = document.querySelector(".eventos-flujo a");//capturo la lista de nodos de el elemento con la clase evento-flujo
+
+function flujoEventos(e) {
+    console.log(`Hola te saluda ${this.className}, el click lo originó ${e.target.className}`);//referenciando al nombre de la clase del div y el objeto que origino el evento con su nombre de clase
+
+    e.stopPropagation();//Con este metodo detengo la propagación de mi evento a los padres 
+}
+
+$divsEventos.forEach(div => {//asignado evento porcada elemento del arreglo de nodos
+    //Fase de Burbuja
+        div.addEventListener("click", flujoEventos);//Fase Burbuja se activa por defecto o en el 3 parametro como false y fase de captura se asigna el valor true
+    
+    });
+
+
+$linksEventos.addEventListener("click", (e) => {
+    alert("redireccionando a la pagina de google");
+    e.preventDefault();// cancela la accion que tiene por defecto el elemento a y se ejecuta solo la accion del handler
+});
+
+
+console.log("***************************************************************************************************");
+console.log("Delegación de Eventos"); //genero un unico liscener asociado al elemento padre que asignara los eventos que se quieran asignar
+console.log(" ");
+
 
 
