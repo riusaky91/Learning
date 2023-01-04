@@ -384,29 +384,44 @@ console.log("stopPropagation & preventDefault"); //Interrupcion de la propagacio
 console.log(" ");
 
 const $linksEventos = document.querySelector(".eventos-flujo a");//capturo la lista de nodos de el elemento con la clase evento-flujo
-
+/*
 function flujoEventos(e) {
     console.log(`Hola te saluda ${this.className}, el click lo originó ${e.target.className}`);//referenciando al nombre de la clase del div y el objeto que origino el evento con su nombre de clase
 
     e.stopPropagation();//Con este metodo detengo la propagación de mi evento a los padres 
 }
+*/
+/*
 
 $divsEventos.forEach(div => {//asignado evento porcada elemento del arreglo de nodos
     //Fase de Burbuja
         div.addEventListener("click", flujoEventos);//Fase Burbuja se activa por defecto o en el 3 parametro como false y fase de captura se asigna el valor true
     
     });
-
-
+*/
+/*
 $linksEventos.addEventListener("click", (e) => {
     alert("redireccionando a la pagina de google");
     e.preventDefault();// cancela la accion que tiene por defecto el elemento a y se ejecuta solo la accion del handler
 });
-
+*/
 
 console.log("***************************************************************************************************");
-console.log("Delegación de Eventos"); //genero un unico liscener asociado al elemento padre que asignara los eventos que se quieran asignar
+console.log("Delegación de Eventos"); //genero un unico listener asociado al elemento o nodo padre que asignara los eventos que se quieran relacionar por defecto no se propaga forma correcta y optimizada de hacer los 4 items anteriores
 console.log(" ");
 
+document.addEventListener("click",(e)=>{//asignado el eventolistener al documento html
+    console.log(`click en ${e.target}`);
+
+    if(e.target.matches(".eventos-flujo div")){//Si el elemento que origina el click dentro del document es un div dentro de la clase eventos-flujo
+        alert("redireccionando a la pagina de google");//imprime alerta
+        console.log(`Hola te saluda ${this}, el click lo originó ${e.target.className}`);//referenciando al objeto global del document (window) y el objeto que origino el evento con su nombre de clase
+    }
+
+    if(e.target.matches(".eventos-flujo a")){//Si el elemento que origina el click dentro del document es un a dentro de la clase eventos-flujo
+        alert("redireccionando a la pagina de google");//imprime alerta
+        e.preventDefault();// cancela la accion que tiene por defecto el elemento a y se ejecuta solo la accion del handler (alert)
+    }
+});
 
 
