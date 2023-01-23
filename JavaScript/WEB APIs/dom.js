@@ -424,4 +424,43 @@ document.addEventListener("click",(e)=>{//asignado el eventolistener al document
     }
 });
 
+console.log("***************************************************************************************************");
+console.log("BOM: Propiedades y eventos"); //Eventos de la ventana del navegador objeto window
+console.log(" ");
+
+
+window.addEventListener("resize", e =>{//evento que se ejecuta cuando redimenciono la ventana del navegador
+    console.clear();
+    console.log("Eveto resize");
+    console.log(window.innerWidth);//Tamaño ventana
+    console.log(window.innerHeight);
+    console.log(window.outerWidth);//Tamaño con el navegador
+    console.log(window.outerHeight);
+    console.log(e);
+});
+
+window.addEventListener("scroll", e =>{//evento que se ejecuta utilizo el scroll
+    console.clear();
+    console.log("Eveto scroll");
+    console.log(window.scrollX);
+    console.log(window.scrollY);
+    console.log(e);
+});
+
+
+window.addEventListener("load", e=>{//evento que se ejecuta cuando se recarga la pagina espera a que se carguen los estilos
+    
+    console.log("Evento Load");
+    console.log(window.screenX);//al usar otra pantalla salen numeros negativos
+    console.log(window.screenY);
+    console.log(e);
+});
+
+window.addEventListener("DOMContentLoaded", (e) => {//eveto mas rapido y estable que load se utiliza mejor practica no espera a los css 
+    
+    console.log("Evento DOMContentLoaded");
+    console.log(window.screenX);//al usar otra pantalla salen numeros negativos
+    console.log(window.screenY);
+    console.log(e);
+})
 
