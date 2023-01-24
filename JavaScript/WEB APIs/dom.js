@@ -428,7 +428,7 @@ console.log("*******************************************************************
 console.log("BOM: Propiedades y eventos"); //Eventos de la ventana del navegador objeto window
 console.log(" ");
 
-
+/*
 window.addEventListener("resize", e =>{//evento que se ejecuta cuando redimenciono la ventana del navegador
     console.clear();
     console.log("Eveto resize");
@@ -464,3 +464,63 @@ window.addEventListener("DOMContentLoaded", (e) => {//eveto mas rapido y estable
     console.log(e);
 })
 
+*/
+console.log("***************************************************************************************************");
+console.log("BOM: Metodos"); //Metodos del BOM en los cuales no es necesario añadir la palabra window
+console.log(" ");
+
+//window.alert("Alerta");//Envia una alerta al navegador apenas se carge
+//window.confirm("confirmación");//Envia una alerta con aceptar y cancelar al navegador apenas se cargue
+//window.prompt("Aviso");//Envia una alerta con aceptar y cancelar al navegador apenas se cargue con una caja de texto par aingresar un dato
+
+const $btnAbrir = document.getElementById("abrir-ventana"), 
+    $btnCerrar = document.getElementById("cerrar-ventana"),
+    $btnImprimir = document.getElementById("imprimir-ventana");
+
+    let ventana;//variable para alamacenar una ventana
+
+    $btnAbrir.addEventListener("click", e =>{
+        ventana = window.open("https://www.google.com.co");//metodo para abrir una nueva ventana y direccionar al enlace indicado referencio una variable a la nueva ventana -- NOTA no es necesario añadir el objeto window
+    });
+
+    $btnCerrar.addEventListener("click", e =>{
+        ventana.close();//metodo para cerrar una ventana en este caso la ventana referenciada
+    });
+
+    $btnImprimir.addEventListener("click", e =>{
+        window.print();//metodo para mandar a imprimir la ventana -- NOTA no es necesario añadir el objeto window
+    });
+
+
+console.log("***************************************************************************************************");
+console.log("BOM: Objetos: URL, Historial y Navegador"); //funcionalidades del componente window utiles para diferentes funcionalidades
+console.log(" ");
+
+console.log("Objetos: URL");
+
+console.log(location);//URL origen
+console.log(location.origin);//origen de url 
+console.log(location.protocol);//protocolo direccionamiento IP
+console.log(location.host);//Dominio y puerto
+console.log(location.hostname);//Dominio
+console.log(location.port);//puerto
+console.log(location.href);//URL completa
+console.log(location.hash);//detecta el valor de la URL que esta despues del Hash # SWA
+console.log(location.pathname);//pagina puntual que estoy consultando
+
+console.log("Objetos: Historial");
+
+console.log(window.history);//almacenamiento del historal donde se enceuntra el length indica la cantidad de paginas donde se han navegado
+//history.go(2)//avanza dos apginas en el historial
+
+console.log("Objetos: Navigator");
+
+console.log(navigator);//objeto de las funcionalidades del navegador
+console.log(navigator.geolocation);//geolocalización
+console.log(navigator.mediaDevices);//dispositivos camaras y microfonos
+console.log(navigator.mimeTypes);//tipos de formato que soporta el navegador
+console.log(navigator.onLine);//saber si el navegador pierde la conexion online
+console.log(navigator.serviceWorker);//API que sirve convertir el PWA los sitieos web convertir en una aplicación instalable
+console.log(navigator.storage);//API de almacenamiento 
+console.log(navigator.usb);//identificar si se conectan o se desconectan los dispositivos USB
+console.log(navigator.userAgent);//información sobre el dispositivo y el navegador de donde se esta consultando la información
