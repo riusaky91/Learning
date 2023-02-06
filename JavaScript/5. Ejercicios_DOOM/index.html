@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .titulo {
+        background-color: yellow;
+        text-align: center;
+        z-index: 3;
+      }
+
+      .hamburgesa {
+        background-color: yellow;
+        z-index: 2;
+      }
+
+      .menu {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: gray;
+        z-index: 1;
+        opacity: 0.7;
+        display: none;
+      }
+      
+    </style>
+    <link href="css/dist/hamburgers.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="menu"></div>
+    <h1 class="titulo">Ejercicios del DOM</h1>
+
+    1. titulo cuadrado 
+    2. 5 secciones 
+    4. hacer click abajo a la derecha muestra en pantalla un menu con 5 sesiones (Objetivo) 
+    5. trancision menu onclik tips css jhon mircha sin java script 
+    7. Tratar de que el codigo sea reutilizable
+
+
+
+    <br>Seccion 1<br>
+           Seccion 2<br>
+           Seccion 3<br>
+           Seccion 4<br>
+           Seccion 5
+
+    
+    <div class="hamburgesa">
+
+        <button class="hamburger hamburger--collapse " type="button">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+    </div>
+
+    
+    <script src="javascript/index.js" type="module"></script> <!--Importaci►2 de JS con manejo modular-->
+  </body>
+</html>

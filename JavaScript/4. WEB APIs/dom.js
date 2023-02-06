@@ -478,7 +478,7 @@ const $btnAbrir = document.getElementById("abrir-ventana"),
     $btnImprimir = document.getElementById("imprimir-ventana");
 
     let ventana;//variable para alamacenar una ventana
-
+    
     $btnAbrir.addEventListener("click", e =>{
         ventana = window.open("https://www.google.com.co");//metodo para abrir una nueva ventana y direccionar al enlace indicado referencio una variable a la nueva ventana -- NOTA no es necesario añadir el objeto window
     });
