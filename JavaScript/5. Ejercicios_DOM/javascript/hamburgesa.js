@@ -16,3 +16,14 @@ export let animacion = function (t, o, r) {
         Object.prototype.hasOwnProperty.call(t, c) && o.call(r, t[c], c, t);
     else for (var e = 0, l = t.length; l > e; e++) o.call(r, t[e], e, t);
   };
+
+
+  export default function hamburgerMenu(panelBtn, panel){//funcion exportable con dos elementos de entrada 
+    const d = document;/*guardo la llamda al docuemnt en una variable */
+
+    d.addEventListener("click",e=>{
+      if (e.target.matches(panelBtn)) {/*si el objeto que origina el evento coincido con la variable panlelbtn*/
+        d.querySelector(panel).classList.toggle("is-active")
+      }
+    })
+  }

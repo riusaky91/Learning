@@ -117,13 +117,13 @@ console.log(" ");
 const $card = document.querySelector(".card");
 
 console.log($card);
-console.log($card.className);//Valor de la clases 
+console.log($card.className);//Valor de la clase
 console.log($card.classList);//DomtokenList con tres atributos definidores
 console.log($card.classList.contains("rotate-45"));//valida si tiene implementada la clase (boolean)
 $card.classList.add("rotate-45");//añadiendo clase 
 console.log($card.classList.contains("rotate-45"));
-$card.classList.remove("rotate-45");//quita un clase
-$card.classList.toggle("rotate-45");//valida si tiene o no la clase en caso de tenerla no agrega nada, en caso contrario si agrega la clase dark mode
+$card.classList.remove("rotate-45");//quita una clase
+$card.classList.toggle("rotate-45");//valida si tiene o no la clase en caso de tenerla no agrega nada, en caso contrario la agrega
 $card.classList.replace("rotate-45", "rotate-135");//Remplaza una clase con otra
 $card.classList.add("opacity-80","sepia")//añadiendo mas de una clase
 

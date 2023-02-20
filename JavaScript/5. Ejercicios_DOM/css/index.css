@@ -1,0 +1,123 @@
+
+
+/*********** Reset CSS *************/
+
+
+:root{/*Metodo para la creación de variables css*/
+    --main-font: sans-serif;/*tipo de letra*/
+    --font-size: 16px;/*tamaño de letra*/
+    --main-color: #f7df1e;/*color principal*/
+    --second-color:#222;/*color secundario*/
+    --main-modal-color:rgba(247,222,30,0.85);/*Color prioncipal con opacidad*/
+    --second-modal-color:rgba(34,34,34,0.85);/*Color secundario con opacidad*/
+    --container-width:1200px;/*ancho max del contenedor*/
+}
+
+html{/*Reseteo general al formulario web*/
+    box-sizing: border-box;/*tamaño de la caja*/
+    font-family: var(--main-font);/*fuente*/
+    font-size: var(--font-size);/*tamaño de letra*/
+    scroll-behavior: smooth;/*trasicion suave de redirecciones internas*/
+}
+
+
+*,
+*:before,
+*:after{/*Todos los elemntos del html heredarn el box sizing */
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;/*quitar margenes al body*/
+    overflow-x: hidden;/*esconder el scroll hoptizontal*/
+}
+
+img{
+    max-width: 100%;/*las imagenes cuando se utilicen se van adaptar a la maxima anchura del documento*/
+    height: auto;/*altura predeteminada*/
+}
+
+
+/*********** Menu de hamburgesa *************/
+
+header{
+    position: sticky;/*mantengo el header anclado*/
+    top: 0;/*posicionado en la parte inicial*/
+    padding: 1rem;/*espaciado a cada lado*/
+    background-color: var(--main-color);
+    color: var(--second-color);
+}
+
+header h1{/*el h1 que esta dentro del header*/
+    margin: 0 auto;/*0 arriba y abajo y automatico a los lados*/
+    text-align: center;/*centrar el texto*/
+}
+
+.section{
+    padding: 2rem;/*espaciado a cada lado*/
+    padding-top: 4rem;/*espaciado arriba*/
+    margin-left: auto;/*margen izquiero autopmatico*/
+    margin-right: auto;/*margen derecho automatico*/
+    max-width: var(--container-width);/*anchura maxima*/
+    min-height: 100vh;/*altura minima*/
+    text-align: center;/*alinera el texto al centro*/
+
+}
+
+.panel {
+    position: fixed;/*posicion fija para el panel*/
+    z-index: 998;/*por encima de casi todo*/
+    width: 100%;/*tamaño que ocupa el 100% de la pantalla*/
+    top: 0;/*ocupando todos los margenes*/ 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--second-modal-color);/*color de fondo*/
+    transition: transform 0.3s ease;/*transicion de la porpiedad transform en 0.3 segundos efecto acelerado*/
+    transform: translate(0,-100%);/*panel posicionado arriba de la pantalla*/
+}
+
+.panel.is-active{/*cuando el elemento que tienne la clase panel tenga tambien la clase is active se ejecuta esta funcion*/
+    transform: 0,0;/*panel posicionado abajo de la pantalla*/
+}
+
+
+.panel-btn {
+    position: fixed;/*posicion estatica*/
+    z-index: 999;/*por encima de todo*/
+    bottom: 1vh;/*posicion de espaciado entre el objeto y el fondo de la vista*/
+    right: 4rem;/*posicion de espaciado entre el objeto y la derecha de la vista*/
+    width: 4rem;/*anchura*/
+    height: 4rem;/*altura*/
+    border-radius: 50%;/*borde redondeado*/
+    padding: 0;/*quitandole el espaciado del objeto*/
+    display: flex;/*uso de flexbox*/
+    justify-content: center;/*centrando contenido flex*/
+    align-items: center;/*centrando items flex*/
+    background-color: var(--main-color);/*color de fondo*/
+}
+
+.menu{
+    width: inherit;/*hereda la altura del contenedor*/
+    display: flex;/*usando flexbox*/
+    flex-direction: column;/*items de forma columnar flex*/
+    justify-content: space-evenly;/*espaciado proporcianal entre los elemntos y sus orillas*/
+    align-items: center;/*alineo los items al centro*/
+    text-align: center;/*alinero el texto de los items al centro*/
+}
+
+.menu a { /*enlaces dentro de el elmento con clase menu*/
+    padding: 2rem;/*espaciado por cada lado*/
+    width: inherit;/*herede el alto del padre*/
+    display: block;/*elemnto tipo bloque*/
+    font-size: 1.5rem;/*tamaño de fuente*/
+    text-decoration: none;/*quitar linea subrayada de enlaces*/
+    color: var(--main-color);/*colo de letra*/
+    transition: all 0.3s ease;/*transicion para que en el estado hover el cambio dure 0.3 segundos (propiedad tiempo_de_transición efecto)*/
+}
+
+.menu a:hover{/*evento hover de los enlaces qeu estan dentro del elemento con clase menu*/
+    font-weight: bold;/*negrita*/
+    color: var(--second-color);/*color de letra*/
+    background-color: var(--main-modal-color);/*color de fondo*/
+}
