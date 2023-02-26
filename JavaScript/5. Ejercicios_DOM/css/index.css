@@ -73,12 +73,12 @@ header h1{/*el h1 que esta dentro del header*/
     left: 0;
     right: 0;
     background-color: var(--second-modal-color);/*color de fondo*/
-    transition: transform 0.3s ease;/*transicion de la porpiedad transform en 0.3 segundos efecto acelerado*/
+    transition: transform .3s ease;/*transicion de la propiedad transform en 0.3 segundos efecto acelerado*/
     transform: translate(0,-100%);/*panel posicionado arriba de la pantalla*/
 }
 
 .panel.is-active{/*cuando el elemento que tienne la clase panel tenga tambien la clase is active se ejecuta esta funcion*/
-    transform: 0,0;/*panel posicionado abajo de la pantalla*/
+    transform: translate(0,0);/*panel posicionado abajo de la pantalla*/
 }
 
 
