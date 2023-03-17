@@ -407,7 +407,7 @@ $linksEventos.addEventListener("click", (e) => {
 */
 
 console.log("***************************************************************************************************");
-console.log("Delegación de Eventos"); //genero un unico listener asociado al elemento o nodo padre que asignara los eventos que se quieran relacionar por defecto no se propaga forma correcta y optimizada de hacer los 4 items anteriores
+console.log("Delegación de Eventos"); //genero un unico listener asociado al elemento o nodo padre que asignara los eventos que se quieran relacionar por defecto no se propaga, forma correcta y optimizada de hacer los 4 items anteriores
 console.log(" ");
 
 document.addEventListener("click",(e)=>{//asignado el eventolistener al documento html
