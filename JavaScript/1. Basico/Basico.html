@@ -43,7 +43,7 @@
         console.log("Template Strings");
         console.log(" ");
 
-        console.log(`Hola mi nombre es ${nombre}`);//Codigo interpolado, alt+96 para hacer comillas invertidas
+        console.log(`Hola mi nombre es ${nombre}`);//Codigo interpolado, es necesario usar las comillas invertidas para interpolar codigo (alt+96 para hacer comillas invertidas)
 
         console.log("***************************************************************************************************");
         console.log("undefined, null & NaN");
@@ -73,6 +73,8 @@
             return `hola como estas ${nombre}`
         }
 
+
+        //Funcion expresada
         const funcionExpresada = function () {//Funcion dentro de una variable
             console.log("Funcion basica dentro de una variable");
         }
@@ -80,7 +82,7 @@
         estoEsUnaFuncion();//Invocacion de una funcion
         console.log(funcionQueDevuelveValor());
         console.log(funcionQueRecibeValores("leito"));
-        funcionExpresada();
+        funcionExpresada();//Invocacion de una funcion expresada
 
         console.log("***************************************************************************************************");
         console.log("Arreglos");
@@ -93,8 +95,8 @@
         a.push("nuevo");
         console.log(a);//metodo para añadir un valor a un arreglo
 
-        a.forEach(function(elemento,indice){//Metodo de arreglo para recorrer cada elemento (primer parametro elemento de arreglo, segundo parametro indice)
-            console.log(`<li>  ${elemento}, ${indice} </li>`);
+        a.forEach(function(elemento,indice) {//Metodo de arreglo para recorrer cada elemento (primer parametro = elemento de arreglo, segundo parametro = indice)
+            console.log(`<li> ${indice} : ${elemento} </li>`);
         });
 
         console.log("***************************************************************************************************");
@@ -102,15 +104,15 @@
         console.log(" ");
 
         const b = {//objeto 
-            nombre : "leo",
-            apellido : "estupiñan",
+            nombre : "Leo",
+            apellido : "Estupiñan",
             edad : 30,
             pasatiempos : ["futbol", "play"],
-            contacto : {
+            contacto : {//Creación de un objeto dentro de otro objeto
                 email: "marlon@gmail.com",
                 cel: 3158992518
             },
-            saludar: function (){
+            saludar: function (){//Una funcion declarada dentro de un objeto es un metodo, al final de este docuemnto se muestra como se debe declrarar un metodo correctamente
                 console.log("hola soy un funcion dentro de un objeto (metodo)");
             },
             decirNombre: function(){
@@ -121,7 +123,7 @@
 
         console.log (b);//accediendo a objeto
         console.log (b.edad);//accediendo a un atributo de mi objeto
-        console.log(b.contacto.cel);//accediendo a el objeto dentro del objeto
+        console.log(b.contacto.cel);//accediendo a el parametro que se encuentra en un objeto dentro del objeto
         b.saludar(); //accediendo a un metodo dentro del objeto
         b.decirNombre();//accediendo a un metodo dentro del objeto usando una variable del objeto
         console.log(Object.keys(b));//accediendo a las llaves de un objeto 
@@ -136,7 +138,6 @@
         console.log(8==9);//igual ya no se utiliza
         console.log(8===9);//igual y del mismo tipo de dato
         console.log(8!=9);//diferente
-        console.log(8>9);//diferente del tipo
 
         console.log("***************************************************************************************************");
         console.log("Condicionales");
@@ -162,7 +163,7 @@
                 break;
         }
 
-        //Operador ternario (condicion) ? verdader  falso 
+        //Estructura del operador ternario (condicion) ? verdader : falso; 
 
         const eresMayor = (edad >= 18) ? "eres mayor de edad" : "Eres menor de edad";
         console.log (eresMayor);
@@ -194,7 +195,7 @@
 
         let arregli = [10,20,30,40,50];
 
-        arregli.forEach(element=>{//Cuando solo vamos a utilizar el elemento quitamos el parentesis y podemos usar un arrow function
+        arregli.forEach(element=>{//Cuando solo vamos a utilizar un parametro en una funcion declarada, quitamos el parentesis y podemos usar un arrow function
             console.log(element + "For each");
         });
 
@@ -203,11 +204,11 @@
             apellido: "cerrado"
         }
 
-        for (const key in leu) {//recorriendo un objeto
-            console.log(key, leu[key],  "forIn")
+        for (const key in leu) {//recorriendo un objeto con for in
+            console.log(key, leu[key],  "forIn")//key: indice del objeto, leu[key]: elemento
         }
 
-        for (const iterator of arregli) {//recorriendo cualquier elemento iterable
+        for (const iterator of arregli) {//recorriendo cualquier elemento iterable con for of
             console.log(iterator,  "foroff")
         }
 
@@ -229,9 +230,9 @@
         try {
             let numero = "y"
 
-            if (isNaN(numero)) {
+            if (isNaN(numero)) {//metodo con retorno boleano para validar si una variable es numerica
                 
-                throw new Error("El caracter introducido no es un numero");
+                throw new Error("El caracter introducido no es un numero");//metodo que genera un mensaje de error personalizado en consola
             }
         } catch (error) {
             console.log("Error encontrado es: ", error);
@@ -245,7 +246,7 @@
 
         for (let index = 0; index < arr.length; index++) {
 
-            if (index%2 === 0) {
+            if (index%2 === 0) {//valida numeros pares
                 continue;//se salta el caso pero da continuidad, al ser break se saldra de la estructura de control principal
             }
 
@@ -272,7 +273,7 @@
             age : 30             
         }
 
-        const {name, apellido, age} = señor;//destructuracioon de objeto tener en cuenta el mismo nombre de los parametros del objeto
+        const {name, apellido, age} = señor;//destructuracioon de objeto tener en cuenta que se debe manejar el mismo nombre de las propiedades del objeto
         console.log(name, apellido, age);
 
         console.log("***************************************************************************************************");
@@ -283,7 +284,7 @@
         const color = "rojo", tipo = "electrica";
         
 
-        const guitarra = {//nueva forma de asignar parametros y metodos en objetos
+        const guitarra = {//nueva forma de asignar propiedades y metodos en objetos
             color,//solo con el nombre de la variable previamente creada
             tipo,
             sonido (){//sin el function
@@ -307,7 +308,7 @@
             return resultado;
         }
 
-        console.log(plus(1,2,3));
+        console.log(plus(1,2,3,4));//al utilizar un parametro rest puedo añadir a la funcion mas de 3 parametros 
 
 
         const arr1 = [1,2,3,4,5], arr2 = [6,7,8,9,0];
