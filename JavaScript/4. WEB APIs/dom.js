@@ -54,18 +54,18 @@ console.log(" ");
 console.log(document.documentElement.lang);//Accediendo al valor atributo lang de la etiqueta html
 console.log(document.documentElement.getAttribute("lang"));//otra manera de acceder al valor de un atributo de la etiquieta html
 console.log(document.querySelector(".link-dom").href);//trae la url del atributo
-console.log(document.querySelector(".link-dom").getAttribute("href"));//trae el valor del atributo forma correcta
-document.documentElement.lang = "es";//modificando valor de atributo
-document.documentElement.setAttribute("lang","es-CO");//modificando el valor de un atributo de forma correcta
+console.log(document.querySelector(".link-dom").getAttribute("href"));//trae el valor del atributo forma como se encuentra especificada en el documento
+document.documentElement.lang = "es";//modificando valor de atributo --Ya no se utiliza
+document.documentElement.setAttribute("lang","es-CO");//modificando el valor de un atributo de forma correcta (atributo, valor)
 console.log(document.documentElement.getAttribute("lang"));
 
 const $linkDom = document.querySelector(".link-dom");//declarando constante con el metodo para traer la clase de mi enlace con el DOM $variables del DOM
 
-$linkDom.setAttribute("target", "_blank");//Modificando valores de la etiqueta añadiendo un nuevo atributo
-$linkDom.setAttribute("rel", "noopener");//Para evitar que se abran dependencias agenas
-$linkDom.setAttribute("href", "https://aprendejavascript.org/");
-console.log($linkDom.hasAttribute("rel"));//vlaidando si exsite el atributo
-$linkDom.removeAttribute("rel");
+$linkDom.setAttribute("target", "_blank");//Modificando valores de la etiqueta añadiendo un nuevo atributo target con su valor _blank al dar click abre el enlace e una nueva ventana o tab
+$linkDom.setAttribute("rel", "noopener");//Para evitar que se abran dependencias agenas al dar click en el enlace
+$linkDom.setAttribute("href", "https://aprendejavascript.org/");//Modificando el atributo href
+console.log($linkDom.hasAttribute("rel"));//validando si exsite el atributo rel dentro del elemento
+$linkDom.removeAttribute("rel");//Eliminando atribito del elemento a
 console.log($linkDom.hasAttribute("rel"));
 
 //Data atributes
@@ -75,7 +75,7 @@ console.log($linkDom.dataset);//validado los data-atributes de mi etiqueta
 console.log($linkDom.dataset.description);
 $linkDom.setAttribute("data-description", "Modelo de objeto del documento");
 console.log($linkDom.dataset.description);
-$linkDom.dataset.description= "Modificando data-atribute"
+$linkDom.dataset.description= "Modificando data-atribute";//Otra manera de modificar atributo
 console.log($linkDom.dataset.description);
 
 
@@ -87,10 +87,10 @@ console.log($linkDom.style);//propiedades ccs validas es recomendable para este 
 console.log($linkDom.getAttribute("style"));//cadena de texto con los atributos modificados 
 console.log($linkDom.style.backgroundColor);//se usa el camelCase para acceder al valor
 console.log(window.getComputedStyle($linkDom));//propiedades por defecto del CSS 
-console.log(getComputedStyle($linkDom).getPropertyValue("Color"));
+console.log(getComputedStyle($linkDom).getPropertyValue("Color"));//string rgb del color del a
 
-$linkDom.style.setProperty("text-decoration", "none")//Modificando elemento de mi atributo style
-$linkDom.style.display = "block";//otro modo de modificar elemnto del atributo
+$linkDom.style.setProperty("text-decoration", "none")//Añadiendo una propiedad al estilo del elemento quitandole la decoracion del texto, en este caso el subrayado del enlace
+$linkDom.style.display = "block";//otro modo de modificar o añadir una propiedad al estilo del el elemnto
 
 //Variables CSS - Custom Properties CSS
 
@@ -99,11 +99,11 @@ const $html = document.documentElement,//acceder al html
     let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color"),//al estar la variable css sobre el root o html se accede desde html
      varYellowColor = getComputedStyle($html).getPropertyValue("--yelow-color");
 
-console.log(varDarkColor);//imprimo el valor que se consigue para comprobar
+console.log(varDarkColor);//imprimo el valor de la variable css que se consigue para comprobar
 console.log(varYellowColor);
 
 $body.style.backgroundColor= varDarkColor;//modificando el fondo del body
-$body.style.color = varYellowColor;
+$body.style.color = varYellowColor;//modificando el color de fuente del body
 
 $html.style.setProperty("--dark-color", "black")//modificando la propiedad de la variable css
 

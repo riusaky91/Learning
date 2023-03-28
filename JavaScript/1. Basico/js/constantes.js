@@ -6,7 +6,7 @@ let pass= "12347";
 
 
 
-export default function saludar() {//exportando por defecto solo se puede usar una vez
+export default function saludar() {//exportando por defecto solo se puede usar una vez dentro del modulo exportador
     console.log("hola");
 }
 

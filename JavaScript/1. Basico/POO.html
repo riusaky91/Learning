@@ -133,7 +133,7 @@
 
     class Perro extends Animal{//heredando de clase animal
       constructor(nombre, genero, tamaño){//constructor metodo adicionando un parametro
-        super(nombre, genero)
+        super(nombre, genero);//heredo el valor de los parametros de la clase padre
         this.tamaño = tamaño;
         this.raza = null;
       }
@@ -146,7 +146,7 @@
         console.log("sueno como perro");
       }
 
-      static queEres() {
+      static queEres() {//metodo estatico que puede ser llamado sin la instanciacion de la clase en un objeto
         console.log("Los perros somos animales mamíferos que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos del hombre.");
       }
 
@@ -190,12 +190,12 @@
     console.dir(document);//analizar o parsear el objeto
     console.clear();//limpiar consola
 
-    console.groupCollapsed("Cursos de @jonmircha en YouTube");
+    console.groupCollapsed("Cursos de @jonmircha en YouTube");//Inicializacion de lista de console logs
     console.log("Curso de JavaScript");
     console.log("Curso de Node.js");
     console.log("Curso de PWAs");
     console.log("Curso de Flexbox");
-    console.log("Curso de Diseño y Programación Web");
+    console.log("Curso de Diseño y Programación Web");//finalizacion de lista de console logs
     console.groupEnd()
 
     const perro = {
@@ -217,7 +217,7 @@
     let x = 3,
       y = 2,
       pruebaXY = "Se espera que X siempre sea menor que Y";
-    console.assert(x < y, { x, y, pruebaXY });//solamente se ejecuta cuando la prueba falle
+    console.assert(x < y, { x, y, pruebaXY });//solamente se ejecuta cuando la prueba falle estructura(condicion, parametros, codigo)
 
     console.log("***************************************************************************************************");
     console.log("Objeto date");
@@ -226,16 +226,17 @@
 
     console.log(Date());
 
-    let fecha = new Date();
+    let fecha = new Date();//Instancia de clase date
 
     //Objeto para obtener datos de tiempo
 
     console.log(fecha);
-    console.log(fecha.getDate());
-    console.log(fecha.getDay());
-    console.log(fecha.getMonth());
-    console.log(fecha.getFullYear());
-    console.log(fecha.toDateString());//fecha bien escrita 
+    console.log(fecha.getDate());//objeto
+    console.log(fecha.getDay());//dia
+    console.log(fecha.getMonth());//mes
+    console.log(fecha.getFullYear());//año
+    console.log(fecha.toDateString());//fecha en un String sin hora
+    console.log(fecha.toLocaleTimeString());//Hora
 
     //Libreria especializada en tiempos momnet.js
 
@@ -248,23 +249,23 @@
     console.log(Math.abs(-7.8));//valor absoluto
     console.log(Math.ceil(7.2));//redondiar hacia arriba
     console.log(Math.floor(7.8));//redondiar hacia abajo
-    console.log(Math.round(7.49));
+    console.log(Math.round(7.49));//redondear al valor mas cercano
     console.log(Math.sqrt(81));
     console.log(Math.pow(2, 5));
-    console.log(Math.sign(-0.3)); //positivo o negativo -1 0 1
-    console.log(Math.random());
-    console.log(Math.round(Math.random() * 1000));
+    console.log(Math.sign(-0.3)); //valida si el valor es positivo (1), cero (0) o negativo (-1)
+    console.log(Math.random());//valor decimal aleatorio entre 0 y 1
+    console.log(Math.round(Math.random() * 1000));//valor redondeado aleatorio entre 1 y 1000
 
     console.log("***************************************************************************************************");
     console.log("Operador de cortocircuito");
     console.log(" ");
 
      /*
-    Cortocircuito OR - cuando el valor de la izquierda en la expresión siempre pueda validar a true, es el valor que se cargará por defecto
-    Cortocircuito AND - cuando el valor de la izquierda en la expresión siempre pueda validar a false, es el valor que se cargará por defecto
+    Cortocircuito OR || - cuando el valor de la izquierda en la expresión siempre pueda validar a true, es el valor que se cargará por defecto
+    Cortocircuito AND %% - cuando el valor de la izquierda en la expresión siempre pueda validar a false, es el valor que se cargará por defecto
      */
     function saludar(nombre) {
-       nombre = nombre || "Desconocido";
+       nombre = nombre || "Desconocido";//si encuentra un valor a la izquierda se mostrará, al no encontrar un dato mostratá el valor de la derecha
        console.log(`Hola ${nombre}`);
      }
 
@@ -274,16 +275,18 @@
      console.log("cadena" || "Valor de la derecha");
      console.log(19 || "Valor de la derecha");
      console.log(true || "Valor de la derecha");
-     console.log([] || "Valor de la derecha");
-     console.log({} || "Valor de la derecha");
-     console.log(false || "Valor de la derecha");
+     console.log([] || "Valor de la derecha");//contiene un arreglo vacio por lo tanto se mostrará el arreglo
+     console.log({} || "Valor de la derecha");//contiene un objeto vacio por lo tanto se mostrará el objeto
+     console.log(false || "Valor de la derecha");//Al ser el valor de la izquierda un valor falso, null, undefine, vacio o 0 validara como false y mostrará el valor de la derecha 
      console.log(null || "Valor de la derecha");
      console.log(undefined || "Valor de la derecha");
      console.log("" || "Valor de la derecha");
      console.log(-2 || "Valor de la derecha");
      console.log(0 || "Valor de la derecha");
 
-     console.log(false && "Valor de la derecha");
+     //&& Al ser el valor de la izquierda un valor falso, null, undefine, vacio o 0 validara como false y mostrará el valor de la izquierda 
+     
+     console.log(false && "Valor de la derecha");//al ser false secargara el valor es el caso contrario al anterior
      console.log(null && "Valor de la derecha");
      console.log(undefined && "Valor de la derecha");
      console.log("" && "Valor de la derecha");
@@ -328,7 +331,7 @@
         https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
     */
 
-     let cadena = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem fuga cupiditate dolores saepe, praesentium sit eaque recusandae id sapiente similique, laudantium voluptatum perferendis ea iure ad odio doloremque earum voluptate.";
+     let cadena = "Lorem ipsum dolor sit amet lorem  consectetur adipisicing elit. Voluptatem fuga cupiditate dolores saepe, praesentium sit eaque recusandae id sapiente similique, laudantium voluptatum perferendis ea iure ad odio doloremque earum voluptate.";
      let expReg = new RegExp("lorem", "ig");//busco la palabra lorem, i -> ignorar mayusculas o minusculas, g -> continuar hasta la ultima coincidencia 
      console.log(expReg.test(cadena));
      console.log(expReg.exec(cadena));

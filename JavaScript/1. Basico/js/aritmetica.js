@@ -9,7 +9,7 @@ function restar (a,b) {
     return a-b;
 }
 
-export const aritmetica = {
+export const aritmetica = {// funcion expresada exportable que contiene dos funciones propias
     sumar,
     restar
 }

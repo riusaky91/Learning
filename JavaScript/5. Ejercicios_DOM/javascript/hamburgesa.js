@@ -1,6 +1,6 @@
 
 
-  export default function hamburgerMenu(panelBtn, panel, menuLink){//funcion exportable con tres parametros de entrada 
+  export default function hamburgerMenu(panelBtn, panel, menuLink){//funcion exportable por defecto con tres parametros de entrada 
     const d = document;/*guardo la llamada al docuemnt en una variable para simplificar codigo */
 
     d.addEventListener("click",e=>{//utilizo el evento click

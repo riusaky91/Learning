@@ -1,6 +1,6 @@
 
 import hamburgerMenu from "./hamburgesa.js";//importación del metodo animacion
-
+import temporizador from "./temporizador.js";
 
   const d = document;/*guardo la llamada al docuemnt en una variable para simplificar codigo */
 
@@ -22,3 +22,8 @@ import hamburgerMenu from "./hamburgesa.js";//importación del metodo animacion
     alert("fff")
 
   });
+
+
+  temporizador();
+
+  
