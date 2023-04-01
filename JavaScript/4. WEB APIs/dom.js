@@ -43,11 +43,11 @@ console.log(document.querySelectorAll("a").length);
 document.querySelectorAll("a").forEach(element => console.log(element));//recorriendo nodos de enlaces
 console.log(document.querySelector(".card"));
 console.log(document.querySelectorAll(".card")[2]);//comportamiento de arreglo
-console.log(document.querySelectorAll("#menu li"));//Dentro del id menu tarer todas las etiquetas li
+console.log(document.querySelectorAll("#menu li"));//Dentro del id menu traer todas las etiquetas li
 
 
 console.log("***************************************************************************************************");
-console.log("Atributos y Data-Attributess");
+console.log("Atributos y Data-Attributess");//Manera de consultar, agregar, modificar y eliminar atributos de los elementos HTML 
 console.log(" ");
 
 
@@ -61,7 +61,7 @@ console.log(document.documentElement.getAttribute("lang"));
 
 const $linkDom = document.querySelector(".link-dom");//declarando constante con el metodo para traer la clase de mi enlace con el DOM $variables del DOM
 
-$linkDom.setAttribute("target", "_blank");//Modificando valores de la etiqueta añadiendo un nuevo atributo target con su valor _blank al dar click abre el enlace e una nueva ventana o tab
+$linkDom.setAttribute("target", "_blank");//Modificando valores del elemeto añadiendo un nuevo atributo target con su valor _blank al dar click abre el enlace e una nueva ventana o tab
 $linkDom.setAttribute("rel", "noopener");//Para evitar que se abran dependencias agenas al dar click en el enlace
 $linkDom.setAttribute("href", "https://aprendejavascript.org/");//Modificando el atributo href
 console.log($linkDom.hasAttribute("rel"));//validando si exsite el atributo rel dentro del elemento
@@ -80,21 +80,22 @@ console.log($linkDom.dataset.description);
 
 
 console.log("***************************************************************************************************");
-console.log("Estilos y variables CSS");
+console.log("Estilos y variables CSS");//Manera de consultar, agregar, modificar y eliminar propiedades del atributo style para los elementos HTML
 console.log(" ");
 
 console.log($linkDom.style);//propiedades ccs validas es recomendable para este caso usar el . para acceder al atributo
 console.log($linkDom.getAttribute("style"));//cadena de texto con los atributos modificados 
-console.log($linkDom.style.backgroundColor);//se usa el camelCase para acceder al valor
-console.log(window.getComputedStyle($linkDom));//propiedades por defecto del CSS 
+console.log($linkDom.style.backgroundColor);//se usa el camelCase para acceder al valor de una propiedad css -- Ya no se utiliza
+console.log($linkDom.style.getPropertyValue("background-color"));//forma correcta de acceder al valor de una propiedad css
+console.log(window.getComputedStyle($linkDom));//Todas las propiedades css del elemento
 console.log(getComputedStyle($linkDom).getPropertyValue("Color"));//string rgb del color del a
 
-$linkDom.style.setProperty("text-decoration", "none")//Añadiendo una propiedad al estilo del elemento quitandole la decoracion del texto, en este caso el subrayado del enlace
+$linkDom.style.setProperty("text-decoration", "none")//Modificando una propiedad al estilo del elemento quitandole la decoracion del texto, en este caso el subrayado del enlace
 $linkDom.style.display = "block";//otro modo de modificar o añadir una propiedad al estilo del el elemnto
 
 //Variables CSS - Custom Properties CSS
 
-const $html = document.documentElement,//acceder al html
+const $html = document.documentElement,//acceder a documento html
     $body =document.body;//accediendo al body
     let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color"),//al estar la variable css sobre el root o html se accede desde html
      varYellowColor = getComputedStyle($html).getPropertyValue("--yelow-color");
@@ -102,8 +103,8 @@ const $html = document.documentElement,//acceder al html
 console.log(varDarkColor);//imprimo el valor de la variable css que se consigue para comprobar
 console.log(varYellowColor);
 
-$body.style.backgroundColor= varDarkColor;//modificando el fondo del body
-$body.style.color = varYellowColor;//modificando el color de fuente del body
+$body.style.setProperty("background-color", varDarkColor);//modificando el fondo del body
+$body.style.setProperty("color", varYellowColor);//modificando el color de fuente del body
 
 $html.style.setProperty("--dark-color", "black")//modificando la propiedad de la variable css
 
@@ -111,7 +112,7 @@ varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");//accedi
 $body.style.setProperty("background-color", varDarkColor)//Modificando la propiedad de la clase body por la variable indicada.
 
 console.log("***************************************************************************************************");
-console.log("Clases CSS");
+console.log("Clases CSS");//Manera de consultar, agregar, modificar y eliminar clases del atributo style para los elementos HTML
 console.log(" ");
 
 const $card = document.querySelector(".card");
@@ -126,10 +127,11 @@ $card.classList.remove("rotate-45");//quita una clase
 $card.classList.toggle("rotate-45");//valida si tiene o no la clase en caso de tenerla no agrega nada, en caso contrario la agrega
 $card.classList.replace("rotate-45", "rotate-135");//Remplaza una clase con otra
 $card.classList.add("opacity-80","sepia")//añadiendo mas de una clase
+console.log($card.classList);//DomtokenList con tres atributos definidores
 
 
 console.log("***************************************************************************************************");
-console.log("Texto y HTML");
+console.log("Texto y HTML");//forma de agregar un string al docuemnto HTML
 console.log(" ");
 
 const $whatIsDom = document.getElementById("que-es");
@@ -146,8 +148,8 @@ API para documentos HTML y XML.
 </p>`;
 
 
-$whatIsDom.textContent = text;//reemplazando contenido textual del <p>
-$whatIsDom.innerHTML = text;//reemplazando contenido del <p> adaptando el contenido HTML en un contenedor general
+$whatIsDom.textContent = text;//reemplazando contenido textual del <p> caracter a caracter
+$whatIsDom.innerHTML = text;//reemplazando contenido del <p> agregando el contenido HTML en un contenedor principal
 $whatIsDom.outerHTML = text;//reemplaza el elemento por contenido sin modificaciones ni agregaciones
 
 console.log("***************************************************************************************************");
@@ -162,12 +164,12 @@ console.log($cards.parentElement);//padre de elemento
 console.log($cards.firstElementChild);//primer elemento hijo
 console.log($cards.lastElementChild);//ultimo elemento hijo
 console.log($cards.previousElementSibling);//previo elemento hermano 
-console.log($cards.nextElementSibling);//siguiente elemento hermano
-console.log($cards.children[3].closest("section"));//Busca el padre mas cercano que se detalla
+console.log($cards.nextElementSibling);//siguiente elemento hermano 
+console.log($cards.children[3].closest("section"));//Busca el padre mas cercano al elemnto que se detalla en las ""
 
 
 console.log("***************************************************************************************************");
-console.log("Creando Elementos y Fragmentos");//los elemento son la etiquietas del codifo html los fragmentos se utilizan para agregar una cantidad importante de elementos sin afectar ele rendimiento de la aplicacion web
+console.log("Creando Elementos y Fragmentos");//los elementos son la etiquietas del codigo html los fragmentos se utilizan para agregar una cantidad importante de elementos sin afectar el rendimiento de la aplicacion web
 console.log(" ");
 
 const $figure = document.createElement("figure"),//variable que crea elemento figure
@@ -185,9 +187,10 @@ $figure.appendChild($figcaption);//agrego el nodo figcaption al elemento figure
 $cardts.appendChild($figure);//agrego el nodo figure al elemento  section que tiene la clase cards
 
 
-//Tecnica para agregar elementos dinamicamente es costsa en memoria cuando son muchos elementos
+//Tecnica para agregar elementos dinamicamente es costosa en memoria cuando son muchos elementos
 const estaciones = ["Primavera", "verano", "otoño"],
     $ul = document.createElement("ul");
+
 
 document.body.appendChild($ul);
 estaciones.forEach(element => {//Tecnica para agregar elementos dinamicamente
@@ -204,24 +207,25 @@ const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio"],
     $fragment = document.createDocumentFragment();//creando fragmento
 
 
-meses.forEach(el =>{//recorro el arreglo crweado
+meses.forEach(el =>{//recorro el arreglo creado
     const $li = document.createElement("li");//creo un elemento li
     $li.textContent = el;//añado el nodo texto a mi elemento
+    console.log($li.textContent);//imprimo en consola
     $fragment.appendChild($li)//añado el nodo li al fragment
 });
 
-$ul3.appendChild($fragment);//añado el fragmento al lu
-document.body.appendChild($ul3);//añado el lu al body de la pagina html
+$ul3.appendChild($fragment);//añado el fragmento al lu y si hay mas fragmentos los voy añadiendo
+document.body.appendChild($ul3);//al final añado el lu y todos los elementos con fragmentos al body de la pagina html
 
 console.log("***************************************************************************************************");
-console.log("Templates HTML");
+console.log("Templates HTML");//Etiqueta plantilla unica que no se viusaliza en el documento html que me sirve para agregar contenido dentro dinamicamente
 console.log(" ");
 
 const $cards2 = document.querySelector(".cards"),//variable que trae el elemento con la clase cards
     $template = document.getElementById("template-card").content,//Accedo a el contenido del elemento template de mi html
     $fragment2 = document.createDocumentFragment(),//Creo un fragmento
 
-    cardContent = [//arreglo con nuevas imagenes en español
+    cardContent = [//arreglo de objetos con nuevas imagenes y traduccion en español
         {
             title: "Tegnologia",
             img: "https://placeimg.com/200/200/tech"
@@ -247,9 +251,9 @@ const $cards2 = document.querySelector(".cards"),//variable que trae el elemento
     cardContent.forEach(el =>{//recorro mi arreglo
         $template.querySelector("img").setAttribute("src", el.img);//le añado a el elemento img de mi template src
         $template.querySelector("img").setAttribute("alt", el.title);//le añado a el elemento alt de mi template title
-        $template.querySelector("figcaption").textContent = el.title;//le añado al texto de mi figcaption title
+        $template.querySelector("figcaption").textContent = el.title;//le añado al texto de mi figcaption el.title (esta etiqueta no cuenta con atributos por eso se usa el punto)
 
-        let $clone =document.importNode($template, true);//Clonando toda la estructura interna previamente creada
+        let $clone =document.importNode($template, true);//Clonando toda la estructura interna previamente creada en el template ya que solo puede haber un template
 
         $fragment2.appendChild($clone);//agrego el clon creado a el fragmento para no injectar en todo el dom
     })
@@ -257,7 +261,7 @@ const $cards2 = document.querySelector(".cards"),//variable que trae el elemento
     $cards2.appendChild($fragment2);//agrego el gragmento a la clase cards para pintar el DOM
 
 console.log("***************************************************************************************************");
-console.log("Modificando Elementos"); //Nueva forma de agregar eliminar reemplazar elñementos dentro de el documento html
+console.log("Modificando Elementos"); //Nueva forma de agregar eliminar reemplazar elementos dentro de el documento html
 console.log(" ");
 
 /* 
@@ -313,7 +317,7 @@ function holaMundo(){//Event Handler
 const $eventoSemantico = document.getElementById("evento-semantico"),
 $eventoMultiple = document.getElementById("evento-multiple");
 
-$eventoSemantico.onclick = holaMundo;//se asigna al evento onclick la funcion hola mundo sin los parentesis ya que al colocarlos se ejecurar en el init la funcion 
+$eventoSemantico.onclick = holaMundo;//se asigna al evento onclick la funcion hola mundo sin los parentesis ya que al colocarlos se ejecutara en el init la funcion 
 //solo se puede asignar una funcion a un evento con los manejadores semanticos
 $eventoSemantico.onclick = function (e) {//la e es el evento en si y solo puede recibir un parametro
     alert("Hola mundo manejador de eventos semantico");
@@ -325,7 +329,7 @@ $eventoMultiple.addEventListener("click",(e)=>{alert("Hola mundo manejador de ev
 console.log(e)});
 
 console.log("***************************************************************************************************");
-console.log("Eventos con Parámetros y Remover Eventos"); //para usar funciones manejadoras con parametros se una una funciona anonima
+console.log("Eventos con Parámetros y Remover Eventos"); //para usar funciones manejadoras con parametros una funciona anonima
 console.log(" ");
 
 function saludar (nombre = "Desconocid@") {
@@ -343,8 +347,8 @@ const $eventoRemover = document.getElementById("evento-remover");//referenciando
 const removeDobleClick = (e)=>{//Funcion para remover evento
     alert(`Removiendo el evento de tipo ${e.type}`)
     console.log(e);//imprimo el evento
-    $eventoRemover.removeEventListener("dblclick",removeDobleClick)//funcion pra remover un elemento que se auto referencia
-    $eventoRemover.disabled = true;//atributo html deshabilitando boton
+    $eventoRemover.removeEventListener("dblclick",removeDobleClick)//funcion para remover un elemento, esta funcion se auto referencia
+    $eventoRemover.setAttribute("disabled", true);//atributo html deshabilitando boton
 
 }
 
@@ -511,8 +515,8 @@ console.log(location.pathname);//pagina puntual que estoy consultando
 
 console.log("Objetos: Historial");
 
-console.log(window.history);//almacenamiento del historal donde se enceuntra el length indica la cantidad de paginas donde se han navegado
-//history.go(2)//avanza dos apginas en el historial
+console.log(window.history);//almacenamiento del historal donde se encuentra el length indica la cantidad de paginas donde se han navegado
+//history.go(2)//avanza dos paginas en el historial
 
 console.log("Objetos: Navigator");
 
