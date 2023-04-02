@@ -3,7 +3,7 @@
 /*********** Reset CSS *************/
 
 
-:root{/*Metodo para la creación de variables css*/
+:root{/*Metodo para la creación de variables generales en css*/
     --main-font: sans-serif;/*tipo de letra*/
     --font-size: 16px;/*tamaño de letra*/
     --main-color: #f7df1e;/*color principal*/
@@ -24,7 +24,7 @@ html{/*Reseteo general al formulario web*/
 *,
 *:before,
 *:after{/*Todos los elemntos del html heredarn el box sizing */
-    box-sizing: inherit;
+    box-sizing: inherit;/*hereda el valor de su elemento padre*/
 }
 
 body{
@@ -83,7 +83,7 @@ header h1{/*el h1 que esta dentro del header*/
 
 
 .panel-btn {
-    position: fixed;/*posicion estatica*/
+    position: fixed;/*posicion fija para el boton*/
     z-index: 999;/*por encima de todo*/
     bottom: 1vh;/*posicion de espaciado entre el objeto y el fondo de la vista*/
     right: 4rem;/*posicion de espaciado entre el objeto y la derecha de la vista*/

@@ -124,7 +124,7 @@ console.log($card.classList.contains("rotate-45"));//valida si tiene implementad
 $card.classList.add("rotate-45");//añadiendo clase 
 console.log($card.classList.contains("rotate-45"));//valida si tiene implementada especifica la clase entre las comillas "", devuelve un (boolean)
 $card.classList.remove("rotate-45");//quita una clase
-$card.classList.toggle("rotate-45");//valida si tiene o no la clase en caso de tenerla no agrega nada, en caso contrario la agrega
+$card.classList.toggle("rotate-45");//valida si tiene o no la clase en caso de tenerla la remueve, en caso contrario la agrega
 $card.classList.replace("rotate-45", "rotate-135");//Remplaza una clase con otra
 $card.classList.add("opacity-80","sepia")//añadiendo mas de una clase
 console.log($card.classList);//DomtokenList con tres atributos definidores
@@ -169,13 +169,13 @@ console.log($cards.children[3].closest("section"));//Busca el padre mas cercano 
 
 
 console.log("***************************************************************************************************");
-console.log("Creando Elementos y Fragmentos");//los elementos son la etiquietas del codigo html los fragmentos se utilizan para agregar una cantidad importante de elementos sin afectar el rendimiento de la aplicacion web
+console.log("Creando Elementos y Fragmentos");//los elementos son la etiquetas del codigo html, los fragmentos se utilizan para agregar una cantidad importante de elementos sin afectar el rendimiento de la aplicacion web
 console.log(" ");
 
 const $figure = document.createElement("figure"),//variable que crea elemento figure
     $img = document.createElement("img"),
     $figcaption = document.createElement("figcaption"),
-    $figcaptionText = document.createTextNode("Animals"),//Texto de la figcaption
+    $figcaptionText = document.createTextNode("Animals"),//Texto de la figcaption tiene que ser tipo node
     $cardts = document.querySelector(".cards");//seleciono la etiqueta que contiene la clase .cards
 
 $img.setAttribute("src", "https://placeimg.com/200/200/animals");//asigno el atributo src al elemento img
@@ -200,7 +200,7 @@ estaciones.forEach(element => {//Tecnica para agregar elementos dinamicamente
 });
 
 
-//Manejo de fragmentos la forma optima de agregar elementos al DOM
+//Manejo de fragmentos: Es la forma optima de agregar elementos al DOM
 
 const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio"],
     $ul3 = document.createElement("ul"),//creando un elmento ul
@@ -210,7 +210,7 @@ const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio"],
 meses.forEach(el =>{//recorro el arreglo creado
     const $li = document.createElement("li");//creo un elemento li
     $li.textContent = el;//añado el nodo texto a mi elemento
-    console.log($li.textContent);//imprimo en consola
+    console.log($li);//imprimo en consola
     $fragment.appendChild($li)//añado el nodo li al fragment
 });
 
@@ -218,7 +218,7 @@ $ul3.appendChild($fragment);//añado el fragmento al lu y si hay mas fragmentos 
 document.body.appendChild($ul3);//al final añado el lu y todos los elementos con fragmentos al body de la pagina html
 
 console.log("***************************************************************************************************");
-console.log("Templates HTML");//Etiqueta plantilla unica que no se viusaliza en el documento html que me sirve para agregar contenido dentro dinamicamente
+console.log("Templates HTML");//Etiqueta plantilla unica que no se viusaliza en el documento html, sirve para agregar contenido dentro del docuemnto dinamicamente
 console.log(" ");
 
 const $cards2 = document.querySelector(".cards"),//variable que trae el elemento con la clase cards
@@ -258,7 +258,7 @@ const $cards2 = document.querySelector(".cards"),//variable que trae el elemento
         $fragment2.appendChild($clone);//agrego el clon creado a el fragmento para no injectar en todo el dom
     })
 
-    $cards2.appendChild($fragment2);//agrego el gragmento a la clase cards para pintar el DOM
+    $cards2.appendChild($fragment2);//agrego el fragmento a la clase cards para pintar el DOM
 
 console.log("***************************************************************************************************");
 console.log("Modificando Elementos"); //Nueva forma de agregar eliminar reemplazar elementos dentro de el documento html
@@ -498,7 +498,7 @@ const $btnAbrir = document.getElementById("abrir-ventana"),
 
 
 console.log("***************************************************************************************************");
-console.log("BOM: Objetos: URL, Historial y Navegador"); //funcionalidades del componente window utiles para diferentes funcionalidades
+console.log("BOM: Objetos: URL, Historial y Navegador"); //funcionalidades del componente window utiles para diferentes propositos
 console.log(" ");
 
 console.log("Objetos: URL");
