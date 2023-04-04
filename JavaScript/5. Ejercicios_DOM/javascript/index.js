@@ -8,9 +8,11 @@ d.addEventListener("DOMContentLoaded", (e) => {
   //Evento para asignar la funcionalidad al cargar la pagina html
 
   hamburgerMenu(".panel-btn", ".panel", ".menu a"); //Envio en el metodo el elemento que ejecuta el evento, el elemento que se muestra o se esconde y cualquier enlace que se encuentre dentro de menu
+  temporizador("section1");
+
 });
 
 
-temporizador("section1");
+
 
 
