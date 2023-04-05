@@ -121,3 +121,22 @@ header h1{/*el h1 que esta dentro del header*/
     color: var(--second-color);/*color de letra*/
     background-color: var(--main-modal-color);/*color de fondo*/
 }
+
+/*********** Eventos del teclado *************/
+
+
+.stage{
+    display: flex;/*comportamiento de bloque*/
+    min-height: 50vh;/*tamaño minimo*/
+    background-color: var(--second-color);/*color de fondo*/
+}
+
+.esfera {/*clase que modifica el elemento esfera*/
+    margin:auto;/*margen centrada para todos los lados del elemneto*/
+    width: 4rem;/*ancho*/
+    height: 4rem;/*alto*/
+    border-radius: 150px;/*redondiando los bordes*/
+    background-color: var(--main-color);/*color de fondo*/
+    
+  }
+
