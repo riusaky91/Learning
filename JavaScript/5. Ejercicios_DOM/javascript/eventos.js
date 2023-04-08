@@ -4,13 +4,18 @@
     const d = document; /*guardo la llamada al document en una variable para simplificar codigo */
     $esfera = d.querySelector($esfera);//capturo el elemento esfera creado en el documento
     $escenario = d.querySelector($escenario);//capturo el elemento escenario creado en el documento
+    let $limiteEsfera = $esfera.getBoundingClientRect();//obteniendo el limite de la esfera
+    let $limiteEscenario = $escenario.getBoundingClientRect();//obteniendo el limite del escenario
     let y = 0, x = 0;
 
-  d.addEventListener("keydown", (e)=>{//evento que se ejecuta cuando presiono una tecla en el teclado
     
+
+  d.addEventListener("keydown", (e)=>{//evento que se ejecuta cuando presiono una tecla en el teclado
+    console.log($limiteEsfera+'esfera');
     if(e.key === "ArrowUp"){//si presiono la flecha arriba
         e.preventDefault()//Metodo que elimina los eventos poor defecto del navegador
         y--;//disminuyo el valor del eje y
+        
     }
 
     if(e.key === "ArrowDown"){//si presiono la flecha abajo
