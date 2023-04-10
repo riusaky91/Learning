@@ -135,8 +135,7 @@ header h1{/*el h1 que esta dentro del header*/
     margin:auto;/*margen centrada para todos los lados del elemneto*/
     width: 4rem;/*ancho*/
     height: 4rem;/*alto*/
-    border-radius: 150px;/*redondiando los bordes*/
+    border-radius: 50px;/*redondeando los bordes*/
     background-color: var(--main-color);/*color de fondo*/
-    
   }
 
