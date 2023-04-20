@@ -81,6 +81,43 @@ header h1{/*el h1 que esta dentro del header*/
     transform: translate(0,0);/*panel posicionado abajo de la pantalla*/
 }
 
+.up-btn {/*boton de subir al top*/
+    position: fixed;/*posicion fija para el boton*/
+    z-index: 999;/*por encima de todo*/
+    bottom: 1vh;/*posicion de espaciado entre el objeto y el fondo de la vista*/
+    right: 9rem;/*posicion de espaciado entre el objeto y la derecha de la vista*/
+    width: 4rem;/*anchura*/
+    height: 4rem;/*altura*/
+    border-radius: 50%;/*borde redondeado*/
+    color: var(--second-color);
+    cursor: pointer;
+    align-items: center;/*centrando items flex*/
+    background-color: var(--main-color);/*color de fondo*/
+    outline: 0;/*quitandole lineas de borde*/
+    border: 0;/*quitandole el borde*/
+    padding: 0;/*quitandole el espaciado del objeto*/
+    display: flex;/*uso de flexbox*/
+    justify-content: center;/*centrando contenido flex*/
+    align-items: center;/*centrando items flex*/
+    transition: all 0.3s ease-out;/*animacion a todos los eventos*/
+}
+
+.up-btn:hover{/*cuando pongo encima el mouse sobre el boton se activa*/
+    background-color: var(--second-color);/*color de fondo*/
+    
+}
+
+
+
+.up-arrow:hover{
+    color: var(--main-color);/*color base*/
+}
+
+.hidden {
+    visibility: hidden;/*efecto de transicion*/
+    opacity: 0;
+}
+
 
 .panel-btn {
     position: fixed;/*posicion fija para el boton*/
@@ -116,7 +153,7 @@ header h1{/*el h1 que esta dentro del header*/
     transition: all 0.3s ease;/*transicion para que en el estado hover el cambio dure 0.3 segundos (propiedad tiempo_de_transición efecto)*/
 }
 
-.menu a:hover{/*evento hover de los enlaces qeu estan dentro del elemento con clase menu*/
+.menu a:hover{/*evento hover de los enlaces que estan dentro del elemento con clase menu*/
     font-weight: bold;/*negrita*/
     color: var(--second-color);/*color de letra*/
     background-color: var(--main-modal-color);/*color de fondo*/
