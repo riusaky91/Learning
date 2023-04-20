@@ -29,12 +29,23 @@ export function scrollUp(boton) {//funcion exportable por defecto con un paramet
 
 
 
-    window.addEventListener("scroll", e =>{
-        if(d.documentElement.scrollTop > 300){
+    window.addEventListener("scroll", e =>{//evento que captura el movimiento del scrool de la ventana
+        if(d.documentElement.scrollTop > 300){//si el parametro ScrollTop (nuero de pixeles entre el tope de la ventana y el scroll) del documento es mayor a 300
 
-            $upButton.classList.remove("hidden");
+            $upButton.classList.remove("hidden");//elimino la clase hidden del boton 
         }else{
-            $upButton.classList.add("hidden");
+            $upButton.classList.add("hidden");//añado la clase hidden del botton
         }
     })
+}
+
+
+export function theme (boton_class) {//funcion exportable que recibe la clase de un boton
+  let $boton_theme = d.querySelector(boton_class);//inicializo la variable con el elemento boton
+  let $body = d.querySelector('body');//inicializo la variable con le elemnto body del documento
+
+  $boton_theme.addEventListener("click", (e)=>{//cuando hago click en el elemento boton
+    $body.classList.toggle("dark-theme");//asigno la clase dark-theme o la elimino dependiendo si existe o no
+    $boton_theme.value = '&#9790';
+  })
 }

@@ -23,13 +23,14 @@ html{/*Reseteo general al formulario web*/
 
 *,
 *:before,
-*:after{/*Todos los elemntos del html heredarn el box sizing */
+*:after{/*Todos los elementos del html heredarn el box sizing */
     box-sizing: inherit;/*hereda el valor de su elemento padre*/
 }
 
 body{
     margin: 0;/*quitar margenes al body*/
     overflow-x: hidden;/*esconder el scroll hoptizontal*/
+    transition: all 0.3s ease-out;/*animacion a todos los eventos*/
 }
 
 img{
@@ -79,6 +80,37 @@ header h1{/*el h1 que esta dentro del header*/
 
 .panel.is-active{/*cuando el elemento que tienne la clase panel tenga tambien la clase is active se ejecuta esta funcion*/
     transform: translate(0,0);/*panel posicionado abajo de la pantalla*/
+}
+
+.dark-btn {/*boton cambiar de tema*/
+    position: fixed;/*posicion fija para el boton*/
+    z-index: 999;/*por encima de todo*/
+    bottom: 1vh;/*posicion de espaciado entre el objeto y el fondo de la vista*/
+    left: 4rem;/*posicion de espaciado entre el objeto y la derecha de la vista*/
+    width: 4rem;/*anchura*/
+    height: 4rem;/*altura*/
+    border-radius: 50%;/*borde redondeado*/
+    color: var(--second-color);
+    font-size: 50px;
+    cursor: pointer;/*para que aparezca el puntero común de los enlaces y aporte más fuerza de clic al elemento*/
+    align-items: center;/*centrando items flex*/
+    background-color: var(--main-color);/*color de fondo*/
+    outline: 0;/*quitandole lineas de borde*/
+    border: 0;/*quitandole el borde*/
+    padding: 0;/*quitandole el espaciado del objeto*/
+    display: flex;/*uso de flexbox*/
+    justify-content: center;/*centrando contenido flex*/
+    transition: all 0.3s ease-out;/*animacion a todos los eventos*/
+}
+
+.dark-btn:hover{
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+
+.dark-theme {
+    background-color: var(--second-color);
+    color: var(--main-color);
 }
 
 .up-btn {/*boton de subir al top*/
