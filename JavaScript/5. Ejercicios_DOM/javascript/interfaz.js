@@ -23,15 +23,17 @@ export function scrollUp(boton) {//funcion exportable por defecto con un paramet
 
     let $upButton = d.querySelector(boton);//capturo el elemento boton up del documento
 
-    $upButton.addEventListener("click",(e) =>{
+    d.addEventListener("click",e=>{//cuando hago click en el docuemnto NOTA: (recomedado utilizar el documento)
+      if(e.target.matches(boton) || e.target.matches(`${boton} *`))//en caso de que el elemento en donde se hace click sea el boton dark o cualquien eleneto interno del boton
+      {
         console.log("arriba");
+      }
     })
 
 
 
     window.addEventListener("scroll", e =>{//evento que captura el movimiento del scrool de la ventana
         if(d.documentElement.scrollTop > 300){//si el parametro ScrollTop (nuero de pixeles entre el tope de la ventana y el scroll) del documento es mayor a 300
-
             $upButton.classList.remove("hidden");//elimino la clase hidden del boton 
         }else{
             $upButton.classList.add("hidden");//añado la clase hidden del botton
@@ -41,11 +43,20 @@ export function scrollUp(boton) {//funcion exportable por defecto con un paramet
 
 
 export function theme (boton_class) {//funcion exportable que recibe la clase de un boton
-  let $boton_theme = d.querySelector(boton_class);//inicializo la variable con el elemento boton
-  let $body = d.querySelector('body');//inicializo la variable con le elemnto body del documento
+  let $selectors = d.querySelectorAll("[data-dark]");//inicializo la variable con el nodo de elementos que contiene el data atribute data-dark
+  let $imagen_boton = d.querySelector(boton_class).firstElementChild;
 
-  $boton_theme.addEventListener("click", (e)=>{//cuando hago click en el elemento boton
-    $body.classList.toggle("dark-theme");//asigno la clase dark-theme o la elimino dependiendo si existe o no
-    $boton_theme.value = '&#9790';
+  d.addEventListener("click", (e)=>{//cuando hago click en el docuemnto NOTA: (recomedado utilizar el documento)
+    if(e.target.matches(boton_class)|| e.target.matches(`${boton_class} *`)){//en caso de que el elemento en donde se hace click sea el boton dark o cualquien eleneto interno del boton
+
+      localStorage.setItem("myCat", "Tom");
+
+      for (const i of $selectors) {//recorro el nodo de elementos
+        i.classList.toggle("dark-theme");//asigno o elimino la clase dark-mode dependiendo si se eencuentra o no
+      }
+
+      $imagen_boton.getAttribute("src")==`assets\\luna.png`?$imagen_boton.src = "assets\\sol.png":$imagen_boton.src = "assets\\luna.png";//si enceuntra en el src de la imagen la luna la deja como esta si no lo encuentra lo cambioa por el sol
+
+    }
   })
 }

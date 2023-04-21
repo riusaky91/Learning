@@ -37,8 +37,9 @@ console.log(document.getElementsByTagName("li"));//Trae todos los elmentos del h
 console.log(document.getElementsByClassName("card"));//trae todos los elementos con clase card --Ya no se utiliza
 console.log(document.getElementsByName("nombre"));//trae todos los elementos con name nombre --Ya no se utiliza
 console.log(document.getElementById("menu"));//Trae un elemento con id menu //es mas optimo cuando hablamos de iDs utilizar este metodo
-console.log(document.querySelector("#menu"));//Trae el primer selector como nodo del tipo que se quiera # =para ids . para clases
-console.log(document.querySelectorAll("a"));// Devuelve nodos no arreglos
+console.log(document.querySelector("#menu"));//Trae el primer selector como nodo del tipo que se quiera # =para ids . para clases y [] para data atributes
+console.log(document.querySelectorAll("a"));// Devuelve nodos no arreglos en caso de data atributes usar []
+console.log(document.querySelectorAll("[data-a]"));//devuelve los elemtos con el dat atribute data-a
 console.log(document.querySelectorAll("a").length);
 document.querySelectorAll("a").forEach(element => console.log(element));//recorriendo nodos de enlaces
 console.log(document.querySelector(".card"));

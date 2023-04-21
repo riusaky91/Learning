@@ -17,6 +17,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
   contador("contador", "27-12-2001");
   scrollUp(".up-btn");//utilizo el metodo importado scrollUp
   theme(".dark-btn");//utilizo el metodo theme
+  console.log(localStorage.getItem("myCat"));
 });
 
 
