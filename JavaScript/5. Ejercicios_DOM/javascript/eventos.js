@@ -11,7 +11,7 @@
     
 
   d.addEventListener("keydown", (e)=>{//evento que se ejecuta cuando presiono una tecla en el teclado
-    console.log($limiteEsfera);
+    
     if(e.key === "ArrowUp"){//si presiono la flecha arriba
         e.preventDefault()//Metodo que elimina todos los eventos por defecto del navegador
         y--;//disminuyo el valor del eje y     

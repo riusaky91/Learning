@@ -46,17 +46,44 @@ export function theme (boton_class) {//funcion exportable que recibe la clase de
   let $selectors = d.querySelectorAll("[data-dark]");//inicializo la variable con el nodo de elementos que contiene el data atribute data-dark
   let $imagen_boton = d.querySelector(boton_class).firstElementChild;
 
+ 
+  if(localStorage.getItem("tema")=="oscuro"){//si la variable del local storage es
+    for (const i of $selectors) {//recorro el nodo de elementos con el data atribute data-dark
+      i.classList.toggle("dark-theme");//asigno o elimino la clase dark-mode dependiendo si se eencuentra o no
+    }
+    $imagen_boton.src = "assets\\sol.png";
+  }
+
   d.addEventListener("click", (e)=>{//cuando hago click en el docuemnto NOTA: (recomedado utilizar el documento)
     if(e.target.matches(boton_class)|| e.target.matches(`${boton_class} *`)){//en caso de que el elemento en donde se hace click sea el boton dark o cualquien eleneto interno del boton
 
-      localStorage.setItem("myCat", "Tom");
-
-      for (const i of $selectors) {//recorro el nodo de elementos
+      for (const i of $selectors) {//recorro el nodo de elementos con el data atribute data-dark
         i.classList.toggle("dark-theme");//asigno o elimino la clase dark-mode dependiendo si se eencuentra o no
       }
 
-      $imagen_boton.getAttribute("src")==`assets\\luna.png`?$imagen_boton.src = "assets\\sol.png":$imagen_boton.src = "assets\\luna.png";//si enceuntra en el src de la imagen la luna la deja como esta si no lo encuentra lo cambioa por el sol
+      if( $imagen_boton.getAttribute("src")==`assets\\luna.png`){//si encuentra en el src de la imagen la luna la deja como esta si no lo encuentra lo cambia por el sol
+        $imagen_boton.src = "assets\\sol.png";//cambio el atributo src de la imagen del boton
+        localStorage.setItem("tema", "oscuro");//asigno a la variable del navegador tema = oscuro 
+      }else{
+        $imagen_boton.src = "assets\\luna.png";//cambio el atributo src de la imagen del boton
+        localStorage.setItem("tema", "claro");//asigno a la variable del navegador tema = claro 
+      }
 
     }
   })
+}
+
+
+export function resposiveJavaScript(){
+  
+  addEventListener("resize",(e)=>{
+    if (window.matchMedia("(min-width: 400px)").matches) {
+      console.log("La pantalla tiene al menos 400 píxeles de ancho");
+    } else {
+      console.log("La pantalla tiene menos de 400 píxeles de ancho");
+    }
+  })
+  
+  
+  
 }
