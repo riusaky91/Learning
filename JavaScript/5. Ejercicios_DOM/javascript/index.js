@@ -16,13 +16,16 @@ d.addEventListener("DOMContentLoaded", (e) => {//Evento para asignar la funciona
   contador("contador", "27-12-2001");//Llamo al metodo para hacer una cuenta regresiva, parametros (clase del boton, fecha final)
   scrollUp(".up-btn");//LLamo al metodo para subir el scrol al inicio de la pagina, parametro (clase del boton)
   theme(".dark-btn");//Llamo al metodo para cambiar el tema a la pagina web, parametro (clase del boton)
-  resposiveJavaScript();//Llamo a el metodo para aplicar un diseño resposive mediante codigo Java Script 
-
-  if (window.matchMedia("(min-width: 400px)").matches) {
-    console.log("La pantalla tiene al menos 400 píxeles de ancho");
-  } else {
-    console.log("La pantalla tiene menos de 400 píxeles de ancho");
-  }
+  resposiveJavaScript(
+    "youtube", //para videos
+    "(min-width: 1024px",
+    `<a href="https://www.youtube.com/watch?v=6IwUl-4pAzc&list=PLvq-jIkSeTUZ6QgYYO3MwG9EMqC-KoLXA">ver video</a>`, 
+    `<iframe src="https://www.youtube.com/watch?v=6IwUl-4pAzc&list=PLvq-jIkSeTUZ6QgYYO3MwG9EMqC-KoLXA" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`);//Llamo a el metodo para aplicar un diseño resposive mediante codigo Java Script //funcion responsive que recibe los parametros (el id del elemento, la media query en css para hacer el paso de video a enlace, contenido html para ver en moviles, contenido html para ver en el escritorio )
+  resposiveJavaScript(
+    "gmaps", //para mapas
+    "(min-width: 1024px", 
+    `<a href="https://goo.gl/maps/X3qMESAhzZDnuVqt8">ver mapa</a>`, 
+    `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127256.86897570247!2d-74.18930097855167!3d4.6338036627026415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bdb96095f2f%3A0x40dd01e186b8f55!2sEl%20Campin!5e0!3m2!1ses!2sco!4v1682625126030!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`);//Llamo a el metodo para aplicar un diseño resposive mediante codigo Java Script //funcion responsive que recibe los parametros (el id del elemento, la media query en css para hacer el paso de video a enlace, contenido html para ver en moviles, contenido html para ver en el escritorio )
 });
 
 

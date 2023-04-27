@@ -70,7 +70,7 @@ header h1{/*el h1 que esta dentro del header*/
     z-index: 998;/*por encima de casi todo*/
     width: 100%;/*tamaño que ocupa el 100% de la pantalla*/
     top: 0;/*ocupando todos los margenes*/ 
-    bottom: 0;
+    bottom: 1;
     left: 0;
     right: 0;
     background-color: var(--second-modal-color);/*color de fondo*/
