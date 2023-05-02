@@ -8,7 +8,7 @@ $alarma.setAttribute("src", "assets/Twenty one pilots - Heathens.mp3");//agrego 
 let temporizador;//variavle que contendra el metodo set interval
 
 d.getElementById(seccion).addEventListener("click", (e) => {//metodo que escucha cualquier click sobre la sección 1
-    if (e.target.matches("#iniciar-reloj")) {
+    if (e.target.matches("#iniciar-reloj")) {//si al dar click coincido con el elemento con id iniciar reloj
       
       e.target.setAttribute('disabled', '');//deshabilito el elemnto que genero el click
       temporizador = setInterval(()=>{//Metodo que ejecuta indefinidamente un bloque de codigo cada cierto intervalo de tiempo
