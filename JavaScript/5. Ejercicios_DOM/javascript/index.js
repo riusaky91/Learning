@@ -8,6 +8,7 @@ import eventos from "./seccion_2_eventos.js";
 import temporizador from "./seccion_1_temporizador.js"; //manejo de modulos exportacion por defecto
 import resposiveJavaScript  from "./seccion_4_responsive_javascript.js";
 import test from "./seccion_5_responsive_tester.js";
+import userDeviceInfo from "./seccion_6_deteccion_dispositivos.js";
 
 
 const d =
@@ -37,7 +38,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
     `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127256.86897570247!2d-74.18930097855167!3d4.6338036627026415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bdb96095f2f%3A0x40dd01e186b8f55!2sEl%20Campin!5e0!3m2!1ses!2sco!4v1682625126030!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
   );
 
-  test("responsive-tester")//Llamo al metodo para invocar una ventana con los atributos definidos,parametros (id formulario)
-
+  test("responsive-tester");//Llamo al metodo para invocar una ventana con los atributos definidos,parametros (id formulario)
+  userDeviceInfo("user-device");//Llamo a la funcion exportable
 
 });
