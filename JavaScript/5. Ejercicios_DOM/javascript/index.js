@@ -12,6 +12,7 @@ import userDeviceInfo from "./seccion_6_deteccion_dispositivos.js";
 import networkStatus from "./seccion_7_deteccion_red.js";
 import webCam from "./seccion_8_deteccion_camara_web.js";
 import geo from "./seccion_9_geolocalizacion.js";
+import filtros from "./seccion_10_filtros_busqueda.js";
 
 
 const d =
@@ -44,7 +45,9 @@ d.addEventListener("DOMContentLoaded", (e) => {
   test("responsive-tester");//Llamo al metodo para invocar una ventana con los atributos definidos,parametros (id formulario)
   userDeviceInfo("user-device");//Llamo a la funcion exportable
   webCam("webcam");//Llama al metodo que detecto si hay una camara web conectada y hace stream
-  geo("geo")
+  geo("geo");//Llama al metodo para validar la geolocalizacion del punto de red
+
 });
 
 networkStatus();//Llamo al metodo que valida el estado de conexion de la red 
+filtros("#buscador",".cards");//Llamo al metodo para filtrar información desde un buscador, Parametros (input buscador, section de cards)

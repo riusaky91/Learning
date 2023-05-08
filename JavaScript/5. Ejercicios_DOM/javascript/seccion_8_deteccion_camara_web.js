@@ -1,4 +1,4 @@
-const d = document;////Constante para simplificar la escritura en el uso del DOM
+const d = document;//Constante para simplificar la escritura en el uso del DOM
 
 export default function webCam(id) {
   const $video = d.getElementById(id);//declaro e inicializo la cariable $video con el id

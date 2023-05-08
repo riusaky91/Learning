@@ -227,3 +227,15 @@ header h1{/*el h1 que esta dentro del header*/
 .offline {/*añado un nuevo valor al selector .offline en su propiedad background color*/
     background-color: red;
 }
+
+/**********************Filtros de busqueda*************************/
+
+.card {
+    display: inline-block;/*aplicando margen al elemento con estrutura en bloque centrada*/
+    background-color: var(--second-color);/*añadiendo valor de variable css al parametro css*/
+    color: var(--main-color);
+}
+
+.esconder {
+    display: none;
+}
