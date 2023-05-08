@@ -262,7 +262,7 @@ const $cards2 = document.querySelector(".cards"),//variable que trae el elemento
     $cards2.appendChild($fragment2);//agrego el fragmento a la clase cards para pintar el DOM
 
 console.log("***************************************************************************************************");
-console.log("Modificando Elementos"); //Nueva forma de agregar eliminar reemplazar elementos dentro de el documento html
+console.log("Modificando Elementos"); //Nueva y mejor forma de agregar eliminar reemplazar elementos dentro de el documento html
 console.log(" ");
 
 /* 

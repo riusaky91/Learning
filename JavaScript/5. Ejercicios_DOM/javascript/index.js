@@ -3,12 +3,15 @@ import {
   hamburgerMenu,
   theme
 } from "./interfaz.js"; //manejo de modulos, exportacion de metodos para la interfaz
-import contador from "./seccion_3_cuenta_regresiva.js";
-import eventos from "./seccion_2_eventos.js";
 import temporizador from "./seccion_1_temporizador.js"; //manejo de modulos exportacion por defecto
+import eventos from "./seccion_2_eventos.js";
+import contador from "./seccion_3_cuenta_regresiva.js";
 import resposiveJavaScript  from "./seccion_4_responsive_javascript.js";
 import test from "./seccion_5_responsive_tester.js";
 import userDeviceInfo from "./seccion_6_deteccion_dispositivos.js";
+import networkStatus from "./seccion_7_deteccion_red.js";
+import webCam from "./seccion_8_deteccion_camara_web.js";
+import geo from "./seccion_9_geolocalizacion.js";
 
 
 const d =
@@ -40,5 +43,8 @@ d.addEventListener("DOMContentLoaded", (e) => {
 
   test("responsive-tester");//Llamo al metodo para invocar una ventana con los atributos definidos,parametros (id formulario)
   userDeviceInfo("user-device");//Llamo a la funcion exportable
-
+  webCam("webcam");//Llama al metodo que detecto si hay una camara web conectada y hace stream
+  geo("geo")
 });
+
+networkStatus();//Llamo al metodo que valida el estado de conexion de la red 

@@ -30,9 +30,9 @@ export default function userDeviceInfo(id) {
         }
     };
     
-    console.log(navigator.userAgent);//cadena de texto que da informacion del dispositivo que inicializa el navegador
-    console.log(isMobile.ios())
-    console.log(isDesktop.windows());
+    //console.log(navigator.userAgent);//cadena de texto que da informacion del dispositivo que inicializa el navegador
+    //console.log(isMobile.ios())
+    //console.log(isDesktop.windows());
     $id.innerHTML = `
     <ul>
         <li>User Agent:<b>${navigator.userAgent}</b> </li>

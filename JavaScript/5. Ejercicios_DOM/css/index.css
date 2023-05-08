@@ -3,7 +3,7 @@
 /*********** Reset CSS *************/
 
 
-:root{/*Metodo para la creación de variables generales en css*/
+:root{/*selector para la creación de variables generales en css*/
     --main-font: sans-serif;/*tipo de letra*/
     --font-size: 16px;/*tamaño de letra*/
     --main-color: #f7df1e;/*color principal*/
@@ -68,11 +68,12 @@ header h1{/*el h1 que esta dentro del header*/
 .panel {
     position: fixed;/*posicion fija para el panel*/
     z-index: 998;/*por encima de casi todo*/
-    width: 100%;/*tamaño que ocupa el 100% de la pantalla*/
     top: 0;/*ocupando todos los margenes*/ 
-    bottom: 1;
+    bottom: 0;
     left: 0;
     right: 0;
+    width: 100%;/*tamaño que ocupa el 100% de la pantalla*/
+    overflow-y: auto;/*al ponerlo automatico el elemnto se adapta y el menu de navegacion tiene su propia barra vertical de navegacion*/
     background-color: var(--second-modal-color);/*color de fondo*/
     transition: transform .3s ease;/*transicion de la propiedad transform en 0.3 segundos efecto acelerado*/
     transform: translate(0,-100%);/*panel posicionado arriba de la pantalla*/
@@ -208,3 +209,21 @@ header h1{/*el h1 que esta dentro del header*/
     background-color: var(--main-color);/*color de fondo*/
   }
 
+/*********************Network Status****************/
+
+.online,
+.offline {/*crear la referencia a dos clases (.online y .offline) con las mismas propiedades*/
+    position: sticky;/*mantengo el header anclado*/
+    top: 0;/*ocupando todos los margenes*/ 
+    z-index: 1000;/*indice de sobre posicionamiento por encima de todo*/
+    padding: 1rem;/*espaciado por cada lado*/
+    font-size: 1.5rem;/*tamaño de la fuente*/
+    font-weight: bold;/*Negrita*/
+    text-align: center;/*alinear el texto al centro*/
+    background-color: green;/*color de fondo verde*/
+    color: white;/*color de texto blanco*/
+}
+
+.offline {/*añado un nuevo valor al selector .offline en su propiedad background color*/
+    background-color: red;
+}

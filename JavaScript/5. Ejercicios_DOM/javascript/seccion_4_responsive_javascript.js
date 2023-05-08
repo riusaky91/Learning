@@ -12,7 +12,7 @@ export default function resposiveJavaScript(id, mediaQuery, mobileContent, deskt
       } else{//si el evento de la media query no se cumple
         d.getElementById(id).innerHTML = mobileContent;
       }
-      console.log(e.matches);
+      //console.log(e.matches);
     }
   
     responsive(breakpoint);//utilizo el metodo responsive con el parametro media query para dar un valor inicial
