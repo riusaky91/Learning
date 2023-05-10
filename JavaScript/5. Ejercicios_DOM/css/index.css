@@ -43,6 +43,7 @@ img{
 
 header{
     position: sticky;/*mantengo el header anclado*/
+    z-index: 997;/*posicion del contenido eje z*/
     top: 0;/*posicionado en la parte inicial*/
     padding: 1rem;/*espaciado a cada lado*/
     background-color: var(--main-color);
@@ -238,4 +239,13 @@ header h1{/*el h1 que esta dentro del header*/
 
 .esconder {
     display: none;
+}
+
+/**********************Responsive slider*************************/
+
+.slider {
+    position: relative;/*se puede mover el objeto con otras propiedades y lo mueevew en relacion al flujo normal*/
+    width: 80%;/*ancho*/
+    margin: 1rem auto;/*espacio al rededor*/
+    text-align: center;/*alinear texto al centro*/
 }

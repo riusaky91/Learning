@@ -13,6 +13,7 @@ import networkStatus from "./seccion_7_deteccion_red.js";
 import webCam from "./seccion_8_deteccion_camara_web.js";
 import geo from "./seccion_9_geolocalizacion.js";
 import filtros from "./seccion_10_filtros_busqueda.js";
+import sorteoDigital from "./seccion_11_sorteo.js";
 
 
 const d =
@@ -51,3 +52,4 @@ d.addEventListener("DOMContentLoaded", (e) => {
 
 networkStatus();//Llamo al metodo que valida el estado de conexion de la red 
 filtros("#buscador",".cards");//Llamo al metodo para filtrar información desde un buscador, Parametros (input buscador, section de cards)
+sorteoDigital("lista","#ganador");//Llamo al metodo para generar un elemento aleatorio de una lista
