@@ -249,3 +249,58 @@ header h1{/*el h1 que esta dentro del header*/
     margin: 1rem auto;/*espacio al rededor*/
     text-align: center;/*alinear texto al centro*/
 }
+
+.slider-slides {
+    position: relative;/*se puede mover el objeto con otras propiedades y lo mueevew en relacion al flujo normal*/
+    height: 400px;/*altura*/
+}
+
+.slider-slide{
+    position: absolute;/*posicion estatica*/
+    top: 0;/*acomoda su altura al padre*/
+    left: 0;/*acomoda su izquierda al padre*/
+    width: 100%;/*acomodoa el ancho al total*/
+    height: 100%;/*acomodo su altura al total*/
+    opacity: 0;/*opacidad total d ela imagen*/
+    visibility: hidden;/*escondo el espacion dentro del document*/
+    transition: opacity 1s ease;/*transicion cuando se de opacidad*/
+}
+
+.slider-slide img {
+    height: inherit;/*hereda la altura*/
+    width: inherit;/*herda al anchura*/
+    object-fit: cover;/*adapta la imagen al ancho de su contendor sin deformarla*/
+    object-position: 50% 0%;/*porcentaje de ocupascion y posicionamiento dentro del objeto*/
+}
+
+.slider-slide.active {
+    opacity: 1;/*quito la opacidad total*/
+    visibility: visible;/*la vuelvo visible*/
+    background-color: aquamarine;
+}
+
+.slider-btns{
+    position: absolute;/*se posiciona respecto el primer elemento relativo que tenga en arbol de doom como padre*/
+    width: 100%; /*ocupo el 100% del contenedor*/
+    top: 50%;/*los posiciono a la mitad de su posicion absoluta*/
+    display: flex;/*los elementos se ponene en fila*/
+    justify-content: space-between;/*el espacio sobrante lo reparte entre los elementos*/
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.slider a {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: thin solid black;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    transition: all 0.3 ease;
+}
+
+.slider a:hover {
+    color: brown;
+}
