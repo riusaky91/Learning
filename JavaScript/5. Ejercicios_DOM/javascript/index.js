@@ -15,6 +15,7 @@ import geo from "./seccion_9_geolocalizacion.js";
 import filtros from "./seccion_10_filtros_busqueda.js";
 import sorteoDigital from "./seccion_11_sorteo.js";
 import slider from "./seccion_12_carrusel.js";
+import scrollSpy from "./seccion_13_scrollSpy.js";
 
 
 const d =
@@ -48,7 +49,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
   userDeviceInfo("user-device");//Llamo a la funcion exportable
   webCam("webcam");//Llama al metodo que detecto si hay una camara web conectada y hace stream
   geo("geo");//Llama al metodo para validar la geolocalizacion del punto de red
-
+  scrollSpy();//Llama al metodo para capturar la informacion del scrolly que se vea reflejado en el menu derecho
 });
 
 networkStatus();//Llamo al metodo que valida el estado de conexion de la red 

@@ -119,7 +119,7 @@ header h1{/*el h1 que esta dentro del header*/
     position: fixed;/*posicion fija para el boton*/
     z-index: 999;/*por encima de todo*/
     bottom: 1vh;/*posicion de espaciado entre el objeto y el fondo de la vista*/
-    right: 9rem;/*posicion de espaciado entre el objeto y la derecha de la vista*/
+    right: calc(8.25rem + 1vw);/*posicion de espaciado entre el objeto y la derecha de la vista*/
     width: 4rem;/*anchura*/
     height: 4rem;/*altura*/
     border-radius: 50%;/*borde redondeado*/
@@ -303,4 +303,69 @@ header h1{/*el h1 que esta dentro del header*/
 
 .slider a:hover {
     color: brown;
+}
+
+/**********************ScrollSpy*************************/
+
+@media screen and (min-width: 1024px){/*Estos estilos van a cargar cuando el ancho sea el de esos pixeles*/
+ body{
+    display: grid;/*Manejo de grillas*/
+    grid-template-columns: 80% 20%;/*tamaño de definicion de las 2 columnas*/
+    grid-template-rows: 4rem auto;/*tamaño de definicion de la primera y las demas filas*/
+    grid-template-areas:/*definicion de las areas de body*/ 
+        "header header"
+        "main panel";
+ }   
+
+ main {
+    grid-area: main;/*definicion de posicion en la propiedad grid-template-areas*/
+ }
+
+ .header{
+    grid-area: header;/*definicion de posicion en la propiedad grid-template-areas*/
+ }
+
+ .panel{
+    grid-area: panel;/*definicion de posicion en la propiedad grid-template-areas*/
+    align-self: start; /*contenido alinieado a donde empieza la celda*/
+    position: sticky;/*se queda estatico*/
+    top: 4rem;
+    justify-content: flex-start;/*contenido osea los enlaces empiezan al inicio*/
+    background-color: var(--second-color);
+    transform: translate(0,0);
+    opacity: 1;
+    visibility: visible;
+
+}
+
+ .panel-btn{
+    display: none;
+ }
+
+ .menu{
+    justify-content: start;
+    text-align: right;
+ }
+
+ .menu a{
+    font-size: 1rem;
+    padding: 0.75rem;
+ }
+
+ .menu a:hover,/*cuando sobrepongoe el raton */
+ .menu a.active{/*enlaces con la clase active dentro de menu*/
+    color: var(--second-color);
+    background-color: var(--main-color);
+ }
+
+ .up-btn {/*posicion del boton que sube la pantalla*/
+    right: initial;
+    left: calc(8.25rem + 1vw);
+ }
+
+ .menu a:hover{
+    color: var(--second-color);
+    background-color: var(--main-color);
+ }
+
 }
