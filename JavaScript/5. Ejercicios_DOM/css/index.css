@@ -367,5 +367,92 @@ header h1{/*el h1 que esta dentro del header*/
     color: var(--second-color);
     background-color: var(--main-color);
  }
+}
 
+ /**********************Validaciones de formuloarios de contacto*************************/
+
+
+ .contact-form {
+    --form-ok-color: green;
+    --form-error-color: red;
+    margin-left: auto;/*margenes laterales*/
+    margin-right: auto;
+    width: 80%;
+ }
+
+ .contact-form > * {/*todos los elementos que son hijos directos del formulario enunciado*/
+    padding: 0.5rem;/*texto no tan pegado*/
+    margin: 1rem auto;
+    display: block;
+    width: 100%;
+ }
+
+ .contact-form textarea {
+    resize: none;
+ }
+
+ .contact-form legend,
+ .contact-form-response {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+ }
+
+ .contact-form input,
+ .contact-form textarea{
+    font-size: 1rem;
+    font-family: sans-serif;
+ }
+ 
+
+
+.contact-form input[type="submit"]{/*todos los elementos de tipo input con atributo type submit*/
+    width: 50%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.contact-form *::placeholder{/*a todos los elementos de formulario que tengan atributo place holder */
+    color: black;
+}
+
+
+.contact-form [required]:valid{/*cuando un elemento dentro de la clase tenga un atribito required valido*/
+    border: thin solid var(--form-ok-color);
+}
+
+
+.contact-form [required]:invalid{/*cuando un elemento dentro de la clase tenga un atribito required invalido*/
+    border: thin solid var(--form-error-color);
+}
+
+
+.contact-form-error{
+    margin-top: -1rem;
+    font-size: 80%;
+    background-color: var(--form-error-color);
+    color: white;
+    transition: all 800ms ease;
+}
+
+.contact-form-error.is-active{
+    display: block;
+    animation: show-message 1s 1 normal 0s ease-out both;/*animacion que va durar 1 segundo y va conservar los estilos que la animacion termina*/
+}
+
+.none{
+    display: none;
+}
+
+@keyframes show-message {/*programacion del keyframe de animacion*/
+    0%{/*Inicia*/
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    100%{/*Finaliza*/
+        visibility: visible;
+        opacity: 1;
+    }
 }

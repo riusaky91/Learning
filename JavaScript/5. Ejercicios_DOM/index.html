@@ -44,8 +44,8 @@
         <a href="#section10" data-scroll-spy>Sección 10 - Filtros de Búsquedas</a>
         <a href="#section11" data-scroll-spy>Sección 11 - Sorteo Digital</a>
         <a href="#section12" data-scroll-spy>Sección 12 - Responsive Slider</a>
-        <a href="#section13" data-scroll-spy>Sección 13 - Filtros de Búsquedas</a>
-        <a href="#section14" data-scroll-spy>Sección 14 - Filtros de Búsquedas</a>
+        <a href="#section13" data-scroll-spy>Sección 13 - Video inteligente</a>
+        <a href="#section14" data-scroll-spy>Sección 14 - Validación de formulario</a>
         <a href="#section15" data-scroll-spy>Sección 15 - Filtros de Búsquedas</a>
         
       </nav>
@@ -170,9 +170,32 @@
       </section>
       <section id="section13" class="section" data-scroll-spy>
         <h2>Sección 13</h2>
+        <h2>Video inteligente</h2>
+        <video muted controls><!--Por politicas de seguridad se debe colocar en muted-->
+          <source src="assets/ronaldo.mp4" type="video/mp4">
+        </video>
+        <video  controls>
+          <source src="assets/ronaldo.mp4" type="video/mp4">
+        </video>
+       
       </section>
       <section id="section14" class="section" data-scroll-spy>
         <h2>Sección 14</h2>
+        <h2>Formulario de contacto (Validaciones)</h2>
+        <form class="contact-form">
+          <legend>Envíanos tus comentarios</legend>
+          <input type="text" placeholder="Escribe tu nombre" title="El nombre solo acepta letras y espacios en blanco" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+          <input type="email" placeholder="Escribe tu correo" name="email" title="Email incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required >
+          <input type="text" name="subject" placeholder="Asunto a tratar" tittle="El asunto es requerido" required>
+          <textarea name="comments" cols="50" rows="5" placeholder="Escribe tus comentarios" data-pattern="^.{1,255}$" title="Tu comentario no debe exceder los 255 caracteres" required></textarea>
+          <input type="submit" value="Enviar">
+          <div class="contact-form-loader none">
+            <img src="assets/loader.svg" alt="Cargando">
+          </div>
+          <div class="contact-form-response none">
+            <p>Los datos han sido enviados</p>
+          </div>
+        </form>
       </section>
       <section id="section15" class="section" data-scroll-spy>
         <h2>Sección 15</h2>
