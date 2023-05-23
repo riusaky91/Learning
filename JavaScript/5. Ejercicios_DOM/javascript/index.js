@@ -17,6 +17,7 @@ import filtros from "./seccion_10_filtros_busqueda.js";
 import sorteoDigital from "./seccion_11_sorteo.js";
 import slider from "./seccion_12_carrusel.js";
 import videoInteligente from "./seccion_13_video_inteligente.js";
+import formulario from "./seccion_14_validacion_formulario.js";
 
 
 const d =
@@ -52,6 +53,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
   geo("geo");//Llama al metodo para validar la geolocalizacion del punto de red
   scrollSpy();//Llama al metodo para capturar la informacion del scroll y que se vea reflejado en el menu derecho
   videoInteligente();//LLama al metodo ativar o desactivar el video dependiendo de su visualizacion en pantalla
+  formulario();//Llama a el metodo para validar los campos del formulario de contacto
 });
 
 networkStatus();//Llamo al metodo que valida el estado de conexion de la red 
