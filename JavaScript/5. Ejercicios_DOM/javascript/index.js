@@ -18,6 +18,7 @@ import sorteoDigital from "./seccion_11_sorteo.js";
 import slider from "./seccion_12_carrusel.js";
 import videoInteligente from "./seccion_13_video_inteligente.js";
 import formulario from "./seccion_14_validacion_formulario.js";
+import narrador from "./seccion_15_narrador.js";
 
 
 const d =
@@ -56,7 +57,9 @@ d.addEventListener("DOMContentLoaded", (e) => {
   formulario();//Llama a el metodo para validar los campos del formulario de contacto
 });
 
+
 networkStatus();//Llamo al metodo que valida el estado de conexion de la red 
 filtros("#buscador",".cards");//Llamo al metodo para filtrar información desde un buscador, Parametros (input buscador, section de cards)
 sorteoDigital("lista","#ganador");//Llamo al metodo para generar un elemento aleatorio de una lista
 slider();//Funcion que interactua con el slider
+narrador();//Llamo a la funcion que narra un texto diligenciado en un formulario

@@ -6,7 +6,7 @@ export default function formulario() {
 
 
 
-        $inputs.forEach((input)=>{//recoro los elementos inputs
+        $inputs.forEach((input)=>{//recorro los elementos inputs
             const $span = d.createElement("span");//declaro e inicializo contante que contienen un elemento tipo span
             $span.id = input.name;//le añado al atributo id de el elemento span el mismo name del elemento input que se recorre
             $span.textContent = input.title;//le añado al atributo textcontect de el elemento span el input.title
@@ -21,8 +21,7 @@ export default function formulario() {
                 patron = $input.pattern || $input.dataset.pattern;//operador de cortocircuito que toma el valor valido en csaso de que tenga el pattern definido o tenga el dataset pattern
 
 
-                if(patron && $input.value == ""){//si patron es verdadero y el input esta vacio
-
+                if(patron && $input.value !== ""){//si patron es verdadero y el input esta vacio
                     let regex = new RegExp(patron);//declaro e inicializo la variable que contendra la expresion regular del input
                     return !regex.exec($input.value)//si la ejecucion de la expresion regular sobre el elmento es false 
                         ? d.getElementById($input.name).classList.add("is-active")//añado al elemento la clase is-active
@@ -35,5 +34,29 @@ export default function formulario() {
                     : d.getElementById($input.name).classList.remove("is-active");//elimino al elemento la clase is-active
                 }
             }
+            
         })
+
+        d.addEventListener("submit",(e)=>{//metodo que captura el evento submit de un formulario
+            e.preventDefault();//elimino los eventos por defecto de elemento que realizo el submit para que no se procese el formulario
+            alert("enviando formulario");
+
+            const $loader = d.querySelector(".contact-form-loader"),
+                $response = d.querySelector(".contact-form-response");
+
+            $loader.classList.remove("none");//remuevo clase none del svg
+                
+            setTimeout(() => {//testeo de prueba
+                    
+                    $loader.classList.add("none");//añado clase none del svg
+                    $response.classList.remove("none");//remuevo clase non del div 
+                    $form.reset();//reinicia el formulario
+
+                    setTimeout(() => {
+                        $response.classList.add("none");//añado clase none del svg
+                    }, 3000);
+            }, 3000);
+
+        })
+
 }
