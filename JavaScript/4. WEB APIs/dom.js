@@ -189,29 +189,28 @@ $cardts.appendChild($figure);//agrego el nodo figure al elemento  section que ti
 
 
 //Tecnica para agregar elementos dinamicamente es costosa en memoria cuando son muchos elementos
-const estaciones = ["Primavera", "verano", "otoño"],
-    $ul = document.createElement("ul");
+const estaciones = ["Primavera", "verano", "otoño"],//arreglo de estaciones
+    $ul = document.createElement("ul");//creo un elemento ul
 
 
-document.body.appendChild($ul);
-estaciones.forEach(element => {//Tecnica para agregar elementos dinamicamente
-    const $li = document.createElement("li");
-    $li.textContent=element;
-    $ul.appendChild($li);
+document.body.appendChild($ul);//agrego elemento ul al body
+estaciones.forEach(element => {//Tecnica para agregar elementos dinamicamente recorriendo arreglo de estaciones
+    const $li = document.createElement("li");//creo un elemento li
+    $li.textContent=element;//agrego el texto de mi arreglo al elemento li creado
+    $ul.appendChild($li);//agrego el elemento li al elento ul previamente creado
 });
 
 
 //Manejo de fragmentos: Es la forma optima de agregar elementos al DOM
 
-const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio"],
+const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio"],//creo un arreglo de meses del año
     $ul3 = document.createElement("ul"),//creando un elmento ul
     $fragment = document.createDocumentFragment();//creando fragmento
 
 
 meses.forEach(el =>{//recorro el arreglo creado
     const $li = document.createElement("li");//creo un elemento li
-    $li.textContent = el;//añado el nodo texto a mi elemento
-    console.log($li);//imprimo en consola
+    $li.textContent = el;//agrego el texto de mi arreglo al contenido del texto del elemento li
     $fragment.appendChild($li)//añado el nodo li al fragment
 });
 
