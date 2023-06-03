@@ -172,7 +172,7 @@
         */
 
         console.log("***************************************************************************************************");
-        console.log("Async - Await");
+        console.log("Async - Await");//Estas funciones esperan a que se ejecuten el codigo anterior con el uso del await trabajan con promesas
         console.log(" ");
         
         /*
@@ -194,7 +194,7 @@
         async function funcionAsincronaDeclarada(){//Función asincrona en Javascript
             try {
                 console.log("Inicio de Funcion Async")
-                let obj = await cuadradoPromise(0);//espera el resultado de la ejecuoón antes de 
+                let obj = await cuadradoPromise(0);//espera el resultado de la ejecuoón de esta linea antes de ejecutar la siguiente
                 console.log(`Funcion Async ${obj.value},${obj.result}`);
 
                 obj = await cuadradoPromise(1);

@@ -80,7 +80,7 @@
     const $fetchAsync = document.getElementById("fetchAA"),//declaro e inicializo la constante que contienen el elemento conel id xhr
         $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
 
-        async function getData() {
+        async function getData() { //Funcion asincrona
             try {
                 let res = await fetch("https://jsonplaceholder.typicode.com/users"),
                     json = await res.json();
