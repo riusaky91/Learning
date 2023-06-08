@@ -44,13 +44,13 @@
 
 //Funcion anonima auto ejecutable que utiliza la API Fetch
 (()=>{
-    const $fetch = document.getElementById("fetch"),//declaro e inicializo la constante que contienen el elemento conel id xhr
+    const $fetch = document.getElementById("fetch"),//declaro e inicializo la constante que contienen el elemento con el id xhr
         $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
 
         
-        fetch("https://jsonplaceholder.typicode.com/users",{}).then(res =>{//recurso, parametrso de opciones para el metodo (metodo por defecto GET)
+        fetch("https://jsonplaceholder.typicode.com/users",{}).then(res =>{//Metodo fetch maneja promesas (recurso, parametro de opciones para el metodo (metodo por defecto GET))
 
-            return res.ok ? res.json() : Promise.reject(res);//Si la respuesta es correcta (metodo que convierte a json  la respuesta, otros metodos de conversion (text, blob)) si es incorrecta activa el catch de la promesa
+            return res.ok ? res.json() : Promise.reject(res);//Si la respuesta es correcta ? (metodo que convierte a json  la respuesta, otros metodos de conversion (text, blob)) : si es incorrecta activa el catch de la promesa
         
         })
         .then(json =>{//tomo el valor que retorne en el then anterior
@@ -81,14 +81,14 @@
         $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
 
         async function getData() { //Funcion asincrona
-            try {
-                let res = await fetch("https://jsonplaceholder.typicode.com/users"),
-                    json = await res.json();
+            try {//Manejo de excepciones para le uso del async
+                let res = await fetch("https://jsonplaceholder.typicode.com/users"),//declaro e inicializo variable que detendra la ejecucion del codigo hasta que traiga los recursos solicitados en fetch y los alamcene ne la variable
+                    json = await res.json();////declaro e inicializo variable que detendra la ejecucion del codigo hasta que convierta la respuesta en un objeto JSON y los alamcene en la variable
                     
-                console.log(res, json);
+                //console.log(res, json);
 
-                if(!res.ok){
-                    throw {status: res.status, statusText : res.statusText}
+                if(!res.ok){//Si la respuesta no es satisfactoria o esta fallando
+                    throw {status: res.status, statusText : res.statusText};//dentro del try catch para enviar al catch se utiliza el throw
                 }
 
                 json.forEach(element => {//recorro el objeto javascript generado
@@ -99,13 +99,75 @@
     
                 $fetchAsync.appendChild($fragment);//agrego al elemento del dom el fragmeto con los elementos li
                 
-            } catch (error) {
+            } catch (error) {//error que se ejecuta 
                 let message = error.statusText || "Ocurrio un error";//operador corto circuito que toma el segundo valor si el primero esta vacio
                 $fetchAsync.innerHTML = `Error ${error.status}: ${message}`;//Imprimo y añado el error encontrado al elemento del dom
     
                 
             } finally{
                 //console.log("Esto se ejecutara independientemente del try y catch");
+            }
+        }
+
+        getData();//ejecuto la funcion asincrona
+
+})();
+
+//Funcion anonima auto ejecutable que utiliza axios con promesas
+(()=>{
+    const $axios = document.getElementById("axios"),//declaro e inicializo la constante que contienen el elemento conel id xhr
+        $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
+
+        axios.get("https://jsonplaceholder.typicode.com/users")//utilizo la API de axios
+        .then(res=>{
+            //console.log(res);
+            let json = res.data;
+            json.forEach(element => {//recorro el objeto javascript generado
+                const $li = document.createElement("li");//declaro e inicializo la constante li con un elemento li
+                $li.innerHTML = `Nombre: ${element.name},  Correo: ${element.email}, Telefono: ${element.phone}`;//añado al contenido de li los atributos que voy a utilizar del objeto json
+                $fragment.appendChild($li);//añado al fragmento los li que he recorrido
+            });
+
+            $axios.appendChild($fragment);//agrego al elemento del dom el fragmeto con los elementos li
+        })
+        .catch(err=>{
+            console.log("Estamos en el catch: ",err.response);
+            let message = err.response.statusText || "Ocurrio un error";//operador corto circuito que toma el segundo valor si el primero esta vacio
+            $axios.innerHTML = `Error ${err.response.status}: ${message}`;//Imprimo y añado el error encontrado al elemento del dom
+        })
+        .finally(()=>{
+            //console.log("Esto se ejecutara independientemente del try y catch");
+        });
+
+})();
+
+
+//Funcion anonima auto ejecutable que utiliza axios con promesas, async y await
+(()=>{
+    const $axiosAsync = document.getElementById("axios-async"),//declaro e inicializo la constante que contienen el elemento conel id xhr
+        $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
+
+        axios.get("https://jsonplaceholder.typicode.com/users")//utilizo la API de axios
+        
+        async function getData(){
+            try {
+                let res = await axios.get("https://jsonplaceholder.typicode.com/users"),//declaro e inicializo variable que detendra la ejecucion del codigo hasta que traiga los recursos solicitados en axios y los alamcena en la variable
+                    json = await res.data;////declaro e inicializo variable que detendra la ejecucion del codigo hasta que convierta la respuesta en un objeto JSON y los alamcene en la variable
+                    
+
+                json.forEach(element => {//recorro el objeto javascript generado
+                    const $li = document.createElement("li");//declaro e inicializo la constante li con un elemento li
+                    $li.innerHTML = `Nombre: ${element.name},  Correo: ${element.email}, Telefono: ${element.phone}`;//añado al contenido de li los atributos que voy a utilizar del objeto json
+                    $fragment.appendChild($li);//añado al fragmento los li que he recorrido
+                });
+
+                $axiosAsync.appendChild($fragment);//agrego al elemento del dom el fragmeto con los elementos li
+                
+            } catch (error) {
+                let message = err.response.statusText || "Ocurrio un error";//operador corto circuito que toma el segundo valor si el primero esta vacio
+                    $axiosAsync.innerHTML = `Error ${err.response.status}: ${message}`;//Imprimo y añado el error encontrado al elemento del dom
+            }finally{
+                console.log("Esto se ejecutara independientemente del try y catch");
             }
         }
 

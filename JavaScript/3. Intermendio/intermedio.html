@@ -135,12 +135,12 @@
 
         /*
         function cuadradoPromise(value){
-            if(typeof value !== "number"){
-                return Promise.reject(`Error, el valor ${value} ingresado no es un numero` );//Utilizando metoddo estatico reject de una promesa
+            if(typeof value !== "number"){//Si el parametro ingresado es de un tipo no numerico
+                return Promise.reject(`Error, el valor ${value} ingresado no es un numero` );//Utilizando metoddo estatico reject de una promesa que me lleva al catch es esta misma
             }
-            return new Promise((resolve,reject)=>{//Dos parametros de una promesa
+            return new Promise((resolve,reject)=>{//Inicializo una promesa que recibe dos parametros 
                 setTimeout(() => {
-                    resolve({
+                    resolve({//return positivo de la promesa que lo envia al then
                         value:value,
                         result: value*value
                     })
@@ -149,30 +149,30 @@
             })
         }
 
-        cuadradoPromise(0)
-            .then((obj)=>{//En caso de que la ejecución de la promesa sea exitosa
+        cuadradoPromise(0)//Ejecuto la funcion qeu asi mismo ejecuta una promesa con el parametro 0
+            .then((obj)=>{//En caso de que la ejecución de la promesa sea exitosa inicia con la ejecucion del then recibiendo el return de la funcion principal en este caso un objeto
                 //console.log(obj)
                 console.log('Inicio promesa');
                 console.log(`Promesa ${obj.value},${obj.result}`)
-                return cuadradoPromise(1);
+                return cuadradoPromise(1);//retorno la ejecucion del then
             })
-            .then((obj)=>{//En caso de que la ejecución de la promesa sea exitosa
+            .then((obj)=>{//En caso de que la ejecución de la promesa anterior sea exitosa
                 //console.log(obj)
                 console.log('Inicio promesa');
                 console.log(`Promesa ${obj.value},${obj.result}`)
                 return cuadradoPromise(2);
             })
-            .then((obj)=>{//En caso de que la ejecución de la promesa sea exitosa
+            .then((obj)=>{//En caso de que la ejecución de la promesa anterior sea exitosa
                 //console.log(obj)
                 console.log('Inicio promesa');
                 console.log(`Promesa ${obj.value},${obj.result}`)
                 return cuadradoPromise("3");
             })
-            .catch(err => console.error(err));//En caso de que se enceuntre un error en la ejecución de las promesas
+            .catch(err => console.error(err));//En caso de que se encuentre un error en la ejecución de la funcion principal o cualquier then
         */
 
         console.log("***************************************************************************************************");
-        console.log("Async - Await");//Estas funciones esperan a que se ejecuten el codigo anterior con el uso del await trabajan con promesas
+        console.log("Async - Await");//Estas funciones esperan a que se ejecuten el codigo anterior con el uso del await y trabajan con promesas sin el uso de los .then
         console.log(" ");
         
         /*
@@ -194,10 +194,10 @@
         async function funcionAsincronaDeclarada(){//Función asincrona en Javascript
             try {
                 console.log("Inicio de Funcion Async")
-                let obj = await cuadradoPromise(0);//espera el resultado de la ejecuoón de esta linea antes de ejecutar la siguiente
+                let obj = await cuadradoPromise(0);//espera el resultado de la ejecuoón de esta linea antes de ejecutar la siguiente guardandolo en la variable obj
                 console.log(`Funcion Async ${obj.value},${obj.result}`);
 
-                obj = await cuadradoPromise(1);
+                obj = await cuadradoPromise(1);//espera que se ejecute el await completamente para almacenar el valor de la funcion en la variable obj
                 console.log(`Funcion Async ${obj.value},${obj.result}`); 
 
                 obj = await cuadradoPromise("2");
@@ -206,7 +206,7 @@
                 obj = await cuadradoPromise(3);
                 console.log(`Funcion Async ${obj.value},${obj.result}`); 
 
-            } catch (error) {
+            } catch (error) {//capturo el error de la promesa
                 console.error(err);
             } 
 
