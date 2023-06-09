@@ -29,13 +29,12 @@
                     <th>Acciones</th>
                 </tr></thead>
                 <tbody>
-                    
                 </tbody>
             </table>
         </article>
     </section>
 
-    <template id="crud-template">
+    <template id="crud-template"><!--El motivo de este template es no crear el cogigo html en el .js-->
         <tr>
             <td class="name"></td>
             <td class="constellation"></td>
@@ -45,14 +44,6 @@
             </td>
         </tr>
     </template>
-    <script>
-        const d= document,
-            $table = d.querySelector(".crud-table"), 
-            $form = d.querySelector(".crud-form"), 
-            $title = d.querySelector(".crud-title"), 
-            $template = d.getElementById(".crud-template").content,
-            $fragment = d.createDocumentFragment(); 
-
-    </script>
+    <script src="js/index.js" type="module"></script> <!--Importación de JS con manejo modular-->
 </body>
 </html>

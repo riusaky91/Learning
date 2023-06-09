@@ -3,7 +3,7 @@ import {
   hamburgerMenu,
   theme,
   scrollSpy
-} from "./interfaz.js"; //manejo de modulos, exportacion de metodos para la interfaz
+} from "./interfaz.js"; //manejo de modulos, exportacion de metodos para la interfaz al no ser por defecto se deben usar los corchetes
 import temporizador from "./seccion_1_temporizador.js"; //manejo de modulos exportacion por defecto
 import eventos from "./seccion_2_eventos.js";
 import contador from "./seccion_3_cuenta_regresiva.js";
