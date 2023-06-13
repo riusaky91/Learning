@@ -6,9 +6,9 @@
       "constelacion": "Pegaso"
     },
     {
-      "id": 2,
-      "nombre": "Shiryu",
-      "constelacion": "Dragon"
+      "nombre": "Shiryuss",
+      "constelacion": "Dragon",
+      "id": 2
     },
     {
       "id": 3,
@@ -21,9 +21,14 @@
       "constelacion": "Andromeda"
     },
     {
-      "id": 5,
-      "nombre": "Ikki",
-      "constelacion": "Fenix"
+      "nombre": "Ikkisz",
+      "constelacion": "Fenix",
+      "id": 5
+    },
+    {
+      "nombre": "Mu",
+      "constelacion": "Aries",
+      "id": 6
     }
   ],
   "dioses": [
