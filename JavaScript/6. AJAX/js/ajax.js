@@ -147,7 +147,7 @@
     const $axiosAsync = document.getElementById("axios-async"),//declaro e inicializo la constante que contienen el elemento conel id xhr
         $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
 
-        axios.get("https://jsonplaceholder.typicode.com/users")//utilizo la API de axios
+        axios.get("https://jsonplaceholder.typicode.com/users");//utilizo la API de axios
         
         async function getData(){
             try {
