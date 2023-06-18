@@ -103,13 +103,13 @@ d.addEventListener("DOMContentLoaded",(e)=>{
     });
 });
 
-d.addEventListener("submit", e=>{
-    if(e.target === $form){
+d.addEventListener("submit", async e=>{
+    if(e.target === $form){//Si el elemento que origina el evento es el formulario
         e.preventDefault();//Elimino eventos por defecto del formulario
-        console.log(e.target.id.value);
         
         if (!e.target.id.value) {//si el ID esta vacio
             //POST - CREATE
+
             /*xhr({
                 method: "POST",//Propiedad que recibe el Metodo rest
                 url: "http://localhost:3000/santos",//Propiedad que recibe el End Point
@@ -126,7 +126,6 @@ d.addEventListener("submit", e=>{
                 }
             })*/
             
-            
             /*apiFetch({
                 method: "POST",//Propiedad que recibe el Metodo rest
                 url: "http://localhost:3000/santos",//Propiedad que recibe el End Point
@@ -142,12 +141,11 @@ d.addEventListener("submit", e=>{
                     constelacion: e.target.constelacion.value,
                 }
             })*/
-            console.log(e.target.nombre.value);
+
             axiosD({
                 method: "POST",//Propiedad que recibe el Metodo rest
                 url: "http://localhost:3000/santos",//Propiedad que recibe el End Point
                 success:(res)=>{
-                    console.log(res);
                     location.reload();//recargo la pagina
 
                 },
@@ -155,17 +153,12 @@ d.addEventListener("submit", e=>{
                     console.error(err);//imprio error en consola
                     $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`);//imprimo error en el formulario del docuemnto HTML
                 },
-                dato: {
+                data: {
                     nombre: e.target.nombre.value,
                     constelacion: e.target.constelacion.value,
                 }
             })
 
-
-            $form.nombre.value = "";
-            $form.constelacion.value = "";
-            console.log("creo el registro");
-        
         }else{
             //PUT - UPDATE
             /*xhr({

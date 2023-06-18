@@ -29,8 +29,6 @@ export async function apiFetch (options){
             throw {status: res.status, statusText : res.statusText};//dentro del try catch para enviar al catch se utiliza el throw
         }
 
-        console.log(json);
-
         success(json);//Ejecuto el metodo succes de el objeto enviado como parametro la data con formato JSON
 
     } catch (err) {
