@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploader con AJAX</title>
+
+<style>
+    html {
+    box-sizing: border-box; /*resetea el borde*/
+    font-family: sans-serif; /*tipo de Fuente*/
+    font-size: 16px; /*tamaño de fuente*/
+  }
+
+  *,/*todos los elementos*/
+    *:before,/*todos los elementos antes*/
+    *:after {
+    /*todos los elementos antes*/
+    box-sizing: inherit; /*Herede el borde del padre tamaño de las cajas empezaran desde el borde*/
+  }
+
+  main{
+    display: flex;/*Manejo de flex box*/
+    flex-direction: column;/*Manejo columnar para el elemento*/
+    justify-content: center;/*Centrado en el eje principal*/
+    align-items: center;/*Centrado en el eje horizontal*/
+    text-align: center;/*Centrado del texto*/
+    min-height: 100vh;/*altura minima para la vista en el documento*/
+  }
+</style>
+</head>
+<body>
+    <main>
+        <input type="file" id="files" name="files" multiple>
+    </main>
+    <script>
+        const d = document,
+        $main = d.querySelector("main"),
+        $files = d.getElementById("files");
+
+        const uploader = async (file) =>{
+            console.log(file);
+            const formData = new FormData();
+
+            formData.append("file",file);
+
+            try {
+                let res = await fetch("assets/uploader.php", 
+                {
+                    method: "POST", //metodo a utilizar de l apeticion
+                    body: formData, //cuerpo de la peticion
+                    headers: { "enc-type":"multipart/form-data" },
+                }); //declaro e inicializo variable que detendra la ejecucion del codigo hasta que traiga los recursos solicitados en fetch y los alamcene ne la variable
+             
+                if (!res.ok) {
+                    //Si la respuesta no es satisfactoria o esta fallando
+                    throw { status: res.status, statusText: res.statusText }; //dentro del try catch para enviar al catch se utiliza el throw
+                }
+
+                let json = await res.json(); //declaro e inicializo variable que detendra la ejecucion del codigo hasta que reciba la respuesta html y los alamcene en la variable
+                
+                console.log(json);
+            } catch (error) {
+                console.log(error); //Ejecuto el metodo error del objeto enviado
+            }
+
+
+        }
+
+        d.addEventListener("change", e =>{
+            if(e.target === $files){
+                console.log(e.target.files);
+
+                const files = Array.from(e.target.files);
+                files.forEach(e=>{
+                    uploader(e);
+                });
+
+            }
+        })
+    </script>
+</body>
+</html>
