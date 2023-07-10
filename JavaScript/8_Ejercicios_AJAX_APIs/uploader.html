@@ -27,15 +27,19 @@
     text-align: center;/*Centrado del texto*/
     min-height: 100vh;/*altura minima para la vista en el documento*/
   }
+
+  progress {
+    margin-top: 1rem;/*Espaciado de margen arriba*/
+  }
 </style>
 </head>
 <body>
     <main>
-        <input type="file" id="files" name="files" multiple>
+        <input type="file" id="files" name="files" multiple><!--Input tipo file para subir un archivo-->
     </main>
     <script>
         const d = document,//declar e inicializo la variable d coon la palabra reservada document
-        $main = d.querySelector("main"),//declaro e inicializo la varable $main con el elmento de tipo main
+        $main = d.querySelector("main"),//declaro e inicializo la varable $main con el elemento de tipo main
         $files = d.getElementById("files");//declaro e inicializo la variable con el elemento que tiene como id files
 
         const uploader = async (file) =>{//declaro funcion expresada asincrona que recibe la varable file para su ejecucion
@@ -67,13 +71,49 @@
 
         }
 
+
+        const progressUpload = (file)=>{//Funcion expresada que reciobe un archivo para cargarlo al servidor 
+            const $progress = d.createElement("progress"),//declaro en inicializo constante creando el elemento progress
+                $span = d.createElement("span");//declaro en inicializo constante creando el elemento span
+
+            $progress.value = 0;//asigo el valor inicial para el atributo value del elemento progress
+            $progress.max = 100;//asigo el valor maximo para el atributo max del elemento progress
+
+
+            $main.insertAdjacentElement("beforeend", $progress);//agrego el elemento creado al docuemnt despues del main 
+            $main.insertAdjacentElement("beforeend", $span);//agrego el elemento creado al docuemnt despues del main
+
+            const fileReader = new FileReader();//Detecta los bits que van cargados para hacer el calculo de porcentaje de cada archivo
+            fileReader.readAsDataURL(file);//aenvio el archivo para que sea leido por el metodo del objeto
+
+
+            fileReader.addEventListener("progress", e=>{//Evento que se ejecuta cada vez que se avance en el progreso de carga del archivo
+                let progress = parseInt((e.loaded * 100)/e.total);//declaro e inicializo variable con el porcentaje de carga e.loaded que se tiene sobre el porcentaje total e.total
+                $progress.value = progress;//asigno el valor al atributo value del elemento progress 
+                $span.innerHTML=`<b>${file.name}- ${progress}%</b>`;//asigno el valor al atributo innerHTML del elemento span
+                
+            });
+            fileReader.addEventListener("loadend", e=>{//Evento que se ejecuta cuando finaliza la carga del archivo
+                $progress.value = 100;//asigno el 100 de carga
+                $span.innerHTML=`<b>${file.name}- 100%</b>`;//asgino el texto al 100%
+                uploader(file);//cargo el archivo que se encontraba en el temporal
+                setTimeout(()=>{//asigno un tiempo especifico para limpiar los valores del documento
+                    $main.removeChild($progress);
+                    $main.removeChild($span);
+                    $files.value = "";
+                },3000)
+            });
+        
+        }
+
+
         d.addEventListener("change", e =>{//Metodo tipo evento qque se ejecuta cuando hay un cambio en el docuemnto
             if(e.target === $files){
                 console.log(e.target.files);
 
                 const files = Array.from(e.target.files);//declaro e inicializo constante files que convierte en arreglo iterable
-                files.forEach(e=>{//recorro la constante y por cada iteracion de un archivo
-                    uploader(e);//ejecuto el metodo uploader
+                files.forEach(file=>{//recorro la constante y por cada iteracion de un archivo
+                    progressUpload(file);//ejecuto el metodo progressuploader
                 });
 
             }
