@@ -92,11 +92,11 @@
         console.log(a);
         console.log(a.length);//Tamaño de arreglo
         console.log(a[2]);//accediendo a una posicion del arreglo
-        a.push("nuevo");
-        console.log(a);//metodo para añadir un valor a un arreglo
+        a.push("nuevo");//metodo para añadir un valor a un arreglo en la ultima posición
+        console.log(a);
 
         a.forEach(function(elemento,indice) {//Metodo de arreglo para recorrer cada elemento (primer parametro = elemento de arreglo, segundo parametro = indice)
-            console.log(`<li> ${indice} : ${elemento} </li>`);
+            console.log(`<b>ff</b> elemento => ${indice} : indice => ${elemento} `);
         });
 
         console.log("***************************************************************************************************");
@@ -112,7 +112,7 @@
                 email: "marlon@gmail.com",
                 cel: 3158992518
             },
-            saludar: function (){//Una funcion declarada dentro de un objeto es un metodo, al final de este docuemnto se muestra como se debe declrarar un metodo correctamente
+            saludar: function (){//Una funcion declarada dentro de un objeto es un metodo, al final de este docuemnto se muestra como se debe declarar un metodo correctamente
                 console.log("hola soy un funcion dentro de un objeto (metodo)");
             },
             decirNombre: function(){
@@ -126,7 +126,7 @@
         console.log(b.contacto.cel);//accediendo a el parametro que se encuentra en un objeto dentro del objeto
         b.saludar(); //accediendo a un metodo dentro del objeto
         b.decirNombre();//accediendo a un metodo dentro del objeto usando una variable del objeto
-        console.log(Object.keys(b));//accediendo a las llaves de un objeto 
+        console.log(Object.keys(b));//accediendo a las llaves de un objeto devuelve un arreglo
 
         console.log("***************************************************************************************************");
         console.log("Operadores");
@@ -194,7 +194,7 @@
         }
 
         let arregli = [10,20,30,40,50];
-
+        
         arregli.forEach(element=>{//Cuando solo vamos a utilizar un parametro en una funcion declarada, quitamos el parentesis y podemos usar un arrow function
             console.log(element + "For each");
         });

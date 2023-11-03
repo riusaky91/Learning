@@ -1,22 +1,20 @@
 //Funcion anonima auto ejecutable con el API Objeto XMLHttpRequest
 (()=>{
     const xhr = new XMLHttpRequest(),//instancia del objeto para hacer un request
-        $xhr = document.getElementById("xhr"),//declaro e inicializo la constante que contienen el elemento conel id xhr
-        $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
+        $xhr = document.getElementById("xhr"),//declaro e inicializo la constante que contienen el elemento con el id xhr (<ol>)
+        $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento para optimizar peticiones
 
         
         
         
-    xhr.addEventListener("readystatechange",(e)=>{//Evento que se ejecuta cuando se detecta cualquier cambio de estado
+    xhr.addEventListener("readystatechange",(e)=>{//addEventListener => Evento que se ejecuta cuando se detecta cualquier cambio de estado;
         
-        if(xhr.readyState !== 4) return;//si el estado de la request es difernte a 4 no retorne nada
+        if(xhr.readyState !== 4) return;//si la propiedad readyState es difernte a 4 la funcion no va ha retornar nada
         
-        
-        
-        if(xhr.status >= 200 && xhr.status < 300){//si la peticion tiene un estado satisfactorio
+        if(xhr.status >= 200 && xhr.status < 300){//si la peticion tiene un estatus satisfactorio que se encuentra entre 200 y 300
         
 
-            let json = JSON.parse(xhr.responseText);//ddclaro e inicializo la variable json con la respuesta tipo JSON formateada como objeto javascript
+            let json = JSON.parse(xhr.responseText);//declaro e inicializo la variable json con la respuesta tipo JSON formateada como objeto javascript
             
 
             json.forEach(element => {//recorro el obeto javascript generado
@@ -25,10 +23,10 @@
                 $fragment.appendChild($li);//añado al fragmento los li que he recorrido
             });
 
-            $xhr.appendChild($fragment);//agrego al elemento del dom el fragmeto con los elementos li
+            $xhr.appendChild($fragment);//agrego al elemento del dom como hijo el fragmeto con los elementos li para mejorar el rendimiento
         }else{//en caso de que la respuesta no se satisfactoria
             
-            let message = xhr.statusText || "Ocurrio un error";//operador corto circuito que toma el segundo valor si el primero esta vacio
+            let message = xhr.statusText || "Ocurrio un error";//operador corto circuito OR, que toma el valor de la derecha si el valor de la izquiera (statusText) es vacio, Null, NaN
             $xhr.innerHTML = `Error ${xhr.status}: ${message}`;//Imprimo y añado el error encontrado al elemento del dom
         }
 
@@ -44,12 +42,13 @@
 
 //Funcion anonima auto ejecutable que utiliza la API Fetch
 (()=>{
-    const $fetch = document.getElementById("fetch"),//declaro e inicializo la constante que contienen el elemento con el id xhr
+    const $fetch = document.getElementById("fetch"),//declaro e inicializo la constante que contienen el elemento con el id fetch
         $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
 
         
         fetch("https://jsonplaceholder.typicode.com/users",{}).then(res =>{//Metodo fetch maneja promesas (recurso, parametro de opciones para el metodo (metodo por defecto GET))
 
+            console.log(res);
             return res.ok ? res.json() : Promise.reject(res);//Si la respuesta es correcta ? (metodo que convierte a json  la respuesta, otros metodos de conversion (text, blob)) : si es incorrecta activa el catch de la promesa
         
         })
@@ -77,10 +76,10 @@
 
 //Funcion anonima auto ejecutable que utiliza la API Fetch con asinc y await
 (()=>{
-    const $fetchAsync = document.getElementById("fetchAA"),//declaro e inicializo la constante que contienen el elemento conel id xhr
+    const $fetchAsync = document.getElementById("fetchAA"),//declaro e inicializo la constante que contienen el elemento con el id fetchAA
         $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
 
-        async function getData() { //Funcion asincrona
+        async function getData() { //Funcion asincrona declarada
             try {//Manejo de excepciones para le uso del async
                 let res = await fetch("https://jsonplaceholder.typicode.com/users"),//declaro e inicializo variable que detendra la ejecucion del codigo hasta que traiga los recursos solicitados en fetch y los alamcene ne la variable
                     json = await res.json();//declaro e inicializo variable que detendra la ejecucion del codigo hasta que convierta la respuesta en un objeto JSON y los alamcene en la variable

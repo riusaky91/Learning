@@ -149,20 +149,20 @@
             })
         }
 
-        cuadradoPromise(0)//Ejecuto la funcion qeu asi mismo ejecuta una promesa con el parametro 0
+        cuadradoPromise(0)//Ejecuto la funcion que asi mismo ejecuta una promesa con el parametro 0
             .then((obj)=>{//En caso de que la ejecución de la promesa sea exitosa inicia con la ejecucion del then recibiendo el return de la funcion principal en este caso un objeto
                 //console.log(obj)
                 console.log('Inicio promesa');
                 console.log(`Promesa ${obj.value},${obj.result}`)
                 return cuadradoPromise(1);//retorno la ejecucion del then
             })
-            .then((obj)=>{//En caso de que la ejecución de la promesa anterior sea exitosa
+            .then((obj)=>{//En caso de que la ejecución de la promesa anterior sea exitosa tomo su return en el avariable obj
                 //console.log(obj)
                 console.log('Inicio promesa');
                 console.log(`Promesa ${obj.value},${obj.result}`)
                 return cuadradoPromise(2);
             })
-            .then((obj)=>{//En caso de que la ejecución de la promesa anterior sea exitosa
+            .then((obj)=>{//En caso de que la ejecución de la promesa anterior sea exitosa tomo su return en el avariable obj
                 //console.log(obj)
                 console.log('Inicio promesa');
                 console.log(`Promesa ${obj.value},${obj.result}`)
@@ -194,16 +194,16 @@
         async function funcionAsincronaDeclarada(){//Función asincrona en Javascript
             try {
                 console.log("Inicio de Funcion Async")
-                let obj = await cuadradoPromise(0);//espera el resultado de la ejecuoón de esta linea antes de ejecutar la siguiente guardandolo en la variable obj
+                let obj = await cuadradoPromise(0);//espera el resultado de la ejecucón de esta linea antes de ejecutar la siguiente guardandolo en la variable obj
                 console.log(`Funcion Async ${obj.value},${obj.result}`);
 
                 obj = await cuadradoPromise(1);//espera que se ejecute el await completamente para almacenar el valor de la funcion en la variable obj
                 console.log(`Funcion Async ${obj.value},${obj.result}`); 
 
-                obj = await cuadradoPromise("2");
+                obj = await cuadradoPromise("2");//espera que se ejecute el await completamente para almacenar el valor de la funcion en la variable obj
                 console.log(`Funcion Async ${obj.value},${obj.result}`); 
 
-                obj = await cuadradoPromise(3);
+                obj = await cuadradoPromise(3);//espera que se ejecute el await completamente para almacenar el valor de la funcion en la variable obj
                 console.log(`Funcion Async ${obj.value},${obj.result}`); 
 
             } catch (error) {//capturo el error de la promesa
@@ -214,7 +214,7 @@
 
         funcionAsincronaDeclarada();
 
-        const funcionAsincronaExpresada = async()=> {//Función asincrona en Javascript
+        const funcionAsincronaExpresada = async()=> {//Función asincrona expresada en Javascript
             try {
                 console.log("Inicio de Funcion Async")
                 let obj = await cuadradoPromise(4);//espera el resultado de la ejecuoón antes de 
