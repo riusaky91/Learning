@@ -114,7 +114,7 @@
 
 //Funcion anonima auto ejecutable que utiliza axios con promesas
 (()=>{
-    const $axios = document.getElementById("axios"),//declaro e inicializo la constante que contienen el elemento conel id xhr
+    const $axios = document.getElementById("axios"),//declaro e inicializo la constante que contienen el elemento conel id axios
         $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
 
         axios.get("https://jsonplaceholder.typicode.com/users")//utilizo la API de axios
@@ -143,7 +143,7 @@
 
 //Funcion anonima auto ejecutable que utiliza axios con promesas, async y await
 (()=>{
-    const $axiosAsync = document.getElementById("axios-async"),//declaro e inicializo la constante que contienen el elemento conel id xhr
+    const $axiosAsync = document.getElementById("axios-async"),//declaro e inicializo la constante que contienen el elemento conel id axios-async
         $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
 
         axios.get("https://jsonplaceholder.typicode.com/users");//utilizo la API de axios
