@@ -81,13 +81,13 @@
 
         async function getData() { //Funcion asincrona declarada
             try {//Manejo de excepciones para le uso del async
-                let res = await fetch("https://jsonplaceholder.typicode.com/users"),//declaro e inicializo variable que detendra la ejecucion del codigo hasta que traiga los recursos solicitados en fetch y los alamcene ne la variable
+                let res = await fetch("https://jsonplaceholder.typicode.com/users"),//declaro e inicializo variable que detendra la ejecucion del codigo hasta que traiga los recursos solicitados en fetch y los alamcene en la variable
                     json = await res.json();//declaro e inicializo variable que detendra la ejecucion del codigo hasta que convierta la respuesta en un objeto JSON y los alamcene en la variable
                     
                 //console.log(res, json);
 
                 if(!res.ok){//Si la respuesta no es satisfactoria o esta fallando
-                    throw {status: res.status, statusText : res.statusText};//dentro del try catch para enviar al catch se utiliza el throw
+                    throw {status: res.status, statusText : res.statusText};//declaro un throw dentro del try catch para enviar el mensaje de error al catch 
                 }
 
                 json.forEach(element => {//recorro el objeto javascript generado
