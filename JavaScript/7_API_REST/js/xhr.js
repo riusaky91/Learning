@@ -16,7 +16,7 @@ export function xhr (options){
         
             let json = JSON.parse(xhr.responseText);//declaro e inicializo la variable json con la respuesta tipo JSON formateada como objeto javascript
             
-            success(json);//Ejecuto el metodo succes de el objeto enviado como parametro la data con formato JSON
+            success(json);//Ejecuto el metodo success de el objeto enviando como parametro la data con formato JSON
             
         }else{//en caso de que la respuesta no se satisfactoria
             
@@ -29,7 +29,7 @@ export function xhr (options){
     })
 
     xhr.open(method || "GET",url);//abrir la peticion (metodo con corto circuito en caso de no recibir un metodo dejar el GET y end point(ruta local o web))  
-    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");//header de la solicitud
+    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");//header de la solicitud, se debe especificar la cabecera para que no sea un texto plano de la solicitud
     xhr.send(JSON.stringify(data));//En caso de que se envia data, se convierte esta a tipo texto para que sea plasmada en el docuemnto HTML
 
 }

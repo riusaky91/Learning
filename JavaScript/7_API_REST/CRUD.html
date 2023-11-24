@@ -7,34 +7,36 @@
     <title>CRUD API REST</title>
 </head>
 <body>
-    <h1>CRUD API REST</h1>
+    <h1>CRUD API REST</h1><!--Titulo-->
     <section class="crud">
         <article>
             <h2 class="crud-title">Agregar Santo</h2>
-            <form  class="crud-form">
+            <form  class="crud-form"><!--Formulario donde se van agregar nuevos registros-->
                 <input type="text" name="nombre" placeholder="nombre" required>
                 <br>
                 <input type="text" name="constelacion" placeholder="constelación" required>
                 <br>
                 <input type="submit" value="enviar">
-                <input type="hidden" name="id">
+                <input type="hidden" name="id"><!--elemento de tipo oculto que se va enviar cuando se ejecute el envento submit-->
             </form>
         </article>
         <article>
             <h2>Ver Santos</h2>
             <table class="crud-table">
-                <thead><tr>
-                    <th>Nombre</th>
-                    <th>Constelación</th>
-                    <th>Acciones</th>
-                </tr></thead>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Constelación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
                 <tbody>
                 </tbody>
             </table>
         </article>
     </section>
 
-    <template id="crud-template"><!--El motivo de este template es no crear el cogigo html en el .js-->
+    <template id="crud-template"><!--El motivo de este template es no crearlo dentro del cogigo html en el .js para que sea insertado posteriormente si hay datos-->
         <tr>
             <td class="name"></td>
             <td class="constellation"></td>

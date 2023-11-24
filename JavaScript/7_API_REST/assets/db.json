@@ -1,27 +1,14 @@
 {
   "santos": [
     {
-      "id": 3,
-      "nombre": "Hyoga",
-      "constelacion": "Cisne"
+      "nombre": "uno",
+      "constelacion": "primero",
+      "id": 3
     },
     {
+      "nombre": "ff",
+      "constelacion": "segundo",
       "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "id": 7
-    },
-    {
-      "id": 8
-    },
-    {
-      "id": 9
     }
   ],
   "dioses": [
@@ -44,6 +31,11 @@
       "id": 4,
       "nombre": "Zeus",
       "de": "Cielo"
+    },
+    {
+      "id": 5,
+      "nombre": "Ares",
+      "de": "Guerra"
     }
   ]
 }
