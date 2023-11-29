@@ -6,9 +6,24 @@
       "id": 3
     },
     {
-      "nombre": "ff",
+      "nombre": "dos",
       "constelacion": "segundo",
       "id": 4
+    },
+    {
+      "nombre": "tres",
+      "constelacion": "tercero",
+      "id": 5
+    },
+    {
+      "nombre": "cuatro",
+      "constelacion": "cuarto",
+      "id": 6
+    },
+    {
+      "nombre": "cinco",
+      "constelacion": "quinto",
+      "id": 7
     }
   ],
   "dioses": [

@@ -29,8 +29,8 @@ export function xhr (options){
     })
 
     xhr.open(method || "GET",url);//abrir la peticion (metodo con corto circuito en caso de no recibir un metodo dejar el GET y end point(ruta local o web))  
-    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");//header de la solicitud, se debe especificar la cabecera para que no sea un texto plano de la solicitud
-    xhr.send(JSON.stringify(data));//En caso de que se envia data, se convierte esta a tipo texto para que sea plasmada en el docuemnto HTML
+    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");//header de la solicitud, se debe especificar la cabecera para que la solicitud no se devuelva con un texto plano
+    xhr.send(JSON.stringify(data));//En caso de que se envie data, se convierte esta a tipo texto para que sea plasmada en el docuemnto HTML
 
 }
 

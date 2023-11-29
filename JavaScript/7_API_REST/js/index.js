@@ -14,8 +14,8 @@ const d= document,
     
 
 
-d.addEventListener("DOMContentLoaded",(e)=>{
-    //GET - SELECT
+d.addEventListener("DOMContentLoaded",(e)=>{//metodo que se ejecuta a la carga del DOM
+    //GET - SELECT------------------------------------------------------------------------------------------------------
     //Funcion que recibe un objeto y ejecuta CRUD con el objeto XmlHttpRequests
     xhr({
         method: "GET",//Propiedad que recibe el Metodo rest
@@ -36,11 +36,13 @@ d.addEventListener("DOMContentLoaded",(e)=>{
                 
             });
             $table.querySelector("tbody").appendChild($fragment);//agrego al elemento del dom el fragmeto con los elementos li
-
+            
+            $form.id.value = "";
+            console.log($form.id.value)
         },
         error: (err)=>{//en caso de error
             console.error(err);//imprimo error en consola
-            $table.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`);//imprimo error en la tabla del docuemnto HTML
+            $table.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`);//imprimo error despues del elemento tabla del docuemnto HTML
         },
         data: null////Propiedad que la data que se va enviar
     })
@@ -105,11 +107,11 @@ d.addEventListener("DOMContentLoaded",(e)=>{
 });
 
 d.addEventListener("submit", async e=>{
-    if(e.target === $form){//Si el elemento que origina el evento es el formulario
+    if(e.target === $form){//Si el elemento que origina el evento es el formulario ($form)
         e.preventDefault();//Elimino eventos por defecto del formulario
-
+        
         if (!e.target.id.value) {//si el ID esta vacio
-            //POST - CREATE
+            //POST - CREATE------------------------------------------------------------------------------------------------------
 
             xhr({
                 method: "POST",//Propiedad que recibe el Metodo rest
@@ -166,15 +168,15 @@ d.addEventListener("submit", async e=>{
             })*/
 
         }else{
-            //PUT - UPDATE
+            //PUT - UPDATE------------------------------------------------------------------------------------------------------
             xhr({
                 method: "PUT",//Propiedad que recibe el Metodo rest
                 url: `http://localhost:3000/santos/${e.target.id.value}`,//Propiedad que recibe el End Point
                 success:(res)=>{
                     location.reload();//recargo la pagina
                     //Limpiar campos diligenciados
-                    e.target.nombre.value = "gg";
-                    e.target.constelacion.value = "gg";
+                    e.target.nombre.value = "";
+                    e.target.constelacion.value = "";
                     e.target.constelacion.id = 0;
                     
                 },
@@ -236,33 +238,18 @@ d.addEventListener("submit", async e=>{
 })
 
 d.addEventListener("click",(e)=>{
-    if (e.target.matches(".edit")) {
-        $title.textContent ="Editar Santo";
-        $form.nombre.value = e.target.dataset.name;
-        $form.constelacion.value = e.target.dataset.constellation;
-        $form.id.value = e.target.dataset.id;
-        console.log($form.id.value);
+    if (e.target.matches(".edit")) {//si el elmento que origina el evento tienen la clase .edit
+        $title.textContent ="Editar Santo";//Edito el titulo del formulario
+        $form.nombre.value = e.target.dataset.name;//asgino al campo del input el valor del data atributte nombre
+        $form.constelacion.value = e.target.dataset.constellation;//asgino al campo del input el valor del data atributte constelacion 
+        $form.id.value = e.target.dataset.id;//asgino al campo del input el valor del data atributte id 
     }
     if (e.target.matches(".delete")) {
-        let isDelete = confirm(`Esta seguro de eliminar el id ${e.target.dataset.id}`);
+        let isDelete = confirm(`Esta seguro de eliminar el id ${e.target.dataset.id}`);//Guardo en la variable isDelete el resultado de la alerta confirm
 
         if (isDelete) {
-            //DELETE
-            /*xhr({
-                method: "DELETE",//Propiedad que recibe el Metodo rest
-                url: `http://localhost:3000/santos/${e.target.dataset.id}`,//Propiedad que recibe el End Point
-                success:(res)=>{
-                    console.log(e.target.dataset.id);
-                    location.reload();//recargo la pagina
-                    //e.target.id.value = "";
-                },
-                error: (err)=>{//en caso de error
-                    $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`);//imprimo error en el formulario del docuemnto HTML
-                },
-                data: null
-            })*/
-            
-            apiFetch({
+            //DELETE------------------------------------------------------------------------------------------------------
+            xhr({
                 method: "DELETE",//Propiedad que recibe el Metodo rest
                 url: `http://localhost:3000/santos/${e.target.dataset.id}`,//Propiedad que recibe el End Point
                 success:(res)=>{
@@ -275,6 +262,20 @@ d.addEventListener("click",(e)=>{
                 },
                 data: null
             })
+            
+            /*apiFetch({
+                method: "DELETE",//Propiedad que recibe el Metodo rest
+                url: `http://localhost:3000/santos/${e.target.dataset.id}`,//Propiedad que recibe el End Point
+                success:(res)=>{
+                    console.log(e.target.dataset.id);
+                    location.reload();//recargo la pagina
+                    //e.target.id.value = "";
+                },
+                error: (err)=>{//en caso de error
+                    $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`);//imprimo error en el formulario del docuemnto HTML
+                },
+                data: null
+            })*/
             /*axiosD({
                 method: "DELETE",//Propiedad que recibe el Metodo rest
                 url: `http://localhost:3000/santos/${e.target.dataset.id}`,//Propiedad que recibe el End Point
