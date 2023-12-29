@@ -24,6 +24,16 @@
       "nombre": "cinco",
       "constelacion": "quinto",
       "id": 7
+    },
+    {
+      "nombre": "seis",
+      "constelacion": "sexto",
+      "id": 8
+    },
+    {
+      "nombre": "siete",
+      "constelacion": "septimo",
+      "id": 9
     }
   ],
   "dioses": [

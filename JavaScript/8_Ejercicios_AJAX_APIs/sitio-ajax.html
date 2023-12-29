@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,7 @@
       <section include-html="menu.html"></section>
       <section class="header-content container">
         <article class="logo">
-          <img src="assets/orion.jpg" alt="orion" />
+          <img src="assets/morado.jpg" alt="morado" />
         </article>
         <nav class="menu">
           <a href="assets/home.html">Home</a>
@@ -21,7 +21,7 @@
         </nav>
       </section>
     </header>
-    <main class="container"></main>
+    <main class="container"></main><!--La etiqueta main es una etiqueta semantica de html5 que hace referencia al contenido principal sola mente debe exixtir una etiqueta main-->
     <footer class="footer container">
       <p>
         <small>Sitio diseñado por orion</small>
@@ -29,9 +29,9 @@
     </footer>
     <script>
       const d = document,
-        $main = d.querySelector("main");
+        $main = d.querySelector("main");//declaracion de variable donde se le asiga el valor del elemento main
 
-      const getHTML = async (options) => {
+      const getHTML = async (options) => {//Funcion asincrona expresada
         let { method, url, success, error, data } = options; //destruccturacion del objeto en las variables definidas para el proceso
         try {
           let res;

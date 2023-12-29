@@ -6,7 +6,7 @@ export async function apiFetch (options){
     
     try {
         let res;
-        if (method === "GET") {//si el metodo a utilizar es diferente de GET
+        if (method === "GET") {//si el metodo a utilizar es igual a GET
             res = await fetch(url);//declaro e inicializo variable que detendra la ejecucion del codigo hasta que traiga los recursos solicitados en fetch y los alamcene ne la variable     
             
         }  else if(method === "DELETE"){//Si el metodo a utilizar es DELETE
@@ -17,7 +17,7 @@ export async function apiFetch (options){
             
         }else{//Si el metodo a utilizar es PUT o POST
             res = await fetch(url,{
-                    method: method,//metodo a utilizar de l apeticion
+                    method: method,//metodo a utilizar de la peticion
                     body: JSON.stringify(data),//cuerpo de la peticion
                     headers: {"Content-type": "application/json; charset=UTF-8"}})//declaro e inicializo variable que detendra la ejecucion del codigo hasta que traiga los recursos solicitados en fetch y los alamcene ne la variable
         }

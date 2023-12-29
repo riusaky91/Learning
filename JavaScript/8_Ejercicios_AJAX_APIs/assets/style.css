@@ -4,10 +4,10 @@ html {
     font-size: 16px; /*tamaño de fuente*/
   }
 
-  *,/*todos los elementos*/
+  *,/*todos los elementos genrados antes y depsues del html*/
     *:before,/*todos los elementos antes*/
     *:after {
-    /*todos los elementos antes*/
+    /*todos los elementos despues*/
     box-sizing: inherit; /*Herede el borde del padre tamaño de las cajas empezaran desde el borde*/
   }
 
@@ -39,7 +39,7 @@ html {
 
   .header-content {
     display: flex; /*uso de flexbox para los elemento que tienen por defecto un ordenammiento en fila*/
-    justify-content: space-between; /*se justyfica el espacio de los elemnetos entre ellos*/
+    justify-content: space-between; /*se justifica el espacio de los elemnetos entre ellos*/
     align-items: center; /*se alinean los elementos al centro*/
   }
 
