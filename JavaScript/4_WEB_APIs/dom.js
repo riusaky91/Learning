@@ -98,7 +98,7 @@ $linkDom.style.display = "block";//otro modo de modificar o añadir una propieda
 
 const $html = document.documentElement,//acceder a documento html
     $body =document.body;//accediendo al body
-    let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color"),//al estar la variable css sobre el root o html se accede desde html
+let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color"),//al estar la variable css sobre el root o html se accede desde html
      varYellowColor = getComputedStyle($html).getPropertyValue("--yelow-color");
 
 console.log(varDarkColor);//imprimo el valor de la variable css que se consigue para comprobar
@@ -325,7 +325,8 @@ $eventoSemantico.onclick = function (e) {//la e es el evento en si y solo puede 
 }
 
 $eventoMultiple.addEventListener("click",holaMundo);//añado en el evento click el metodo holamundo
-$eventoMultiple.addEventListener("click",(e)=>{alert("Hola mundo manejador de eventos multiples")//añado en el evento click  otro metodo anonimo
+$eventoMultiple.addEventListener("click",(e)=>{//añado en el evento click  otro metodo anonimo
+alert("Hola mundo manejador de eventos multiples")
 console.log(e)});
 
 console.log("***************************************************************************************************");

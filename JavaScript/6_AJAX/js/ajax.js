@@ -17,7 +17,7 @@
             let json = JSON.parse(xhr.responseText);//declaro e inicializo la variable json con la respuesta tipo JSON formateada como objeto javascript
             
 
-            json.forEach(element => {//recorro el obeto javascript generado
+            json.forEach(element => {//recorro el objeto javascript generado
                 const $li = document.createElement("li");//declaro e inicializo la constante li con un elemento li
                 $li.innerHTML = `Nombre: ${element.name},  Correo: ${element.email}, Telefono: ${element.phone}`;//añado al contenido de li los atributos que voy a utilizar del objeto json
                 $fragment.appendChild($li);//añado al fragmento los li que he recorrido
@@ -80,9 +80,9 @@
         $fragment = document.createDocumentFragment();//declaro e inicializo la constante que contiene un fragmento
 
         async function getData() { //Funcion asincrona declarada
-            try {//Manejo de excepciones para le uso del async
+            try {//Manejo de excepciones para el uso del async
                 let res = await fetch("https://jsonplaceholder.typicode.com/users"),//declaro e inicializo variable que detendra la ejecucion del codigo hasta que traiga los recursos solicitados en fetch y los alamcene en la variable
-                    json = await res.json();//declaro e inicializo variable que detendra la ejecucion del codigo hasta que convierta la respuesta en un objeto JSON y los alamcene en la variable
+                    json = await res.json();//declaro e inicializo variable que detendra la ejecucion del codigo hasta que convierta la respuesta en un objeto JSON y los almacene en la variable
                     
                 //console.log(res, json);
 
