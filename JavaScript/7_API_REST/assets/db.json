@@ -11,8 +11,8 @@
       "id": 4
     },
     {
-      "nombre": "tres",
-      "constelacion": "tercero",
+      "nombre": "3",
+      "constelacion": "quinti",
       "id": 5
     },
     {
@@ -34,6 +34,11 @@
       "nombre": "siete",
       "constelacion": "septimo",
       "id": 9
+    },
+    {
+      "nombre": "ss",
+      "constelacion": "sss",
+      "id": 10
     }
   ],
   "dioses": [

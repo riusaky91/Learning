@@ -8,13 +8,13 @@ const d= document,
     $form = d.querySelector(".crud-form"), //variable contiene la informacion del elemento formulario en el HTML
     $title = d.querySelector(".crud-title"), //variable contiene la informacion del elemento tiitle en el HTML
     $template = d.getElementById("crud-template").content, //variable contiene la informacion del elemento template en el HTML y en especifico es el contenido .content
-    $fragment = d.createDocumentFragment(); //declaro e inicializo la constante que contiene un fragmento
+    $fragment = d.createDocumentFragment(); //declaro e inicializo un constante que contiene un fragmento
 
 
     
 
 
-d.addEventListener("DOMContentLoaded",(e)=>{//metodo que se ejecuta a la carga del DOM
+d.addEventListener("DOMContentLoaded",(e)=>{//metodo que se ejecuta a la carga del DOM para el docuemnto
     //GET - SELECT------------------------------------------------------------------------------------------------------
     //Funcion que recibe un objeto y ejecuta CRUD con el objeto XmlHttpRequests
     /*xhr({
@@ -144,7 +144,7 @@ d.addEventListener("submit", async (e)=>{//como se utiliza la asincronia en el m
                     e.target.constelacion.value = "";
                 },
                 error: (err)=>{//en caso de error
-                    console.error(err);//imprio error en consola
+                    console.error(err);//imprimo error en consola
                     $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`);//imprimo error en el formulario del docuemnto HTML
                 },
                 data: {
