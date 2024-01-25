@@ -250,8 +250,8 @@ d.addEventListener("click",(e)=>{
         $form.id.value = e.target.dataset.id;//asgino al campo del input el valor del data atributte id 
     }
     if (e.target.matches(".delete")) {
-        let isDelete = confirm(`Esta seguro de eliminar canción el id ${e.target.dataset.id}`);//Guardo en la variable isDelete el resultado de la alerta confirm
-
+        let isDelete = confirm(`Esta seguro de eliminar al santo ${e.target.previousElementSibling.dataset.name} de la constelación de ${e.target.previousElementSibling.dataset.constellation}`);//Guardo en la variable isDelete el resultado de la alerta confirm
+        
         if (isDelete) {
             //DELETE------------------------------------------------------------------------------------------------------
             /*xhr({
