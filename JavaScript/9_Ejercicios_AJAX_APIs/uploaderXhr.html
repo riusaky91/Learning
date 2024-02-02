@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploader con AJAX</title><!--***Cargar archivos al servidor mediante HTML, JavaScript y PHP-->
+    <style>
+        html {/*Selector del elemento html los elementos hijos heredaran sus propiedades*/
+            box-sizing: border-box;/*propiedad y valor que hace que el padding y el border pasen a formar parte del cálculo del ancho de la caja sin hacer calculos adicionales */
+            font-family: sans-serif;/*propiedad y valor que ajusta el tipo de letra */
+            font-size: 16px;/*propiedad y valor que ajusta el tamaño de letra */
+        }
+
+        main {/*Selector de la elemento main los elementos hijos heredaran sus propiedades*/
+            display: flex;/*propiedad y valor que inicializa el uso de flexbox*/
+            flex-direction: column;/*propiedad  que direcciona el uso de flexbox de acuerdo al valor indicado*/
+            justify-content: center;/*propiedad y valor que ajusta la posicion del contenido horizontalmente*/
+            align-items: center;/*propiedad y valor que ajusta la posicion del contenido verticalmente*/
+            text-align: center;/*propiedad y valor que ajusta la posicion del texto dentro del elemento*/
+            min-height: 100vh;/*propiedad que indica la altura minima del elemento*/
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <input type="file" id="files" name="files" multiple><!--input de tipo file con el atributo multiple permite subir mas de un archivo-->
+    </main>
+    <script>
+        const d = document,/*Declaro e inicializo constante con la informacion del document*/
+            $main = d.querySelector("main"),/*Declaro e inicializo constante con la informaicion del elemento referenciado*/
+            $files = d.getElementById("files");/*Declaro e inicializo constante con la informaicion del elemento referenciado*/
+
+        const uploader = (file) =>{/*Arrow function expresada que recibe un parametro*/
+            const xhr = new XMLHttpRequest(),/*Declaro e inicializo constante tipo XMLHttpRequest*/
+                formData = new FormData();/*Declaro e inicializo constante tipo FormData que recibe un parametro tipo formulario*/
+
+            formData.append("file", file);/*Especifico en la variable tipo form data el nombre y el elemento que quiero volver tipo FormData */
+
+            xhr.addEventListener("readystatechange", (e) =>{
+
+                if(xhr.readyState !== 4) return;//si la propiedad readyState es difernte a 4, la funcion no va ha retornar nada
+        
+                if(xhr.status >= 200 && xhr.status < 300){//si la peticion tiene un estatus satisfactorio que se encuentra entre 200 y 300
+                    let json = JSON.parse(xhr.responseText);
+                    console.log(json);
+                }else{
+                    let message = xhr.statusText || "Ocurrio un error";//operador corto circuito que toma el segundo valor si el primero esta vacio
+                    console.log(`Error ${xhr.status}: ${message}`);//Imprimo y añado el error encontrado al elemento del dom
+                }
+
+            });
+
+            xhr.open("POST", "assets/uploader.php");//abrir la peticion (metodo y end point(ruta local o web))
+            xhr.setRequestHeader("enc-type", "multipart/form-data");//header de la solicitud, se debe especificar la cabecera para que la solicitud no se devuelva con un texto plano
+            xhr.send(formData);//Envio el archivo tipo formdata 
+
+            //console.log(file);
+        }
+
+        d.addEventListener("change", e =>{/*Metodo que se ejecuta cuando hay un cambio dentro del documento*/
+            if(e.target === $files){/*si el elemento que roigina el cambio es $files*/
+                console.log(e.target.files);
+
+                const files = Array.from(e.target.files);/*Declaro e inicializo constante que convierte en tipo arreglo la informacion del archivo o la lista de que se cargan en el input*/
+                files.forEach(el => {/*recorro el arreglo previamente creado*/
+                    uploader(el);/*ejecuto el metodo uploader por cada elemenyo del arreglo*/
+                });
+            }
+        })
+    </script>
+</body>
+</html>
