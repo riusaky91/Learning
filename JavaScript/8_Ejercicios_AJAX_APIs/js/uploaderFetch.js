@@ -25,20 +25,48 @@ const uploader = async (file)=> {//Arrow Funcion asincrona expresada
         }
         
     } catch (error) {
-        let message = res.statusText || "Ocurrio un error";//operador corto circuito que toma el segundo valor si el primero esta vacio
-        console.log(`Error ${res.status}: ${message}`);//Imprimo y añado el error encontrado al elemento del dom
+        let message = error.statusText || "Ocurrio un error";//operador corto circuito que toma el segundo valor si el primero esta vacio
+        console.log(`Error ${error}: ${message}`);//Imprimo y añado el error encontrado al elemento del dom
     }
 
 }
 
+/*Arrow function que recibe un archivo y le genera una barra de progreso*/
+const progressUpload = (file) =>{
+    const $progress = d.createElement("progress"),/*Creacion un elemento de tipo progress */
+            $span = d.createElement("span");
+
+    $progress.value = 0;//estado de la barra del progreso al iniciar la carga
+    $progress.max = 100;//estado maximo de la barra del progreso 
+
+    $main.insertAdjacentElement("beforeend", $progress);//despues del elemento main se inserta el elenmto progress
+    $main.insertAdjacentElement("beforeend", $span);//despues del elemento main se inserta el elenmto span
+
+    const fileReader = new FileReader();//Instanciacion una constante con el objeto filreader que permite ir detectando el progreso de los bits cargados de un archivo 
+    fileReader.readAsDataURL(file);//se especifica como se va leer el archivo el cual recibe como parametro el archivo a leer
+    fileReader.addEventListener("progress",e=>{//evento propio del objeto filereader que se ejecuta a cada cambio del progreso de carga
+        let progress = parseInt((e.loaded*100)/e.total);//Declaro e inicializo la variable con una regla de 3 para establecer el porcentaje de progreso de carga del archivo
+        $progress.value = progress;//Asigno al atributo value del progress el porcentaje generado.
+        $span.innerHTML = `<b>${file.name} - ${progress}%</b>`;//Asigno al elemento span los datos del archovp y el porcentaje de carga
+    } )
+    fileReader.addEventListener("loadend",e=>{//evento propio del objeto filereader que se ejecuta al final progreso de carga
+        uploader(file);//LLamo a la funcion que hace el llamado API Fetch al PHP
+        setTimeout(() => {
+            $main.removeChild($progress);//elimino la barra de progreso del elemento main
+            $main.removeChild($span);//elimino el mensaje de progreso del elemento main
+            $files.value = "";//reinicio el atributo value del elemento file
+        }, 3000);
+    } )
+}
+
 
 d.addEventListener("change", e =>{/*Metodo que se ejecuta cuando hay un cambio dentro del documento*/
-    if(e.target === $files){/*si el elemento que roigina el cambio es $files*/
+    if(e.target === $files){/*si el elemento que origina el cambio es $files*/
         console.log(e.target.files);
 
         const files = Array.from(e.target.files);/*Declaro e inicializo constante que convierte en tipo arreglo la informacion del archivo o la lista de que se cargan en el input*/
         files.forEach(el => {/*recorro el arreglo previamente creado*/
-            uploader(el);/*ejecuto el metodo uploader por cada elemenyo del arreglo*/
+            progressUpload(el);/*ejecuto el metodo progresUpload por cada elemento del arreglo*/
         });
     }
 })

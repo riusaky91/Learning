@@ -1,6 +1,6 @@
 const d = document,/*Declaro e inicializo constante con la informacion del document*/
             $main = d.querySelector("main"),/*Declaro e inicializo constante con la informaicion del elemento referenciado*/
-            $files = d.getElementById("files");/*Declaro e inicializo constante con la informaicion del elemento referenciado*/
+            $dropZone = d.querySelector(".drop-zone");/*Declaro e inicializo constante con la informaicion del elemento referenciado*/
 
 
 
@@ -31,11 +31,10 @@ const uploader = async (file)=> {//Arrow Funcion asincrona expresada
 
 }
 
-
+/*Arrow function que recibe un archivo y le genera una barra de progreso*/
 const progressUpload = (file) =>{
     const $progress = d.createElement("progress"),/*Creacion un elemento de tipo progress */
             $span = d.createElement("span");
-
 
     $progress.value = 0;//estado de la barra del progreso al iniciar la carga
     $progress.max = 100;//estado maximo de la barra del progreso 
@@ -55,19 +54,29 @@ const progressUpload = (file) =>{
         setTimeout(() => {
             $main.removeChild($progress);//elimino la barra de progreso del elemento main
             $main.removeChild($span);//elimino el mensaje de progreso del elemento main
-            $files.value = "";//reinicio el atributo value del elemento file
         }, 3000);
     } )
 }
 
+$dropZone.addEventListener("dragover", e =>{//evento que se ejecuta cuando tengo un archivo externo sobre el elemento
+    console.log("encima");
+    e.preventDefault();/*Elimino todos los enventos pordefecto que tenga el elemento */
+    e.stopPropagation();/*Detengo la propagacion de los eventos para el elemento */
+    e.target.classList.add("is-active");//añado la clase is-active
+})
 
-d.addEventListener("change", e =>{/*Metodo que se ejecuta cuando hay un cambio dentro del documento*/
-    if(e.target === $files){/*si el elemento que roigina el cambio es $files*/
-        console.log(e.target.files);
+$dropZone.addEventListener("dragleave", e =>{//evento que se ejecuta cuando tengo un archivo externo fuera el elemento
+    e.preventDefault();/*Elimino todos los enventos pordefecto que tenga el elemento */
+    e.stopPropagation();/*Detengo la propagacion de los eventos para el elemento */
+    e.target.classList.remove("is-active");//elimino la clase is-active
+})
 
-        const files = Array.from(e.target.files);/*Declaro e inicializo constante que convierte en tipo arreglo la informacion del archivo o la lista de que se cargan en el input*/
-        files.forEach(el => {/*recorro el arreglo previamente creado*/
-            progressUpload(el);/*ejecuto el metodo progresUpload por cada elemento del arreglo*/
-        });
-    }
+$dropZone.addEventListener("drop", e =>{//evento que se ejecuta cuando tengo un archivo externo y lo dejo sobre el elemento
+    e.preventDefault();/*Elimino todos los enventos pordefecto que tenga el elemento */
+    e.stopPropagation();/*Detengo la propagacion de los eventos para el elemento */
+    const files = Array.from(e.dataTransfer.files);/*Declaro e inicializo constante que convierte en tipo arreglo la informacion del archivo o la lista de que se cargan en el input*/
+    files.forEach(el => {/*recorro el arreglo previamente creado*/
+        progressUpload(el);/*ejecuto el metodo progresUpload por cada elemento del arreglo*/
+    });
+    e.target.classList.remove("is-active");//elimino la clase is-active
 })

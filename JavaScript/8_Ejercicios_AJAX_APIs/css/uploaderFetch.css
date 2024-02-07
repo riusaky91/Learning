@@ -4,6 +4,10 @@ html {/*Selector del elemento html los elementos hijos heredaran sus propiedades
     font-size: 16px;/*propiedad y valor que ajusta el tamaño de letra */
 }
 
+body {
+    margin: 0;/*propiedad que define todo el margen del elemento*/
+}
+
 main {/*Selector de la elemento main los elementos hijos heredaran sus propiedades*/
     display: flex;/*propiedad y valor que inicializa el uso de flexbox*/
     flex-direction: column;/*propiedad  que direcciona el uso de flexbox de acuerdo al valor indicado*/
@@ -11,4 +15,41 @@ main {/*Selector de la elemento main los elementos hijos heredaran sus propiedad
     align-items: center;/*propiedad y valor que ajusta la posicion del contenido verticalmente*/
     text-align: center;/*propiedad y valor que ajusta la posicion del texto dentro del elemento*/
     min-height: 100vh;/*propiedad que indica la altura minima del elemento*/
+}
+
+progress {
+    margin-top: 1rem;/*propiedad que define el margen superior del elemento*/
+}
+
+.drop-zone {/*elementos con la clase*/
+    margin-left: auto;/*propiedad que define el margen izquierdo del elemento*/
+    margin-right: auto;/*propiedad que define el margen derecho del elemento*/
+    border: thin dotted #000; /*propiedad de define el borde de un elementeo (delgado, punteado, negro */
+    width: 80%;/*propiedad que define el ancho del objeto*/
+    height: 50%;/*propiedad que define la altura del elemento*/
+    display: flex;/*propiedad y valor que inicializa el uso de flexbox*/
+    justify-content: center;/*propiedad y valor que ajusta la posicion del contenido horizontalmente*/
+    align-items: center;/*propiedad y valor que ajusta la posicion del contenido verticalmente*/
+    text-align: center;/*propiedad y valor que ajusta la posicion del texto dentro del elemento*/
+}
+
+.drop-zone.is-active{/*cuando los elementos con la clase drop-zoon tambiien contengan la clase is-active */
+    border: thick dashed #000;/*propiedad de define el borde de un elementeo (grueso, segmentado, negro */
+    background-color: rgba(0, 128, 0, 5);/*propiedad de define el color de fondo*/
+    animation: pulse 1.5s infinite;/*propiedad de define animasion (nombre, tiempo de ejecusion, en bucle)*/
+    animation-timing-function: linear;/*propiedad de define el flujo de ejecucion*/
+}
+
+@keyframes pulse {/*funcion para definir los parametros de una animacion*/
+    
+    0%,
+    100%{/*en el fotograma 0 y 100*/
+        transform:scale(1);/*propiedad que define la trasnformacion que sufrira el elemento que se anima (escala)*/
+    }
+
+    
+    50%{
+        transform:scale(1);/*propiedad que define la trasnformacion que sufrira el elemento que se anima (escala)*/
+    }
+
 }
