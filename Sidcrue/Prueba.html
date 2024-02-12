@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Importar CSV a MySQL</title>
+</head>
+<body>
+    <h1>Importar CSV a MySQL</h1>
+    <form id="formCSV">
+        <label for="archivo_csv">Selecciona un archivo CSV:</label>
+        <input type="file" name="archivo_csv" id="archivo_csv" accept=".csv">
+        <br><br>
+        <button type="submit">Importar</button>
+    </form>
+
+    <script>
+        document.getElementById('formCSV').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario por defecto
+
+            var formData = new FormData(); // Crear un objeto FormData para enviar el archivo CSV
+
+            // Agregar el archivo CSV al objeto FormData
+            var fileInput = document.getElementById('archivo_csv');
+            formData.append('archivo_csv', fileInput.files[0]);
+
+            // Enviar el formulario utilizando Fetch API
+            fetch('importar_csv.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); // Mostrar respuesta del servidor en la consola
+                // Puedes hacer cualquier otra acción con la respuesta del servidor aquí
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
