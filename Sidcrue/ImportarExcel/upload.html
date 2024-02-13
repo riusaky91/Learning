@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subir Archivo Excel</title>
+</head>
+<body>
+    <h2>Subir Archivo Excel</h2>
+    <input type="file" id="archivo_excel">
+    <button onclick="subirArchivo()">Subir Archivo</button>
+
+    <script>
+        function subirArchivo() {
+            var formData = new FormData();
+            var archivo = document.getElementById('archivo_excel').files[0];
+            formData.append('archivo_excel', archivo);
+
+            fetch('upload.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

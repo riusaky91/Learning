@@ -1,0 +1,20 @@
+{
+    "name": "mlestupinan/importar-excel",
+    "description": "excel",
+    "autoload": {
+        "psr-4": {
+            "Mlestupinan\\ImportarExcel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "riusaky91",
+            "email": "marlonleonardo.er@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-gd": "*",
+        "ext-fileinfo": "*",
+        "phpoffice/phpspreadsheet": "^2.0"
+    }
+}
