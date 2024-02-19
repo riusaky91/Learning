@@ -47,7 +47,7 @@ function contactForm() {
             
             $loader.classList.remove("none");//remuevo clase none del svg
             
-           fetch("https://formsubmit.co/ajax/marlonleonardo.er@gmail.com",{
+           fetch("https://formsubmit.co/ajax/marlonleonardo.er@gmail.com",{//Manejo de api Fetch con el endpoint de la pagina de formsubmit que solicita el correo para enviar
                 method: "POST",
                 headers: { 
                     'Content-Type': 'application/json',
@@ -55,23 +55,26 @@ function contactForm() {
                 },
                 body: new FormData(e.target)
             })
-            .then(res=>res.ok ? res.json(): Promise.reject(res))//Si la respuesta es ok la retornamos convertida en json si no envian el error al metodo catch
+            .then(res=>res.ok ? res.json(): Promise.reject(res))//Si la respuesta es ok la retornamos convertida en json si no enviamos el error al metodo catch
             .then(json=>{
                 console.log(json);
                 $loader.classList.add("none");//añado clase none del svg
                 $response.classList.remove("none");//remuevo clase non del div 
                 $form.reset();//reinicia el formulario
             })
-            .catch(err=>{
+            .catch(err=>{//manejo del error
                 console.log(err);
+                let message = err.statusText || "Ocurrio un error al enviar intenta nuevamente";
+                $response.innerHTML = `<p>Error ${err.status}: ${message}</p>`;
             })
             .finally(setTimeout(() => {
                     $response.classList.add("none");//añado clase none del svg
+                    $response.innerHTML = "";
                 }, 3000)
             )
         })
 }
 
-d.addEventListener("DOMContentLoaded", e=>{
+d.addEventListener("DOMContentLoaded", e=>{//se ejecuta cuando del domm se cargue
     contactForm();
 })
