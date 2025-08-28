@@ -7,6 +7,6 @@ export const environment = {
 
 
     //API KEY de GIPHY
-
+    ghiphyapiKey: '5WgtvUd5uYkFcNn0Bave0uGbbUhQrsvi'
     //URls
 };
