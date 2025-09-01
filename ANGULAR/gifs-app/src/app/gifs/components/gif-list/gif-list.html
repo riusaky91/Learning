@@ -2,7 +2,7 @@
     @for (gif of gifs(); track gif) { <!-- Usamos un bucle para iterar sobre el array de gifs que recibimos como input -->
 
 
-        <gifs-list-item [imageUrl]="gif"/><!-- gifs-list-item es el selector del componente gifs-list-item.ts, y le pasamos la url de la imagen que tenemos en el array de gifs que recibimos como input -->
+        <gifs-list-item [imageUrl]="gif.url"/><!-- gifs-list-item es el selector del componente gifs-list-item.ts, y le pasamos la url de la imagen que tenemos en el array de gifs que recibimos como input -->
 
     }
     

@@ -1,5 +1,6 @@
 import { Component, input } from "@angular/core";
 import GifListItemComponent from "./gif-list-item/gif-list-item";
+import { Gif } from "../../interfaces/gif.interface";
 
 @Component({
   selector: "gifs-list",
@@ -9,5 +10,5 @@ import GifListItemComponent from "./gif-list-item/gif-list-item";
 })
 
 export default class GifListComponent { //Default para exportar el componente y usar lazy loading
-  gifs = input.required<string[]>(); // Input para recibir el array de gifs desde el componente padre
+  gifs = input.required<Gif[]>(); // Input para recibir el array de gifs desde el componente padre
 }

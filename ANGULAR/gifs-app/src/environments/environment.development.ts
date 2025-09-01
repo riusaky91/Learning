@@ -1,4 +1,4 @@
-export const environment = {
+export const environment = {// este archivo contiene las variables de entorno para desarrollo
 
     production: true,
     companyName: "Gifs",
@@ -7,6 +7,7 @@ export const environment = {
 
 
     //API KEY de GIPHY
-    ghiphyapiKey: '5WgtvUd5uYkFcNn0Bave0uGbbUhQrsvi'
+    giphyapiKey: '5WgtvUd5uYkFcNn0Bave0uGbbUhQrsvi', 
     //URls
+    giphyURL: 'https://api.giphy.com/v1',
 };
