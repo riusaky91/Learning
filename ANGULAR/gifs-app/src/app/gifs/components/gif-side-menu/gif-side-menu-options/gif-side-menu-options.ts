@@ -24,7 +24,7 @@ export default class GifSideMenuOptionsComponent { //Default para exportar el co
         icon: "fa-solid fa-chart-line"
       },
       {
-        label: "Search",
+        label: "Buscador",
         subLabel: "Buscar gifs",
         route: "/Dashboard/Search",
         icon: "fa-solid fa-magnifying-glass"

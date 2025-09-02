@@ -40,4 +40,8 @@ export class GifsService {
             console.log({gifs});// Mostramos los gifs en consola
         });
     }
+
+    searchGifs(query: string) {
+        //tarea implementar el metodo para buscar gifs teniendo en cuenta la api de giphy search
+    }
 }
