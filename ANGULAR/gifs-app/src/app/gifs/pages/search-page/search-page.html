@@ -10,5 +10,5 @@
 </section>
 
 <section class="py-5">
-    <gifs-list [gifs]="[]"></gifs-list> <!-- gifs-list es el selector del componente gifs-list.ts, y le pasamos el array de gifs que tenemos en el componente trending-page.ts -->
+    <gifs-list [gifs]="gifService.trendingGifs()"></gifs-list> <!-- gifs-list es el selector del componente gifs-list.ts, y le pasamos el array de gifs que tenemos en el componente search-page.ts -->
 </section>

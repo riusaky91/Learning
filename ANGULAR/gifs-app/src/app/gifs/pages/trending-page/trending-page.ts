@@ -30,6 +30,8 @@ export default class TrendingPageComponent {
   
   gifService = inject(GifsService);// Inyectamos el servicio de gifs para usar su logica
 
-
+  constructor(){
+    this.gifService.loadTrendingGifs();
+  }
 
 }
