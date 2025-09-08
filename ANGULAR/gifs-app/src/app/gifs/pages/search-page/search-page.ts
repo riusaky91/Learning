@@ -14,12 +14,14 @@ export default class SearchPageComponent { //Default para exportar el componente
   
   gifService = inject(GifsService);// Inyectamos el servicio de gifs para usar su logica
   
-  gifs = signal<Gif[]>([]);
+  gifs = signal<Gif[]>([]);// Signal para almacenar los gifs que se muestran en la pagina
 
   onSearch(query: string) {//El query es el valor que nos llega del input del componente search-box.ts
 
     console.log({ query });
 
-    this.gifService.searchGifs(query);
+    this.gifService.searchGifs(query).subscribe((resp) => { // Hacemos la peticion HTTP y nos suscribimos a la respuesta;
+      this.gifs.set(resp);// Actualizamos el signal con los gifs obtenidos de la busqueda    
+    });
   }
 }
