@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
+import { GifsService } from "src/app/gifs/services/gifs.service";
 
 interface MenuOption {
   label: string;  // Etiqueta que se mostrará en la opción del menú
@@ -16,6 +17,9 @@ interface MenuOption {
 })
 
 export default class GifSideMenuOptionsComponent { //Default para exportar el componente y usar lazy loading
+
+  gifService = inject(GifsService);// Inyectamos el servicio de gifs para usar su logica
+
   menuOptions: MenuOption[] =  [
       {
         label: "Trending",

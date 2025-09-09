@@ -1,10 +1,14 @@
 import { HttpClient } from "@angular/common/http";
-import { inject, Injectable, signal } from "@angular/core";
+import { computed, inject, Injectable, signal } from "@angular/core";
 import { environment } from "@environments/environment";
 import { GiphyItem, GiphyResponse } from "../interfaces/giphy.interfaces";
 import { Gif } from "../interfaces/gif.interface";
 import { GifMapper } from "../mapper/gif.mapper";
 import { map, tap } from "rxjs";
+
+
+
+
 
 @Injectable({ // Decorador para definir un servicio injectable
   providedIn: "root",// Servicio disponible en toda la aplicacion
@@ -15,6 +19,9 @@ export class GifsService {
 
     trendingGifs= signal<Gif[]>([]);// Signal para almacenar los gifs de tendencia
     trendingGifsLoading= signal(false);// Signal para indicar si se estan cargando los gifs de tendencia
+
+    searchHistory = signal<Record<string, Gif[]>>({});// Signal para almacenar el historial de busquedas
+    searchHistoryKeys = computed(() => Object.keys(this.searchHistory()));// Computed para obtener las claves del historial de busquedas
 
     constructor() {
         this.loadTrendingGifs();// Cargar los gifs de tendencia al crear el servicio
@@ -55,7 +62,14 @@ export class GifsService {
         } // Usamos las variables de entorno para la URL y la API key
         }).pipe(//pipe para encadenar operadores de rxjs
             map(({data}) => data),//Desestructuramos la respuesta para obtener solo el array de items
-            map((items) => GifMapper.mapGiphyToGifArray(items))//Mapeamos la respuesta a nuestro modelo de Gif
+            map((items) => GifMapper.mapGiphyToGifArray(items)),//Mapeamos la respuesta a nuestro modelo de Gif
+
+            tap(items => {//tap para realizar efectos secundarios sin alterar la respuesta
+                this.searchHistory.update(history => ({ //Actualizamos el signal del historial de busquedas
+                    ...history,
+                    [query.toLowerCase()]: items, //Actualizamos el historial de busquedas con la nueva busqueda
+                }));
+            })
         );
         /*
         .subscribe(resp => { // Hacemos la peticion HTTP y nos suscribimos a la respuesta
