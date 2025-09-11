@@ -17,6 +17,10 @@ export const routes: Routes = [
                 loadComponent: () => import('./gifs/pages/search-page/search-page'), // Lazy loading en el componente
             },
             {
+                path: 'History/:query', // Ruta con parametro dinamico
+                loadComponent: () => import('./gifs/pages/gif-history/gif-history-page'), // Lazy loading en el componente
+            },
+            {
                 path: '**',
                 redirectTo: 'Trending', // Redirige a Trending si la ruta no coincide   
             },
