@@ -1,3 +1,11 @@
 <h1>History</h1>
 
-<h3>{{query()}}</h3>
+
+<h3 class="text-2xl font-bold mt-4">
+    Mostrando:<h3>{{query()}}</h3>
+     
+</h3>
+
+<section class="py-5">
+    <gifs-list [gifs]="gifsByKey()"></gifs-list> <!-- gifs-list es el selector del componente gifs-list.ts, y le pasamos el array de gifs que tenemos en el componente trending-page.ts -->
+</section>

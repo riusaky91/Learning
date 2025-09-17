@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { computed, inject, Injectable, signal } from "@angular/core";
+import { computed, effect, inject, Injectable, signal } from "@angular/core";
 import { environment } from "@environments/environment";
 import { GiphyItem, GiphyResponse } from "../interfaces/giphy.interfaces";
 import { Gif } from "../interfaces/gif.interface";
@@ -7,7 +7,16 @@ import { GifMapper } from "../mapper/gif.mapper";
 import { map, tap } from "rxjs";
 
 
+const GIF_KEY = 'gifs';// para evitar posibles errores se usa una constante con el valor de string ara llamar al objeto de localstorage
 
+const loadFromLocaStorage =()=>{// carga los objetos Gif desde el localstorge del navegador 
+    const gifsFromLocalStorage = localStorage.getItem(GIF_KEY) ?? '{}';
+    const gifs = JSON.parse(gifsFromLocalStorage);
+
+    console.log(gifs)
+    return gifs;
+    
+}
 
 
 @Injectable({ // Decorador para definir un servicio injectable
@@ -20,7 +29,7 @@ export class GifsService {
     trendingGifs= signal<Gif[]>([]);// Signal para almacenar los gifs de tendencia
     trendingGifsLoading= signal(false);// Signal para indicar si se estan cargando los gifs de tendencia
 
-    searchHistory = signal<Record<string, Gif[]>>({});// Signal para almacenar el historial de busquedas
+    searchHistory = signal<Record<string, Gif[]>>(loadFromLocaStorage());// Signal para almacenar el historial de busquedas, inicializo el metodo para cargar del local storage los gifs almacenados
     searchHistoryKeys = computed(() => Object.keys(this.searchHistory()));// Computed para obtener las claves del historial de busquedas
 
     constructor() {
@@ -29,6 +38,11 @@ export class GifsService {
     // Servicio para manejar la logica de los gifs
     private http = inject(HttpClient); // Inyectamos el HttpClient para hacer peticiones HTTP
     
+
+    saveGifsTolocalStorage = effect(()=>{//Efecto con una tarea para realizar alamacenamiento en el LocalStorage
+        const historyString = JSON.stringify(this.searchHistory());//señal constante tipo string
+        localStorage.setItem(GIF_KEY, historyString);
+    })
 
     // metodo con la logica para cargar los gifs de tendencia
     loadTrendingGifs() { 
@@ -80,5 +94,10 @@ export class GifsService {
             console.log({gifs});// Mostramos los gifs en consola
         });*/   
     
+    }
+
+    getHistoryGifs( query: string): Gif[]{
+        return this.searchHistory()[query] ?? [];
+        
     }
 }

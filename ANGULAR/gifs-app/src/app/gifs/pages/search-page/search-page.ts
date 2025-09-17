@@ -1,4 +1,4 @@
-import { Component, inject, signal } from "@angular/core";
+import { Component, effect, inject, signal } from "@angular/core";
 import GifListComponent from "../../components/gif-list/gif-list";
 import { GifsService } from "../../services/gifs.service";
 import { Gif } from "../../interfaces/gif.interface";
@@ -21,7 +21,10 @@ export default class SearchPageComponent { //Default para exportar el componente
     console.log({ query });
 
     this.gifService.searchGifs(query).subscribe((resp) => { // Hacemos la peticion HTTP y nos suscribimos a la respuesta;
-      this.gifs.set(resp);// Actualizamos el signal con los gifs obtenidos de la busqueda    
+      this.gifs.set(resp);// Actualizamos el signal con los gifs obtenidos de la busqueda   
+      console.log(resp, "respuetsa") 
+      
     });
   }
+
 }
