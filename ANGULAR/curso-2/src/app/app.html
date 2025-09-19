@@ -60,12 +60,52 @@
 
 <app-child [msg]="userName"></app-child>
 
-    <!-- -----------------------------------------@input con signal-------------------------------------- -->
+<!-- -----------------------------------------@input con signal-------------------------------------- -->
 
-<h1>@input</h1> 
+<h1>@input con signal</h1> 
 
 
 <app-child [message]="userName"></app-child>
 
 
+<!-- -----------------------------------------@output-------------------------------------- -->
+
+<h1>@Ouput</h1> 
+
+<h2>Hola {{name}}</h2>
+
+<app-child (login)="setName($event)" ></app-child><!-- se agrega el componente hijo y se le pasa la funcion setName que recibe el dato del componente hijo -->
+
 <!-- -----------------------------------------@output con signal-------------------------------------- -->
+
+<h1>@Ouput con signal</h1> 
+
+<h2>Hola {{name}}</h2>
+
+<app-child (login)="setName($event)" ></app-child><!-- se agrega el componente hijo y se le pasa la funcion setName que recibe el dato del componente hijo -->
+
+<!-- -----------------------------------------ngClas-------------------------------------- -->
+
+<h1>ngClass</h1> 
+
+<h2 [ngClass]="{dark: isDark, big:true}">Hola a todos</h2> <!-- se agrega la directiva ngClass que aplica las clases dark y big a el h2 -->
+
+<button (click)="toogleDark()">toogleDark</button> <!-- se agrega un boton que cambia el valor de la variable isDark -->
+
+
+<!-- -----------------------------------------reactiveForms-------------------------------------- -->
+
+<h1>Reactive Forms</h1>
+
+<form [formGroup]="movieForm" (submit)="handleSubmit()"> <!-- se agrega el formulario y se le asigna el formGroup movieForm -->
+    <label for="name">Name</label>
+    <input type="text" formControlName="movieName" id="movie-name"><br><!-- se agrega el input y se le asigna el formControlName name -->
+    
+    <label for="duration">Duration</label>
+    <input type="text" formControlName="duration" id="movie-duration"><br><!-- se agrega el input y se le asigna el formControlName duration -->
+
+    <label for="director">Director</label>
+    <input type="text" formControlName="director" id="movie-director"><br><!-- se agrega el input y se le asigna el formControlName director -->
+
+    <button>Create movie</button>
+</form>
