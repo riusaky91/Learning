@@ -1,0 +1,32 @@
+<p> Componente movie-form-page</p>
+
+<form [formGroup]="movieForm" (submit)="handleSubmit()"> <!-- se agrega el formulario y se le asigna el formGroup movieForm mas el evento submit que llama a la funcion handleSubmit() -->
+    <fieldset>
+        
+        <label for="movie-name">Name</label>
+        <input type="text" formControlName="name" id="movie-name"><br><!-- se agrega el input y se le asigna el formControlName name -->
+        @if (name.invalid && name.touched) {<!-- se agrega una condicion if que evalua si el control del formulario es invalido y ha sido tocado -->
+            <p class="form-error">Name is required</p>
+        }
+    </fieldset>
+    
+    <fieldset>
+        
+        <label for="movie-duration">Duration</label>
+        <input type="text" formControlName="duration" id="movie-duration"><br><!-- se agrega el input y se le asigna el formControlName duration -->
+        @if (duration.hasError("required") && duration.touched) {<!-- se agrega una condicion if que evalua si el control del formulario es invalido y ha sido tocado -->
+            <p class="form-error">Duration is required</p>
+        } @else if (duration.hasError("max")) {<!-- se agrega una condicion else if que evalua si el control del formulario tiene el error max -->
+            <p class="form-error">Duration cannot be more than 300 minutes</p>
+        }
+    </fieldset>
+    
+    <fieldset>
+        
+        <label for="movie-director">Director</label>
+        <input type="text" formControlName="director" id="movie-director"><br><!-- se agrega el input y se le asigna el formControlName director -->
+    </fieldset>
+    
+    <button [disabled]="movieForm.invalid" >Create movie</button><!-- se agrega el boton que envia el formulario y se deshabilita si el formulario es invalido -->
+    
+</form>

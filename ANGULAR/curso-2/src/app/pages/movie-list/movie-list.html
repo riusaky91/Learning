@@ -1,0 +1,12 @@
+<p>Componente movie-list</p>
+
+<ul>
+    @for (movie of movieService.movies; track $index) {<!-- se agrega un bloque for que itera sobre la variable movies del servicio movieService y muestra el indice, el nombre, la duracion y el director de la pelicula -->
+        <ol>
+            <h3>{{$index}} - {{movie.name}}</h3>
+            <h4>Duración: {{movie.duration}} minutos</h4>
+            <h4>Director: {{movie.director}}</h4>
+        </ol>
+    }
+
+</ul>
