@@ -27,4 +27,9 @@ export class MovieService {
     this.movies.push(movie);
   }
 
+
+  getMovie(name:String): Movies | undefined {// se crea un metodo para obtener una pelicula del array movies por su nombre
+    return this.movies.find(movie => movie.name === name);// se busca la pelicula en el array movies por su nombre y se retorna
+  }
+
 }

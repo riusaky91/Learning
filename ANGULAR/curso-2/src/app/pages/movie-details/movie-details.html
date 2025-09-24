@@ -1,1 +1,9 @@
 <p>movie-details works!</p>
+
+@if(selectedMovie){
+    <h2>Name {{selectedMovie.name}}</h2>
+    <h3>Duration: {{selectedMovie.duration}} minutes</h3>
+    <h3>Director: {{selectedMovie.director}}</h3>
+} @else {
+    <h2>No movie selected</h2>
+}

@@ -5,8 +5,10 @@
         
         <label for="movie-name">Name</label>
         <input type="text" formControlName="name" id="movie-name"><br><!-- se agrega el input y se le asigna el formControlName name -->
-        @if (name.invalid && name.touched) {<!-- se agrega una condicion if que evalua si el control del formulario es invalido y ha sido tocado -->
+        @if (duration.hasError("required") && duration.touched) {<!-- se agrega una condicion if que evalua si el control del formulario es invalido y ha sido tocado -->
             <p class="form-error">Name is required</p>
+        } @else if (name.hasError("pattern")) {<!-- se agrega una condicion else if que evalua si el control del formulario tiene el error pattern -->
+            <p class="form-error">Name can only contain letters and spaces</p>
         }
     </fieldset>
     
