@@ -10,6 +10,6 @@ import { RouterLink } from '@angular/router';
 })
 export class MovieList {
   constructor(public movieService: MovieService) {// se inyecta el servicio MovieService en el constructor para poder usarlo en el componente
-
+    
   }
 }

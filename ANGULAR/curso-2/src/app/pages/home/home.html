@@ -1,1 +1,104 @@
-<p> componente home</p>
+
+<!-- -----------------------------------------VARIABLES-------------------------------------- -->
+
+<h1>variables</h1>
+<h1>username {{userName}}</h1><!-- se agrega la variable userName al html para mostrar el nombre de usuario -->
+<input type="text" [value]="userName" /><!-- se agrega un input para cambiar el nombre de usuario data binding unidireccional -->
+
+
+<!-- -----------------------------------------FUNCTIONS-------------------------------------- -->
+
+<h1>Functions</h1>
+<h2>number {{number}}</h2><!-- se agrega la variable number al html para mostrar el numero -->
+<button (click)="addOne()">Add 1</button><!-- se agrega un boton que aumenta en 1 el valor de la variable number -->
+
+<!-- -----------------------------------------DOUBLE DATA binding-------------------------------------- -->
+
+<h1>Double data binding</h1>
+<h1>username {{userName}}</h1><!-- se agrega la variable userName al html para mostrar el nombre de usuario -->
+<input type="text" [(ngModel)]="userName" /><!-- se agrega un input para cambiar el nombre de usuario data binding bidireccional -->
+
+<!-- -----------------------------------------@if-------------------------------------- -->
+<h1>Bloque if</h1>
+ @if (condition) { <!-- se agrega una condicion if que evalua si la variable number es verdadera o falsa -->
+    <h2>La condición se cumple</h2>
+    
+    } @else{
+        
+        <h2>La condición no se cumple</h2>
+ } 
+ 
+ <!------------------------------------------@for------------------------------------->
+
+ <h1>Bloque for</h1> 
+ <h2>Peliculas</h2>
+@for (pelicula of peliculas; track $index) {<!-- se agrega un bloque for que itera sobre la variable peliculas y muestra el indice y el nombre de la pelicula -->
+    <h3>{{$index}} - {{pelicula}}</h3>
+}
+
+<h2>Animales</h2>
+<ul>
+    
+    @for (animal of animals; track animal.id) { <!-- se agrega un bloque for que itera sobre la variable animals y muestra el id y el nombre del animal -->
+        <ol>
+            <h3>{{animal.id}} - {{animal.name}}</h3>
+            <h4>{{animal.species}}</h4>
+            <button [title]="animal.species"></button>
+        </ol>
+        
+    }
+</ul>
+
+<!-- -----------------------------------------@input-------------------------------------- -->
+
+<h1>@input</h1> 
+
+
+<app-child [msg]="userName"></app-child>
+
+<!-- -----------------------------------------@input con signal-------------------------------------- -->
+
+<h1>@input con signal</h1> 
+
+
+<app-child [message]="userName"></app-child>
+
+
+<!-- -----------------------------------------@output-------------------------------------- -->
+
+<h1>@Ouput</h1> 
+
+<h2>Hola {{name}}</h2>
+
+<app-child (login)="setName($event)" ></app-child><!-- se agrega el componente hijo y se le pasa la funcion setName que recibe el dato del componente hijo -->
+
+<!-- -----------------------------------------@output con signal-------------------------------------- -->
+
+<h1>@Ouput con signal</h1> 
+
+<h2>Hola {{name}}</h2>
+
+<app-child (login)="setName($event)" ></app-child><!-- se agrega el componente hijo y se le pasa la funcion setName que recibe el dato del componente hijo -->
+
+<!-- -----------------------------------------ngClas-------------------------------------- -->
+
+<h1>ngClass</h1> 
+
+<h2 [ngClass]="{dark: isDark, big:true}">Hola a todos</h2> <!-- se agrega la directiva ngClass que aplica las clases dark y big a el h2 -->
+
+<button (click)="toogleDark()">toogleDark</button> <!-- se agrega un boton que cambia el valor de la variable isDark -->
+
+
+<!-- -----------------------------------------Services-------------------------------------- -->
+
+<h1>Services</h1>
+
+<div>
+    <h2>llamado al service</h2>
+    <h3>{{productService.product.name}}</h3><!-- se muestra el nombre del producto desde el servicio -->
+    <h3>{{productService.product.price}}</h3>
+    <h3>{{productService.product.isForSale}}</h3>
+    <button (click)="productService.setProdcuctName('Television')">Cambiar nombre</button><!-- se agrega un boton que cambia el nombre del producto desde el servicio a todas las instancias -->
+</div>
+
+

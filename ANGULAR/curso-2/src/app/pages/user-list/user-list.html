@@ -1,0 +1,15 @@
+<p>Componente user-list desde API</p>
+
+<ul>
+    @for (user of userService.users; track $index) {<!-- se agrega un bloque for que itera sobre la variable user del servicio userService y muestra el indice, el nombre, la duracion y el director de la pelicula -->
+        <ol>
+            <a [routerLink]="user.id"><!-- se agrega un enlace que redirige a la ruta parametrizada con el nombre del ususario -->
+
+                <h3>{{$index +1 }}</h3>
+                <h4>Nombre: {{user.name}}</h4>
+                
+            </a>
+        </ol>
+    }
+
+</ul>

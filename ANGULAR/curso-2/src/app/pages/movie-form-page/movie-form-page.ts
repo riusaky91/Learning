@@ -15,6 +15,8 @@ export class MovieFormPage {
   duration: FormControl;
   director: FormControl;
   
+  // -----------------------------------------reactiveForms--------------------------------------
+
   constructor(public movieService: MovieService) {// se inyecta el servicio en el constructor para hacer uso de el en el componente
     this.name = new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]);// se inicializan el control del formulario y se le agrega una validacion de que es obligatorio
     this.duration = new FormControl('', [Validators.required, Validators.max(300)]);// se inicializan el control del formulario y se le agrega una validacion de que es obligatorio y que no puede ser mayor a 300
