@@ -33,5 +33,17 @@ export class UserList {
       
   }
 
+  deleteUser(id: number) {// funcion para eliminar un usuario
+    this.userService.deleteUser(id).subscribe({// se llama al metodo deleteUser del servicio y se le pasa el id del usuario a eliminar
+      next: (data) => {// funcion que se ejecuta cuando la peticion es exitosa
+        console.log(data);// se imprime la respuesta de la peticion
+        this.getUsers();// se llama al metodo getUsers para actualizar la lista de usuarios
+      },
+      error: (e) => {// funcion que se ejecuta cuando la peticion falla
+        console.log(e);// se imprime el error de la peticion
+      }
+    }); 
+  }
+
   
 }

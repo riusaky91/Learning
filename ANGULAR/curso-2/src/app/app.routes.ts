@@ -2,9 +2,10 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { MovieList } from './pages/movie-list/movie-list';
 import { MovieFormPage } from './pages/movie-form-page/movie-form-page';
-import { MovieDetails } from './pages/movie-details/movie-details';
+import { MovieDetails } from './pages/movie-list/movie-details/movie-details';
 import { UserList } from './pages/user-list/user-list';
-import { UserDetails } from './pages/user-details/user-details';
+import { UserDetails } from './pages/user-list/user-details/user-details';
+import { UserFormPage } from './pages/user-form-page/user-form-page';
 
 export const routes: Routes = [
 
@@ -14,7 +15,7 @@ export const routes: Routes = [
     {path: 'movies/:movieName', component: MovieDetails},// ruta que carga el componente MovieDetails con un parametro llamado movieName
     {path: 'create', component: MovieFormPage},// ruta que carga el componente MovieFormPage
     {path: 'users', component: UserList}, // ruta que redirige a la ruta por defecto si no se encuentra la ruta
-    {path: 'users/:id', component: UserDetails} // ruta que carga el componente UserDetails con un parametro llamado id
-
+    {path: 'users/:id', component: UserDetails}, // ruta que carga el componente UserDetails con un parametro llamado id
+    {path: 'createUser', component: UserFormPage},// ruta que carga el componente UserFormPage
 
 ];

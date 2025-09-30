@@ -1,0 +1,20 @@
+
+<p>movie-details works!</p>
+
+@if(selectedUser){<!-- se agrega una condicion if que evalua si la variable selectedUser tiene un valor -->
+    @for (user of selectedUser; track $index) {
+        <h2>Name: {{user.name}}</h2>
+        <h3>Username: {{user.username}}</h3>
+        <h3>Addres: {{user.address.street}}, {{user.address.suite}}, {{user.address.city}}, {{user.address.zipcode}}</h3>
+        <h3>Email: {{user.email}}</h3>
+        <h3>Phone: {{user.phone}}</h3>
+        <h3>Website: {{user.website}}</h3>
+        <h3>Company: {{user.company.name}}</h3>
+        <h3>Catch Phrase: {{user.company.catchPhrase}}</h3>
+        <h3>Bs: {{user.company.bs}}</h3>    
+    }
+
+    
+} @else {
+    <h2>No user selected</h2>
+}
