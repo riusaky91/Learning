@@ -34,3 +34,8 @@
     <button [disabled]="movieForm.invalid" >Create movie</button><!-- se agrega el boton que envia el formulario y se deshabilita si el formulario es invalido -->
     
 </form>
+
+@if(formData){
+    <h3>Movie created successfully</h3>
+}
+

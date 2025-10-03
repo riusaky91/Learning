@@ -15,7 +15,7 @@ export class UserFormPage {
   email: FormControl;
   address: FormControl
 
-  
+
   // -----------------------------------------reactiveForms--------------------------------------
 
   constructor(public userService: UserService) {// se inyecta el servicio en el constructor para hacer uso de el en el componente

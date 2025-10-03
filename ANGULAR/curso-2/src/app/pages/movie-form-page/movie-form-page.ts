@@ -15,6 +15,7 @@ export class MovieFormPage {
   duration: FormControl;
   director: FormControl;
   
+  formData: any = null;
   // -----------------------------------------reactiveForms--------------------------------------
 
   constructor(public movieService: MovieService) {// se inyecta el servicio en el constructor para hacer uso de el en el componente
@@ -34,6 +35,7 @@ export class MovieFormPage {
     console.log(this.movieForm.value);// se imprime el valor del formulario
     this.movieService.addMovie(this.movieForm.value);// se agrega la pelicula al array de peliculas usando el servicio
     this.movieForm.reset();// se resetea el formulario
+    this.formData = true;
   }
 
 }

@@ -1,47 +1,62 @@
-
-
 <h1>Reactive Forms , Validators</h1>
 
-<form [formGroup]="userForm" (submit)="postUser()"> <!-- se agrega el formulario y se le asigna el formGroup userForm mas el evento submit que llama a la funcion postUser() -->
-    
+<form [formGroup]="userForm" (submit)="postUser()">
+    <!-- se agrega el formulario y se le asigna el formGroup userForm mas el evento submit que llama a la funcion postUser() -->
+
     <fieldset>
-        
+
         <label for="user-id">ID</label>
-        <input type="text" formControlName="id" id="user-id"><br><!-- se agrega el input y se le asigna el formControlName name -->
-        @if (id.hasError("required") && id.touched) {<!-- se agrega una condicion if que evalua si el control del formulario es invalido y ha sido tocado -->
-            <p class="form-error">id is required</p>
-        } @else if (name.hasError("pattern")) {<!-- se agrega una condicion else if que evalua si el control del formulario tiene el error pattern -->
-            <p class="form-error">id can only contain letters and spaces</p>
+        <input type="text" formControlName="id"
+            id="user-id"><br><!-- se agrega el input y se le asigna el formControlName name -->
+        @if (id.hasError("required") && id.touched)
+        {<!-- se agrega una condicion if que evalua si el control del formulario es invalido y ha sido tocado -->
+        <p class="form-error">id is required</p>
+        } @else if (name.hasError("pattern"))
+        {<!-- se agrega una condicion else if que evalua si el control del formulario tiene el error pattern -->
+        <p class="form-error">id can only contain letters and spaces</p>
         }
     </fieldset>
     <fieldset>
-        
+
         <label for="user-name">Name</label>
-        <input type="text" formControlName="name" id="movie-name"><br><!-- se agrega el input y se le asigna el formControlName name -->
-        @if (name.hasError("required") && name.touched) {<!-- se agrega una condicion if que evalua si el control del formulario es invalido y ha sido tocado -->
-            <p class="form-error">Name is required</p>
-        } @else if (name.hasError("pattern")) {<!-- se agrega una condicion else if que evalua si el control del formulario tiene el error pattern -->
-            <p class="form-error">Name can only contain letters and spaces</p>
+        <input type="text" formControlName="name"
+            id="movie-name"><br><!-- se agrega el input y se le asigna el formControlName name -->
+        @if (name.hasError("required") && name.touched)
+        {<!-- se agrega una condicion if que evalua si el control del formulario es invalido y ha sido tocado -->
+        <p class="form-error">Name is required</p>
+        } @else if (name.hasError("pattern"))
+        {<!-- se agrega una condicion else if que evalua si el control del formulario tiene el error pattern -->
+        <p class="form-error">Name can only contain letters and spaces</p>
         }
     </fieldset>
-    
+
     <fieldset>
-        
         <label for="user-emal">Email</label>
-        <input type="text" formControlName="email" id="user-email"><br><!-- se agrega el input y se le asigna el formControlName duration -->
-        @if (email.hasError("required") && email.touched) {<!-- se agrega una condicion if que evalua si el control del formulario es invalido y ha sido tocado -->
-            <p class="form-error">email is required</p>
-        } @else if (email.hasError("max")) {<!-- se agrega una condicion else if que evalua si el control del formulario tiene el error max -->
-            <p class="form-error">email cannot be more than 300 minutes</p>
+        <input type="text" formControlName="email"
+            id="user-email"><br><!-- se agrega el input y se le asigna el formControlName duration -->
+        @if (email.hasError("required") && email.touched)
+        {<!-- se agrega una condicion if que evalua si el control del formulario es invalido y ha sido tocado -->
+        <p class="form-error">email is required</p>
+        } @else if (email.hasError("max"))
+        {<!-- se agrega una condicion else if que evalua si el control del formulario tiene el error max -->
+        <p class="form-error">email cannot be more than 300 minutes</p>
         }
     </fieldset>
-    
+
     <fieldset>
-        
+
         <label for="user-address">address</label>
-        <input type="text" formControlName="address" id="user-address"><br><!-- se agrega el input y se le asigna el formControlName director -->
+        <input type="text" formControlName="address"
+            id="user-address"><br><!-- se agrega el input y se le asigna el formControlName director -->
     </fieldset>
+
+    <button [disabled]="userForm.invalid">Create
+        user</button><!-- se agrega el boton que envia el formulario y se deshabilita si el formulario es invalido -->
     
-    <button [disabled]="userForm.invalid" >Create user</button><!-- se agrega el boton que envia el formulario y se deshabilita si el formulario es invalido -->
     
 </form>
+
+
+
+
+    
