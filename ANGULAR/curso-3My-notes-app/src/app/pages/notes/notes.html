@@ -1,0 +1,13 @@
+<p>notes wossrks!</p>
+<section>
+    <h2>Notes</h2>
+    <ul>
+        @for (note of noteService.notes; track $index) {
+            <li>
+                
+                <app-note-card [note]="note"></app-note-card><!-- paso la nota al componente note-card usando property binding -->
+            </li>
+
+        }
+    </ul>
+</section>
