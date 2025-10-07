@@ -1,29 +1,29 @@
+<mat-card class="example-card" appearance="outlined"><!-- uso de el componente mat-card de angular material -->
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div><!-- avatar de la tarjeta -->
+        <!-- uso de el operador safe navigation que sirve para evitar errores en tiempo de ejecucion si la propiedad es null o undefined -->
+        <mat-card-title>
+            <mat-form-field class="example-form-field">
+                <mat-label>Clearable input</mat-label>
+                <input matInput type="text" [(ngModel)]="value">
+                @if (value) {
+                <button matSuffix matIconButton aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+                }
+            </mat-form-field>
 
+            {{note()?.title}}</mat-card-title>
+        <mat-card-subtitle>{{note()?.id}}</mat-card-subtitle>
+    </mat-card-header>
 
-
-<article class="note-card">
-    <input type="" class="" [value]="note()?.id" /> <!-- uso de el operador safe navigation que sirve para evitar errores en tiempo de ejecucion si la propiedad es null o undefined -->
-    <input type="text" class="" [value]="note()?.title" /> <!-- uso de el operador safe navigation que sirve para evitar errores en tiempo de ejecucion si la propiedad es null o undefined -->
-    <input type="checkbox" [checked]="note()?.marked" /> <!-- uso de el operador safe navigation que sirve para evitar errores en tiempo de ejecucion si la propiedad es null o undefined -->
-    
-</article>
-
-<mat-card class="example-card" appearance="outlined">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://material.angular.dev/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button matButton>LIKE</button>
-    <button matButton>SHARE</button>
-  </mat-card-actions>
+    <mat-card-content>
+        <p>
+            description note or content
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <input type="checkbox" [checked]="note()?.marked" />
+        <!-- uso de el operador safe navigation que sirve para evitar errores en tiempo de ejecucion si la propiedad es null o undefined -->
+    </mat-card-actions>
 </mat-card>
