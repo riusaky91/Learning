@@ -2,7 +2,10 @@
 <section>
     <h2>Notes</h2>
     <ul>
-        @for (note of noteService.notes; track $index) {
+        <li>
+            <app-create-note /><!-- componente para crear una nueva nota -->
+        </li>
+        @for (note of noteService.notes; track $index) { <!-- uso de for para iterar sobre las notas del servicio de notas -->
             <li>
                 
                 <app-note-card [note]="note"></app-note-card><!-- paso la nota al componente note-card usando property binding -->

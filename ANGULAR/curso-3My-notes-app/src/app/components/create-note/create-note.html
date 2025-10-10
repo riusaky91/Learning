@@ -1,0 +1,8 @@
+
+<form (ngSubmit)="handleSubmit()" #form="ngForm"> <!-- uso de event binding para manejar el evento submit del formulario y template reference variable para referenciar el formulario -->   
+    <mat-form-field class="example-form-field">
+        <mat-label>Note Title</mat-label>
+        <input matInput type="text" name="title" [(ngModel)]="noteTitle" required/> <!-- uso de two-way data binding para bindear el valor del input a la variable noteTitle -->
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Create Note</button> <!-- deshabilito el boton si el formulario es invalido -->
+</form>

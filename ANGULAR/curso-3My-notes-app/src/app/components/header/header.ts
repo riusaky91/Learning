@@ -4,7 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, MatTabsModule],
+  imports: [RouterLink, MatTabsModule],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })

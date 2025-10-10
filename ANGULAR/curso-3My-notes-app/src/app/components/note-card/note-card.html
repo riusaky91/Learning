@@ -4,17 +4,10 @@
         <!-- uso de el operador safe navigation que sirve para evitar errores en tiempo de ejecucion si la propiedad es null o undefined -->
         <mat-card-title>
             <mat-form-field class="example-form-field">
-                <mat-label>Clearable input</mat-label>
-                <input matInput type="text" [(ngModel)]="value">
-                @if (value) {
-                <button matSuffix matIconButton aria-label="Clear" (click)="value=''">
-                    <mat-icon>close</mat-icon>
-                </button>
-                }
+                <mat-label>{{note()?.id}}</mat-label>
+                <input matInput type="text" [value]="note()?.title" (input)="updateTitle(note()?.id, $event)"/><!-- uso de property binding para bindear el valor de la nota al input si no es null o undefined -->
             </mat-form-field>
-
-            {{note()?.title}}</mat-card-title>
-        <mat-card-subtitle>{{note()?.id}}</mat-card-subtitle>
+        </mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
@@ -23,7 +16,7 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <input type="checkbox" [checked]="note()?.marked" />
-        <!-- uso de el operador safe navigation que sirve para evitar errores en tiempo de ejecucion si la propiedad es null o undefined -->
+        <input  type="checkbox" [checked]="note()?.marked" (input)="updateMarked(note()?.id)"/> <!--uso de property binding para bindear el valor de la nota al checkbox  si no es null o undefined -->
+        <!-- uso de el operador safe navigation "?" que sirve para evitar errores en tiempo de ejecucion si la propiedad es null o undefined -->
     </mat-card-actions>
 </mat-card>
