@@ -11,6 +11,8 @@ import { CreateNote } from '../../components/create-note/create-note';
 })
 export class Notes implements OnInit {
 
+  hasError: boolean = false; // Variable para rastrear si hay un error al obtener las notas
+  isloading: boolean = true; // Variable para rastrear si las notas se estan cargando
   constructor(public noteService: NoteService) { 
 
   }
@@ -24,9 +26,12 @@ export class Notes implements OnInit {
       next: (notes) => {
         this.noteService.notes = notes.reverse(); // asignar las notas obtenidas al arreglo de notas del servicio para que esten disponibles en toda la aplicacion
         console.log('Notes fetched successfully:', notes); // loguear las notas obtenidas
+        this.isloading = false; // Actualizar la variable isLoading a false cuando las notas se cargan
+        this.hasError = false; // Asegurarse de que hasError sea false si la peticion es exitosa
       },
       error: (err) => {
         console.error('Error fetching notes:', err); // manejar errores en la peticion
+        this.hasError = true; // Actualizar la variable hasError a true si hay un error al obtener las notas
       }
     }); 
   }
