@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { ComponenteEnLinea } from './componente-en-linea/componente-en-linea';
 import { Interpotacion } from "./interpotacion/interpotacion";
+import { Padre } from "./padre/padre";
 
 @Component({ //decorador de componente de Angular
   selector: 'app-root', // es el selector del componente raíz
-  imports: [ComponenteEnLinea, Interpotacion], // importa el RouterOutlet para la navegación
+  imports: [ComponenteEnLinea, Interpotacion, Padre], // importa el RouterOutlet para la navegación
   templateUrl: './app.html',// ruta al archivo de plantilla HTML
   styleUrl: './app.css'// ruta al archivo de estilos CSS
 })
