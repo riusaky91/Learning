@@ -1,0 +1,13 @@
+
+<div class="d-flex justify-content-center">
+    <div class="w-50">
+        <div class="mb-3">
+            <label for="inputTexto">Escribe algo:</label> <!-- Input para que el usuario escriba texto -->
+            <input id="inputTexto" type="text" (input)="actualizarTexto($event)" /> <!-- event binding para capturar el evento de entrada -->
+        </div>
+        <div class="mb-3">
+            <label for="replicaTexto">Texto replicado:</label>
+            <input id="replicaTexto" type="text" [value]="texto" readonly /><!-- property binding para mostrar el texto replicado -->
+        </div>
+    </div>
+</div>

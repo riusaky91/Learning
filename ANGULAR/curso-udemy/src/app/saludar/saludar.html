@@ -1,0 +1,14 @@
+<p>saludar works!</p>
+
+<div class="d-flex justify-content-center">
+  <div class="w-50">
+    <div class="mb-3">
+        <label for="inputTexto" class="mx-2">Mensaje:</label>
+        <input id="inputTexto" class="form-control" type="text" [(ngModel)]="saludo" autocomplete="off"/> <!-- Enlaza el valor del input con la propiedad saludo two-way data binding -->
+    </div>
+    <div class="mb-3">
+      <div class="alert alert-info mt-3" role="alert">
+        {{ saludo }} <!-- Muestra el valor de la propiedad saludo -->
+    </div>
+  </div>
+</div>
