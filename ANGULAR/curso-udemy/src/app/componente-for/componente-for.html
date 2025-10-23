@@ -1,0 +1,16 @@
+<div class="container mg-5">
+    <h2 class="text-center">Lista de tareas</h2>
+    <ul class="list-group w-50 mx-auto">
+        @for (tarea of tareas; track tarea) { <!-- Angular sintaxis incorrecta -->
+            <li class="list-group-item text-center">{{tarea}}</li>
+
+        }
+
+        
+    </ul>
+    <div class="mt-3 d-flex justify-content-center">
+        <input [(ngModel)]="tareaInput" type="text" class="form-control mb-2 w-50"
+            placeholder="Nueva tarea"><!-- Input con two-way data binding -->
+        <button (click)="agregarTarea(tareaInput)" class="btn btn-primary">Agregar</button> <!-- Botón que llama al método agregarTarea usando la referencia local -->
+    </div>
+</div>
