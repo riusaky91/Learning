@@ -1,1 +1,9 @@
-<p>componencte hijo</p> <!-- contenido del componente hijo -->
+<p>componente hijo</p> <!-- contenido del componente hijo -->
+
+<div class="alert alert-info mt-3" role="alert">
+    <strong>Mensaje del padre:</strong> {{ texto }} <!-- Muestra el mensaje recibido del componente padre -->
+</div>
+
+<div class="container">
+    <button class="btn btn-primary" (click)="enviarMensaje()">Enviar Mensaje al Padre</button>
+</div> <!-- Botón que llama al método enviarMensaje al hacer clic -->

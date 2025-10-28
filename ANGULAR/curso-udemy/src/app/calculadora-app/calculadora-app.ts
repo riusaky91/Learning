@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import { Formulario } from './formulario/formulario';
 
 @Component({
   selector: 'app-calculadora-app',
-  imports: [FormsModule],
+  imports: [FormsModule, Formulario],
   templateUrl: './calculadora-app.html',
   styleUrl: './calculadora-app.css'
 })
 export class CalculadoraApp {
-  operandoA: string = '';
-  operandoB: string = '';
-  resultado: number = 0;
+  
+  resultadoHijo: number = 0; // Mensaje recibido del componente hijo
 
-  sumar(){
-     return this.resultado = parseInt(this.operandoA) + parseInt(this.operandoB);
+  recibirResultado(resultadoHijo: number) {
+    this.resultadoHijo = resultadoHijo; // Actualiza el mensaje recibido del componente hijo
   }
 
 }

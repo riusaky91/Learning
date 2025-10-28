@@ -1,25 +1,13 @@
 <h2 class="text-center text-warning">Aplicación calculadora</h2> <!-- Título centrado y en color amarillo -->
 
-<div class="d-flex justify-content-center"><!-- Contenedor centrado -->
+<app-formulario (notificarAlPadre)="recibirResultado($event)" /> <!-- Uso del componente formulario -->
 
+<div class="d-flex justify-content-center"><!-- Contenedor centrado -->
     <div class="w-50">
         <div class="mb-3">
-            <div class="input-group mb-3"><!-- Grupo de entrada para operando A -->
-                <span class="input-group-text" id="basic-addon1">Operando A</span>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                    aria-describedby="basic-addon1" [(ngModel)]="operandoA"> <!-- Enlaza el valor del input con la propiedad operandoA -->
-            </div>
-            <div class="input-group mb-3"><!-- Grupo de entrada para operando B -->
-                <span class="input-group-text" id="basic-addon1">Operando B</span>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                    aria-describedby="basic-addon1" [(ngModel)]="operandoB"> <!-- Enlaza el valor del input con la propiedad operandoB -->
-            </div>
-            <div class="d-flex justify-content-center mt-3">
-                <button class="btn btn-primary me-2" (click)="sumar()">Sumar</button>
-            </div>
             <div class="input-group mb-3"><!-- Grupo de entrada para mostrar el resultado -->
                 <div class="alert alert-info mt-3" role="alert">
-                    Resultado: {{resultado}} <!-- Muestra el valor de la propiedad saludo -->
+                    Resultado: {{resultadoHijo}} <!-- Muestra el valor de la propiedad saludo -->
                 </div>
             </div>
         </div>

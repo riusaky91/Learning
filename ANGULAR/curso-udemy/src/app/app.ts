@@ -3,7 +3,6 @@ import { ComponenteEnLinea } from './componente-en-linea/componente-en-linea';
 import { Interpotacion } from "./interpotacion/interpotacion";
 import { Padre } from "./padre/padre";
 import { ListadoProductos } from "./listado-productos/listado-productos";
-import { Hijo } from "./hijo/hijo";
 import { MostrarMensaje } from "./mostrar-mensaje/mostrar-mensaje";
 import { Replicador } from "./replicador/replicador";
 import { Saludar } from "./saludar/saludar";
@@ -11,10 +10,11 @@ import { CalculadoraApp } from "./calculadora-app/calculadora-app";
 import { ComponenteIf } from "./componente-if/componente-if";
 import { AgregarTarea } from "./agregar-tarea/agregar-tarea";
 import { ComponenteFor } from "./componente-for/componente-for";
+import { HijoDos } from './hijoDos/hijoDos';
 
 @Component({ //decorador de componente de Angular
   selector: 'app-root', // es el selector del componente raíz
-  imports: [ComponenteEnLinea, Interpotacion, Padre, ListadoProductos, Hijo, MostrarMensaje, Replicador, Saludar, CalculadoraApp, ComponenteIf, AgregarTarea, ComponenteFor], // importa el RouterOutlet para la navegación
+  imports: [ComponenteEnLinea, Interpotacion, Padre, ListadoProductos, HijoDos, MostrarMensaje, Replicador, Saludar, CalculadoraApp, ComponenteIf, AgregarTarea, ComponenteFor], // importa el RouterOutlet para la navegación
   templateUrl: './app.html',// ruta al archivo de plantilla HTML
   styleUrl: './app.css'// ruta al archivo de estilos CSS
 })

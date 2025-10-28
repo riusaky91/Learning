@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-hijo',
+  selector: 'app-hijo-dos',
   imports: [],
-  templateUrl: './hijo.html',
-  styleUrl: './hijo.css'
+  templateUrl: './hijoDos.html',
+  styleUrl: './hijoDos.css'
 })
-export class Hijo {
+export class HijoDos {
   private titulo: string = 'Componente Hijo'; // Título privado
 
   get mostrarTitulo(): string { // Getter público para acceder al título

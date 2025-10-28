@@ -1,3 +1,19 @@
 <p>componente padre</p> <!-- contenido del componente padre -->
-<app-hijo />
-<app-hijo />
+
+
+
+<!-- Uso del componente hijo -->
+<app-hijo [texto]="textoPadre" /> <!-- Paso del mensaje al componente hijo mediante binding de propiedad -->
+
+
+<div class="container">
+    <h3 class="text-primary">Componente Padre</h3>
+    <app-hijo (notificarAlPadre)="recibirNotificacion($event)"></app-hijo> <!-- Escucha del evento personalizado del componente hijo -->
+
+    @if (mensajeHijo) {
+    <div class="alert alert-success mt-3" role="alert">
+        <strong>Mensaje del hijo:</strong> {{ mensajeHijo }} <!-- Muestra el mensaje recibido del componente hijo -->
+    </div>
+    }
+
+</div>
