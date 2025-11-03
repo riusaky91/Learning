@@ -10,7 +10,7 @@ import { Formulario } from './formulario/formulario';
 })
 export class CalculadoraApp {
   
-  resultadoHijo: number = 0; // Mensaje recibido del componente hijo
+  resultadoHijo: number | null = 0; // Mensaje recibido del componente hijo
 
   recibirResultado(resultadoHijo: number) {
     this.resultadoHijo = resultadoHijo; // Actualiza el mensaje recibido del componente hijo
