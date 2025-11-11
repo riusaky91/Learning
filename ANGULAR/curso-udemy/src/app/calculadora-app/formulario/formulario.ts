@@ -15,6 +15,7 @@ export class Formulario {
 
   sumar(){
     if (this.operandoA !== null && this.operandoB !== null) {
+
       this.notificarAlPadre.emit(this.operandoA + this.operandoB); // Envía el resultado al componente padre
     } else {
       // Opcional: puedes emitir 0 o manejar el caso de valores nulos de otra forma
