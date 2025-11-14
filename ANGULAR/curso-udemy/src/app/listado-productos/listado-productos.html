@@ -14,11 +14,5 @@
         }
     </ul>   
 
-    <div class="mt-3 d-flex justify-content-center">
-        <input [(ngModel)]="productoInput" type="text" class="form-control mb-2 w-50"
-            placeholder="Nuevo producto" autocomplete="off"><!-- Input con referencia local -->
-        <input [(ngModel)]="precioInput" type="number" class="form-control mb-2 w-25 ms-2"
-            placeholder="Precio"><!-- Input para el precio del producto -->
-        <button (click)="agregarProducto();" class="btn btn-primary">Agregar</button> <!-- Botón que llama al método agregarProducto usando la referencia local -->
-    </div>
+    <app-formulario-producto (notificarAlPadre)="recibirNotificacion($event)"/> <!-- Componente del formulario de producto con escucha del evento personalizado -->
 </div>

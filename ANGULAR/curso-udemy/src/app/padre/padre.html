@@ -3,7 +3,7 @@
 
 
 <!-- Uso del componente hijo -->
-<app-hijo [texto]="textoPadre" /> <!-- Paso del mensaje al componente hijo mediante binding de propiedad -->
+<app-hijo [texto]="textoPadre" /> <!-- Paso del mensaje al componente hijo mediante binding de propiedad (Output) -->
 
 
 <div class="container">
@@ -15,5 +15,8 @@
         <strong>Mensaje del hijo:</strong> {{ mensajeHijo }} <!-- Muestra el mensaje recibido del componente hijo -->
     </div>
     }
+
+    <app-hijo />
+    <button class="btn btn-primary mt-3" (click)="cambiarMensajeHijo()">Cambiar mensaje del Hijo</button>
 
 </div>
