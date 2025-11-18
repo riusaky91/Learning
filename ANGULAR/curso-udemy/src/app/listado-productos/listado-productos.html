@@ -1,18 +1,16 @@
 <h2 class="text-center text-warning">Listado de Productos</h2> <!-- Título centrado y en color amarillo -->
 
-<app-producto /> <!-- Componente de producto -->
-<app-producto /> <!-- Componente de producto -->
-<app-producto /> <!-- Componente de producto -->
 
 <div class="container mg-5">
+    
+    <app-formulario-producto (notificarAlPadre)="recibirNotificacion($event)"/> <!-- Componente del formulario de producto con escucha del evento personalizado -->
     <h2 class="text-center">Listado de productos</h2>
     <ul class="list-group w-50 mx-auto">
         @for (producto of productos; track producto) { <!-- Itera sobre la lista de productos -->
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{producto.descripcion}}, ${{producto.precio}} <!-- Muestra el nombre del producto -->   
+                
+                <app-producto [producto]="producto" /> <!-- Componente de producto con binding de propiedad -->
             </li>   
         }
     </ul>   
-
-    <app-formulario-producto (notificarAlPadre)="recibirNotificacion($event)"/> <!-- Componente del formulario de producto con escucha del evento personalizado -->
 </div>
