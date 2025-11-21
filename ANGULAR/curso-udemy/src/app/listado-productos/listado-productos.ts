@@ -3,6 +3,7 @@ import { Producto } from "./producto/producto";
 import { ProductoModule } from '../producto/producto-module';
 import { FormsModule } from '@angular/forms';
 import { FormularioProducto } from "./formulario-producto/formulario-producto";
+import { ProductoService } from '../services/producto-service';
 
 @Component({
   selector: 'app-listado-productos',
@@ -12,16 +13,20 @@ import { FormularioProducto } from "./formulario-producto/formulario-producto";
 })
 export class ListadoProductos {
 
-  productos: ProductoModule[] = [ // Lista de productos definida usando ProductoModule
-    new ProductoModule('Producto 1', 10.99),
-    new ProductoModule('Producto 2', 19.99),
-    new ProductoModule('Producto 3', 5.49),
-    new ProductoModule('Producto 4', 15.00)
-  ];
-  
-  recibirNotificacion(producto: ProductoModule) { // Método para recibir notificación del componente hijo
-    this.productos.push(producto); // Agrega el nuevo producto a la lista
-  }
+  productos: ProductoModule[] = []; // Lista de productos
 
+  constructor(private productoService: ProductoService) {
+    this.productoService.detallleProductoEmiter.subscribe((producto: ProductoModule) => { // Suscripción al emisor de eventos para detalles de producto
+      alert(`Detalle del producto:\nDescripción: ${producto.descripcion}\nPrecio: $${producto.precio}`);
+    });
+  } 
+
+  ngOnInit() {
+    this.productos = this.productoService.obtenerProductos(); // Obtiene la lista de productos del servicio al inicializar el componente
+  }
+  
+  recibirNotificacion(nuevoProducto: ProductoModule) {
+    this.productoService.agregarProducto(nuevoProducto);  // Agrega el nuevo producto usando el servicio
+  }
 
 }
