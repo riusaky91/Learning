@@ -9,14 +9,14 @@
             </select>
           </div>
           <div class="col">
-            <input type="text" class="form-control border-success" placeholder="Descripción" required="">
+            <input type="text" class="form-control border-success" placeholder="Descripción" required="" [(ngModel)]="descripcionInput" name="descripcion">
           </div>
           <div class="col-auto">
-            <input type="number" class="form-control border-success" placeholder="Valor" required="">
+            <input type="number" class="form-control border-success" placeholder="Valor" required="" [(ngModel)]="precioInput" name="precio">
           </div>
           <div class="col-auto">
             <button type="submit" class="btn btn-success">
-              <i class="bi bi-check-circle"></i> <!-- Bootstrap Icon -->
+              <i class="bi bi-check-circle" (click)="aumentarPresupuesto()">agregar</i> <!-- Bootstrap Icon -->
             </button>
           </div>
         </form>
