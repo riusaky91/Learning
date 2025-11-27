@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { PresupuestoModule } from '../../modulos/presupuesto-module';
-import { PresupuestoService } from '../../services/presupuesto-service';
 import { CommonModule } from '@angular/common';
+import { IngresoService } from './ingreso-service';
+import { IngresoModel } from './ingreso.model';
 
 @Component({
   selector: 'app-ingreso',
@@ -11,16 +11,15 @@ import { CommonModule } from '@angular/common';
 })
 export class Ingreso {
 
-  presupuestos: PresupuestoModule[] = [];
   
-  constructor(private presupuestoService: PresupuestoService
-  
-     
-  ) {}
-  
-  ngOnInit() {
-    this.presupuestos = this.presupuestoService.presupuetoArreglo;
+  ingresos: IngresoModel[] = [];// Lista de ingresos vacia
+
+  constructor(private ingresoService: IngresoService) {
+    this.ingresos = ingresoService.ingresos; // Asignar la lista de ingresos desde el servicio
   }
-  
+
+  eliminarIngreso(ingreso: IngresoModel) {
+    this.ingresoService.eliminar(ingreso); // Llamar al método eliminar del servicio para eliminar el ingreso
+  }
   
 }

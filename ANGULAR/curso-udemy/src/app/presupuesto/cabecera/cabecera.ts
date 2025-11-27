@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { PresupuestoService } from '../../services/presupuesto-service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cabecera',
@@ -10,18 +9,18 @@ import { PresupuestoService } from '../../services/presupuesto-service';
 })
 export class Cabecera {
 
-  ingresos: number = 0;
-  egresos: number = 1600.00;
 
-  presupuestoDisponible: number = 0;
+
+
   
+  @Input() presupuestoTotal!: number;// Recibe el presupuesto total desde el componente padre
+  @Input() ingresoTotal!: number; // Recibe el total de ingresos desde el componente padre
+  @Input() egresoTotal!: number; // Recibe el total de egresos desde el componente padre
+  @Input() porcentajeEgresos!: number; // Recibe el porcentaje de egresos desde el componente padre
 
-  constructor( private presupuestoService: PresupuestoService) {
+  constructor( ) {
     
   }
 
-  ngOnInit() {
-    this.ingresos = this.presupuestoService.calcularIngresos();
-    this.presupuestoDisponible = this.presupuestoService.calcularPresupuesto(this.ingresos, this.egresos);
-  }
+
 }

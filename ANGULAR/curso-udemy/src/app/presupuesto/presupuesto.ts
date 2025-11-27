@@ -17,6 +17,7 @@ import { EgresoModel } from './egreso/egreso.model';
 })
 export class Presupuesto {
 
+
   ingreso: IngresoModel[] = []; // Lista de ingresos del modelo 
   egreso: EgresoModel[] = [];  // Lista de egresos del modelo
 

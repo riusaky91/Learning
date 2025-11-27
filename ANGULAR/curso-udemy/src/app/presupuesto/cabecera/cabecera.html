@@ -3,17 +3,17 @@
     <div class="row justify-content-center">
       <div class="p-4 rounded border border-primary text-center">
         <h4 class="mb-3">Presupuesto Disponible:</h4>
-        <div class="display-3 fw-bold text-warning">{{presupuestoDisponible| currency:'COP'}}</div>
+        <div class="display-3 fw-bold text-warning">{{presupuestoTotal| currency:'COP':'$':'1.2-2'}}</div> <!-- Muestra el presupuesto total formateado como moneda colombiana,signo peso y un entero con dos decimales -->
         <div class="row mt-4 justify-content-center">
           <div class="col-md-5 text-center">
             <div class="text-uppercase">INGRESOS</div>
-            <div class="text-success h5">{{ingresos| currency:'COP'}}</div>
+            <div class="text-success h5">{{ingresoTotal| currency:'COP':'$':'1.2-2'}}</div> <!-- Muestra el presupuesto total formateado como moneda colombiana,signo peso y un entero con dos decimales -->
           </div>
           <div class="col-md-5 text-center">
             <div class="text-uppercase">EGRESOS</div>
             <div class="text-danger h5">
-              {{egresos| currency:'COP'}}
-              <span class="badge bg-success ms-2">24%</span>
+              {{egresoTotal| currency:'COP':'$':'1.2-2'}} <!-- Muestra el presupuesto total formateado como moneda colombiana,signo peso y un entero con dos decimales -->
+              <span class="badge bg-success ms-2">{{porcentajeEgresos|percent}}</span><!-- Muestra el porcentaje de egresos formateado como porcentaje -->
             </div>
           </div>
         </div>

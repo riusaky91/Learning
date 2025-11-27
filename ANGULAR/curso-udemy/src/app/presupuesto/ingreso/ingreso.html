@@ -1,12 +1,12 @@
 <div class="col-md-6">
         <h2 class="text-center text-primary">Ingresos</h2>
         <ul class="list-group mt-3">
-            @for (presupuesto of presupuestos; track $index) {
+            @for (ingreso of ingresos; track $index) {
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              <span class="flex-grow-1">{{presupuesto.descripcion}}</span>
-              <span class="text-success mx-3">${{presupuesto.precio | number:'1.2-2'}}</span>
+              <span class="flex-grow-1">{{ingreso.descripcion}}</span> <!-- Descripción del ingreso -->
+              <span class="text-success mx-3">${{ingreso.valor| currency:'COP':'$':'1.2-2'}}</span> <!-- Valor del ingreso formateado como moneda -->
               <button class="btn btn-sm btn-danger">
-                <i class="bi bi-x-circle"></i> <!-- Bootstrap Icon -->
+                <i class="bi bi-x-circle" (click)="eliminarIngreso(ingreso)">-</i> <!-- Bootstrap Icon -->
               </button>
             </li>
             }
