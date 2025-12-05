@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Producto } from "./producto/producto";
-import { ProductoModule } from '../producto/producto-module';
+import { ProductoModule } from '../../producto/producto-module';
 import { FormsModule } from '@angular/forms';
 import { FormularioProducto } from "./formulario-producto/formulario-producto";
-import { ProductoService } from '../services/producto-service';
+import { ProductoService } from '../../services/producto-service';
 
 @Component({
   selector: 'app-listado-productos',

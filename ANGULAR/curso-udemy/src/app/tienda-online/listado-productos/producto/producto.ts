@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ProductoModule } from '../../producto/producto-module';
-import { ProductoService } from '../../services/producto-service';
+import { ProductoModule } from '../../../producto/producto-module';
+import { ProductoService } from '../../../services/producto-service';
 
 @Component({
   selector: 'app-producto',

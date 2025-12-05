@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ProductoModule } from '../../producto/producto-module';
+import { ProductoModule } from '../../../producto/producto-module';
 
 @Component({
   selector: 'app-formulario-producto',
