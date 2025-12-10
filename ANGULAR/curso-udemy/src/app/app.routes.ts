@@ -7,6 +7,15 @@ import { ListadoProductos } from './tienda-online/listado-productos/listado-prod
 import { FormularioProducto } from './tienda-online/listado-productos/formulario-producto/formulario-producto';
 import { ComponenteEnLinea } from './componente-en-linea/componente-en-linea';
 import { Interpotacion } from './interpotacion/interpotacion';
+import { Replicador } from './replicador/replicador';
+import { Saludar } from './saludar/saludar';
+import { CalculadoraApp } from './calculadora-app/calculadora-app';
+import { ComponenteIf } from './componente-if/componente-if';
+import { ComponenteFor } from './componente-for/componente-for';
+import { AgregarTarea } from './agregar-tarea/agregar-tarea';
+import { ViewChildComponent } from './view-child-component/view-child-component';
+import { EjemploPipes } from './ejemplo-pipes/ejemplo-pipes';
+import { Presupuesto } from './presupuesto/presupuesto';
 
 export const routes: Routes = [
     //{ path: '**', redirectTo: ''}, // Ruta comodín que redirige a la ruta por defecto para cualquier ruta no definida
@@ -21,5 +30,13 @@ export const routes: Routes = [
     { path: 'listadoProductos', component: ListadoProductos }, // ruta explícita para el componente ListadoProductos localhost:4200/listado-productos
     {path: 'agregar', component: FormularioProducto}, // Redirección de la ruta 'usuarios' a la ruta por defecto
     {path: 'editar/:id', component: FormularioProducto}, // Ruta para editar un producto con un parámetro dinámico 'id'
-    
+    {path: 'replicador', component: Replicador}, // Ruta explícita para el componente Replicador localhost:4200/replicador
+    {path: 'saludar', component: Saludar}, // Ruta explícita para el componente Saludar localhost:4200/saludar
+    {path: 'calculadora', component: CalculadoraApp}, // Ruta explícita para el componente CalculadoraApp localhost:4200/calculadora
+    {path: 'componenteIf', component: ComponenteIf}, // Ruta explícita para el componente ComponenteIf localhost:4200/componenteIf
+    {path: 'agregarTarea', component: AgregarTarea}, // Ruta explícita para el componente AgregarTarea localhost:4200/agregarTarea
+    {path: 'componenteFor', component: ComponenteFor}, // Ruta explícita para el componente ComponenteFor localhost:4200/componenteFor
+    {path: 'viewChild', component: ViewChildComponent}, // Ruta explícita para el componente ViewChildComponent localhost:4200/viewChild
+    {path: 'ejemplo-pipes', component: EjemploPipes}, // Ruta explícita para el componente EjemploPipes localhost:4200/ejemplo-pipes
+    {path: 'presupuesto', component: Presupuesto}, // Ruta explícita para el componente Presupuesto localhost:4200/presupuesto
 ];

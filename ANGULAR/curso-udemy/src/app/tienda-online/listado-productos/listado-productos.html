@@ -1,6 +1,10 @@
 <h2 class="text-center text-warning">Listado de Productos</h2> <!-- Título centrado y en color amarillo -->
 
 
+<div>
+    <button class="btn btn-primary mt-3 mb-3" (click)="agregarProducto()">agregar Productos</button> <!-- Botón para agregar un nuevo producto-->
+</div>
+
 <div class="container mg-5">
     
     <app-formulario-producto (notificarAlPadre)="recibirNotificacion($event)"/> <!-- Componente del formulario de producto con escucha del evento personalizado -->
