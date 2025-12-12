@@ -18,22 +18,22 @@ export class ListadoProductos {
 
   constructor(private productoService: ProductoService,
     private route: Router
-  ) {
+  ) {// Inyección del servicio de productos y del router
     
   } 
 
-  ngOnInit() {
+  ngOnInit() { // Método que se ejecuta al inicializar el componente
     this.productos = this.productoService.obtenerProductos(); // Obtiene la lista de productos del servicio al inicializar el componente
     this.productoService.detallleProductoEmiter.subscribe((producto: ProductoModule) => { // Suscripción al emisor de eventos para detalles de producto
-      alert(`Detalle del producto:\nDescripción: ${producto.descripcion}\nPrecio: $${producto.precio}`);
+      alert(`Detalle del producto:\nDescripción: ${producto.descripcion}\nPrecio: $${producto.precio}`); // Muestra una alerta con los detalles del producto
     });
   }
   
-  recibirNotificacion(nuevoProducto: ProductoModule) {
+  recibirNotificacion(nuevoProducto: ProductoModule) { // Método para recibir notificaciones de nuevos productos
     this.productoService.agregarProducto(nuevoProducto);  // Agrega el nuevo producto usando el servicio
   }
 
-  agregarProducto() {
+  agregarProducto() { // Método para agregar un nuevo producto
     this.route.navigate(['agregar']); // agrega un nuevo producto navegando a la ruta 'agregar'
   }
 
