@@ -1,11 +1,20 @@
 <h5 class="text-succes mt-3 text-center">Agregar nuevo producto</h5>
 
-<form class="d-flex justify-content-between alingn-items-center my-4 w-50 mx-auto" (submit)="guardarProducto($event)"
-    #f="ngForm" (submit)="f.form.valid && guardarProducto($event)">
-    <input type="text" id="descripcion" name="descripcion" placeholder="descripcion producto"
-        class="form-control me-2 w-75" autocomplete="off" [(ngModel)]="descripcionInput" required>
-    <input type="number" id="precio" name="precio" placeholder="precio" class="form-control me-2 w-25"
-        [(ngModel)]="precioInput" required>
+<form class="my-4 w-50 mx-auto" (submit)="guardarProducto($event)"
+    #f="ngForm" (submit)="f.form.valid && guardarProducto($event)"> <!-- Formulario con validación referecia local que se asegura de que el formulario es válido antes de llamar a guardarProducto -->
 
-    <button type="submit" class="btn btn-primary" [disabled]="f.form.invalid">Guardar Producto</button>
+    <div class="d-flex justify-content-between aling-items-center">
+
+        <input type="text" id="descripcion" name="descripcion" placeholder="descripcion producto"
+            class="form-control me-2 w-75" autocomplete="off" [(ngModel)]="descripcionInput" required><!-- Input con two-way data binding -->
+        <input type="number" id="precio" name="precio" placeholder="precio" class="form-control me-2 w-25"
+            [(ngModel)]="precioInput" required><!-- Input con two-way data binding -->
+    </div>
+
+    <div class="d-flex justify-content-center mt-3">
+
+        <button type="submit" class="btn btn-primary" >Agregar Producto</button><!-- Botón deshabilitado si el formulario es inválido -->
+        <button type="button" class="btn btn-danger mx-3"  (click)="cancelar()">Cancelar</button><!-- Botón deshabilitado si el formulario es inválido -->
+    </div>
+
 </form>

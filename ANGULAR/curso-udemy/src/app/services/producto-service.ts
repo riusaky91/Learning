@@ -5,12 +5,22 @@ import { ProductoModule } from '../producto/producto-module';
   providedIn: 'root'
 })
 export class ProductoService {
-  productos: ProductoModule[] = [ // Lista de productos definida usando ProductoModule
-      new ProductoModule('Producto 1', 10.99),
-      new ProductoModule('Producto 2', 19.99),
-      new ProductoModule('Producto 3', 5.49),
-      new ProductoModule('Producto 4', 15.00)
-    ];
+
+  private idSiguiente: number = 1; // ID para el siguiente producto
+  
+  productos: ProductoModule[] = []; // Lista de productos
+
+  constructor() {
+    this.inicializarProductos();
+   }
+
+  private inicializarProductos() { // Método para inicializar algunos productos de ejemplo
+    const producto1 = new ProductoModule(this.idSiguiente++, 'Camisa', 29.99);
+    const producto2 = new ProductoModule(this.idSiguiente++, 'Pantalones', 49.99);
+    const producto3 = new ProductoModule(this.idSiguiente++, 'Zapatos', 79.99);
+    this.productos.push(producto1, producto2, producto3); //Agrega los productos a la lista 
+  }
+
 
     detallleProductoEmiter = new EventEmitter<ProductoModule>(); // Emisor de eventos para detalles de producto
 
