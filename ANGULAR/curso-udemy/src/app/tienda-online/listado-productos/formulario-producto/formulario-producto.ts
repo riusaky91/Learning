@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductoModule } from '../../../producto/producto-module';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from '../../../services/producto-service';
 
 @Component({
@@ -16,10 +16,21 @@ export class FormularioProducto {
   precioInput: number | null = null; // Nueva propiedad para el binding del input de precio puede ser null o number
   
 
-  constructor(private productoService: ProductoService, private router: Router) {}
-
-  ngOninit() {
+  constructor(private productoService: ProductoService, private router: Router, private route: ActivatedRoute) {
     
+  }
+
+  ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id'); // Obtiene el ID del parámetro de la ruta
+    if (id) {
+      this.productoId = +id; // Convierte el ID a número y lo asigna a la propiedad productoId
+      const producto = this.productoService.obtenerProductoPorId(Number(id)); // Obtiene el producto por ID desde el servicio
+      if (producto) {
+        this.productoId = producto.id; // Asigna el ID del producto al input
+        this.descripcionInput = producto.descripcion; // Asigna la descripción del producto al input
+        this.precioInput = producto.precio; // Asigna el precio del producto al input
+      }
+    }
   }
 
   guardarProducto(event: Event) { // Método para agregar un nuevo producto

@@ -33,5 +33,9 @@ export class ProductoService {
       return this.productos; // Devuelve la lista de productos
     }
 
+    obtenerProductoPorId(id: number): ProductoModule | undefined { // Método para obtener un producto por su ID si no lo encuentra devuelve undefined
+      return this.productos.find(producto => producto.id === id); // Busca y devuelve un producto por su ID
+    }
+
 
 }
