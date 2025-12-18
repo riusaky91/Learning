@@ -5,6 +5,7 @@ import { ProductoModule } from '../producto/producto-module';
   providedIn: 'root'
 })
 export class ProductoService {
+  
 
   private idSiguiente: number = 1; // ID para el siguiente producto
   
@@ -25,8 +26,19 @@ export class ProductoService {
     detallleProductoEmiter = new EventEmitter<ProductoModule>(); // Emisor de eventos para detalles de producto
 
 
-    agregarProducto(producto: ProductoModule) {
-      this.productos.push(producto); // Agrega un nuevo producto a la lista
+    guardarProducto(producto: ProductoModule) {
+      if (!producto.id === null) { // Si el producto no tiene ID, es un nuevo producto
+        producto.id = this.idSiguiente++; // Asigna un nuevo ID si no tiene uno
+        this.productos.push(producto); // Agrega un nuevo producto a la lista
+      } else {
+        // Si el producto ya tiene un ID, actualiza el producto existente
+        const index = this.productos.findIndex(p => p.id === producto.id);
+        
+        if (index !== -1) {
+          this.productos[index] = producto;
+  
+        }
+      }
     }
 
     obtenerProductos(): ProductoModule[] {
@@ -37,5 +49,15 @@ export class ProductoService {
       return this.productos.find(producto => producto.id === id); // Busca y devuelve un producto por su ID
     }
 
+    eliminarProductoPorId(id: number) { // Método para eliminar un producto por su ID
+      const index = this.productos.findIndex(p => p.id === id); // Busca el índice del producto por su ID
+      if (index !== -1) {
+        const productoEliminado = this.productos.splice(index, 1)[0]; // Elimina el producto de la lista y lo devuelve
+        return productoEliminado; // Devuelve el producto eliminado
+      } else {
+        return null; // Si no se encuentra el producto, devuelve null
+      }
+
+  }
 
 }

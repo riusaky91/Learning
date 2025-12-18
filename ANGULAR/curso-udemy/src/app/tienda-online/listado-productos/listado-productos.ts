@@ -29,7 +29,7 @@ export class ListadoProductos {
   }
   
   recibirNotificacion(nuevoProducto: ProductoModule) { // Método para recibir notificaciones de nuevos productos
-    this.productoService.agregarProducto(nuevoProducto);  // Agrega el nuevo producto usando el servicio
+    this.productoService.guardarProducto(nuevoProducto);  // Agrega el nuevo producto usando el servicio
   }
 
   agregarProducto() { // Método para agregar un nuevo producto

@@ -11,6 +11,7 @@ import { ProductoService } from '../../../services/producto-service';
   styleUrl: './formulario-producto.css'
 })
 export class FormularioProducto {
+
   productoId: number | null = null; // Nueva propiedad para el binding del input de id
   descripcionInput: string = ''; // Nueva propiedad para el binding del input de descripción
   precioInput: number | null = null; // Nueva propiedad para el binding del input de precio puede ser null o number
@@ -44,15 +45,27 @@ export class FormularioProducto {
       alert("Debe ingresar una descripción y un precio válidos.");
     }
 
-      this.productoService.agregarProducto(new ProductoModule(this.productoId,this.descripcionInput, this.precioInput)); // Agrega el nuevo producto al servicio
-      this.descripcionInput = ''; // Limpia el campo de entrada de descripción
-      this.precioInput = null; // Limpia el campo de entrada de precio
+      this.productoService.guardarProducto(new ProductoModule(this.productoId,this.descripcionInput, this.precioInput)); // Agrega el nuevo producto al servicio
+      this.limpiarFormulario();
       this.router.navigate(['/listadoProductos']); // Navega de vuelta al listado de productos
     }
 
   cancelar() {
+    this.limpiarFormulario();
+    this.router.navigate(['/listadoProductos']); // Navega de vuelta al listado de productos
+  }
+
+  eliminarProducto() { // Método para eliminar un producto
+    if (this.productoId !== null) {
+      const producto = this.productoService.eliminarProductoPorId(this.productoId); // Obtiene el producto por ID desde el servicio
+      this.limpiarFormulario();
+      this.router.navigate(['/listadoProductos']); // Navega de vuelta al listado de productos  
+    }
+  }
+
+  limpiarFormulario() {
+    this.productoId = null; // Limpia el campo de entrada de id
     this.descripcionInput = ''; // Limpia el campo de entrada de descripción
     this.precioInput = null; // Limpia el campo de entrada de precio
-    this.router.navigate(['/listadoProductos']); // Navega de vuelta al listado de productos
   }
 }

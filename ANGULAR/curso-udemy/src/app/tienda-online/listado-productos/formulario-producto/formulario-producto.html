@@ -1,4 +1,4 @@
-<h5 class="text-succes mt-3 text-center">Agregar nuevo producto</h5>
+<h5 class="text-succes mt-3 text-center">Detalle producto</h5>
 
 <form class="my-4 w-50 mx-auto" (submit)="guardarProducto($event)"
     #f="ngForm" (submit)="f.form.valid && guardarProducto($event)"> <!-- Formulario con validación referecia local que se asegura de que el formulario es válido antes de llamar a guardarProducto -->
@@ -13,8 +13,11 @@
 
     <div class="d-flex justify-content-center mt-3">
 
-        <button type="submit" class="btn btn-primary" >Agregar Producto</button><!-- Botón deshabilitado si el formulario es inválido -->
-        <button type="button" class="btn btn-danger mx-3"  (click)="cancelar()">Cancelar</button><!-- Botón deshabilitado si el formulario es inválido -->
+        <button type="submit" class="btn btn-primary" >Guardar Producto</button><!-- Botón deshabilitado si el formulario es inválido -->
+        @if(productoId !== null) {
+            <button type="button" class="btn btn-danger mx-3"  (click)="eliminarProducto()">Eliminar Producto</button><!-- Botón deshabilitado si el formulario es inválido -->
+        }
+        <button type="button" class="btn btn-warning mx-3"  (click)="cancelar()">Cancelar</button><!-- Botón deshabilitado si el formulario es inválido -->
     </div>
 
 </form>
