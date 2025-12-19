@@ -16,9 +16,9 @@ import { AgregarTarea } from './agregar-tarea/agregar-tarea';
 import { ViewChildComponent } from './view-child-component/view-child-component';
 import { EjemploPipes } from './ejemplo-pipes/ejemplo-pipes';
 import { Presupuesto } from './presupuesto/presupuesto';
+import { Error } from './error/error';
 
 export const routes: Routes = [
-    //{ path: '**', redirectTo: ''}, // Ruta comodín que redirige a la ruta por defecto para cualquier ruta no definida
     { path: '', component: ListadoUsuarios }, // Ruta por defecto que carga el componente ListadoUsuarios localhost:4200/listadoUsuarios
     { path: 'ComponenteEnlinea', component: ComponenteEnLinea }, // Ruta explícita para el componente ComponenteEnLinea
     { path: 'interpotacion', component: Interpotacion }, // Ruta explícita para el componente Interpotacion
@@ -29,7 +29,7 @@ export const routes: Routes = [
     ] }, // Ruta explícita para el componente ListadoUsuarios
     { path: 'listadoProductos', component: ListadoProductos }, // ruta explícita para el componente ListadoProductos localhost:4200/listado-productos
     {path: 'agregar', component: FormularioProducto}, // Redirección de la ruta 'usuarios' a la ruta por defecto
-    {path: 'editar/:id', component: FormularioProducto}, // Ruta para editar un producto con un parámetro dinámico 'id'
+    {path: 'editar/:llave', component: FormularioProducto}, // Ruta para editar un producto con un parámetro llave
     {path: 'replicador', component: Replicador}, // Ruta explícita para el componente Replicador localhost:4200/replicador
     {path: 'saludar', component: Saludar}, // Ruta explícita para el componente Saludar localhost:4200/saludar
     {path: 'calculadora', component: CalculadoraApp}, // Ruta explícita para el componente CalculadoraApp localhost:4200/calculadora
@@ -39,4 +39,5 @@ export const routes: Routes = [
     {path: 'viewChild', component: ViewChildComponent}, // Ruta explícita para el componente ViewChildComponent localhost:4200/viewChild
     {path: 'ejemplo-pipes', component: EjemploPipes}, // Ruta explícita para el componente EjemploPipes localhost:4200/ejemplo-pipes
     {path: 'presupuesto', component: Presupuesto}, // Ruta explícita para el componente Presupuesto localhost:4200/presupuesto
+    {path: '**', component: Error} // Ruta comodín que redirige a la página de error para cualquier ruta no definida
 ];

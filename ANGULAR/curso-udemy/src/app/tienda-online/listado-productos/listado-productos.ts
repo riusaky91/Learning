@@ -13,7 +13,7 @@ import {  Router } from '@angular/router';
 })
 export class ListadoProductos {
 
-  productos: ProductoModule[] = []; // Lista de productos
+  productos: {[llave: string]: ProductoModule} = {}; // Objeto para almacenar la lista de productos diccionario
 
   constructor(private productoService: ProductoService,
     private route: Router
@@ -22,7 +22,7 @@ export class ListadoProductos {
   } 
 
   ngOnInit() { // Método que se ejecuta al inicializar el componente
-    this.productos = this.productoService.obtenerProductos(); // Obtiene la lista de productos del servicio al inicializar el componente
+    this.cargarProductos(); // Carga los productos al iniciar el componente
     this.productoService.detallleProductoEmiter.subscribe((producto: ProductoModule) => { // Suscripción al emisor de eventos para detalles de producto
       alert(`Detalle del producto:\nDescripción: ${producto.descripcion}\nPrecio: $${producto.precio}`); // Muestra una alerta con los detalles del producto
     });
@@ -34,6 +34,12 @@ export class ListadoProductos {
 
   agregarProducto() { // Método para agregar un nuevo producto
     this.route.navigate(['agregar']); // agrega un nuevo producto navegando a la ruta 'agregar'
+  }
+
+  cargarProductos() { // Método para cargar productos desde el servicio
+    this.productoService.listarProductos().subscribe((productosDesdeApi) => {
+      this.productos = productosDesdeApi; // Asigna los productos obtenidos del servicio al objeto productos
+    });
   }
 
 }
