@@ -9,10 +9,10 @@
     
     
     <ul class="list-group w-50 mx-auto">
-        @for (producto of productos; track producto) { <!-- Itera sobre la lista de productos -->
+        @for (llave of obternerLlaves(); track llave) { <!-- Itera sobre la lista de productos -->
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 
-                <app-producto [producto]="producto" /> <!-- Componente de producto con binding de propiedad -->
+                <app-producto [producto]="productos[llave]" [llave]="llave"/> <!-- Componente para mostrar cada producto app-producto -->
             </li>   
         }
     </ul>   

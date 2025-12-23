@@ -13,8 +13,8 @@
 
     <div class="d-flex justify-content-center mt-3">
 
-        <button type="submit" class="btn btn-primary" >Guardar Producto</button><!-- Botón deshabilitado si el formulario es inválido -->
-        @if(productoId !== null) {
+        <button type="submit" class="btn btn-primary">Guardar Producto</button><!-- Botón deshabilitado si el formulario es inválido -->
+        @if(llaveProducto !== '') {
             <button type="button" class="btn btn-danger mx-3"  (click)="eliminarProducto()">Eliminar Producto</button><!-- Botón deshabilitado si el formulario es inválido -->
         }
         <button type="button" class="btn btn-warning mx-3"  (click)="cancelar()">Cancelar</button><!-- Botón deshabilitado si el formulario es inválido -->

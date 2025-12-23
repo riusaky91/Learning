@@ -13,10 +13,11 @@ export class Producto {
 
   constructor(private router: Router) { } // Inyección del servicio de productos
   @Input() producto!: ProductoModule; // Propiedad para recibir el mensaje del componente padre si esta vacia no muestra nada 
+  @Input() llave!: string; // Propiedad para recibir la llave del producto
 
   precio: number = 99.99; // Precio del producto
 
-  editarProducto(id: number) {
-    this.router.navigate(['/editar', id]); // Navega a la ruta de edición del producto con el ID del producto
+  editarProducto() {
+    this.router.navigate(['/editar', this.llave]); // Navega a la ruta de edición del producto con la llave del producto
   }
 }
