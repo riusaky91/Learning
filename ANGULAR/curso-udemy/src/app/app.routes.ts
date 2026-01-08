@@ -17,6 +17,7 @@ import { ViewChildComponent } from './view-child-component/view-child-component'
 import { EjemploPipes } from './ejemplo-pipes/ejemplo-pipes';
 import { Presupuesto } from './presupuesto/presupuesto';
 import { Error } from './error/error';
+import { Login } from './login/login';
 
 export const routes: Routes = [
     { path: '', component: ListadoUsuarios }, // Ruta por defecto que carga el componente ListadoUsuarios localhost:4200/listadoUsuarios
@@ -39,5 +40,6 @@ export const routes: Routes = [
     {path: 'viewChild', component: ViewChildComponent}, // Ruta explícita para el componente ViewChildComponent localhost:4200/viewChild
     {path: 'ejemplo-pipes', component: EjemploPipes}, // Ruta explícita para el componente EjemploPipes localhost:4200/ejemplo-pipes
     {path: 'presupuesto', component: Presupuesto}, // Ruta explícita para el componente Presupuesto localhost:4200/presupuesto
-    {path: '**', component: Error} // Ruta comodín que redirige a la página de error para cualquier ruta no definida
+    {path: 'login', component: Login}, // Ruta explícita para el componente Login localhost:4200/login
+    {path: '**', component: Error}, // Ruta comodín que redirige a la página de error para cualquier ruta no definida dejar al final
 ];
