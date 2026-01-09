@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductoService } from '../../services/producto-service';
 import {  Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { LoginService } from '../../services/login-service';
 
 @Component({
   selector: 'app-listado-productos',
@@ -18,7 +19,8 @@ export class ListadoProductos {
   productosSuscripcion: Subscription | null = null; // Suscripción para actualizaciones de productos
 
   constructor(private productoService: ProductoService,
-    private route: Router
+    private route: Router, 
+    private loginService: LoginService
   ) {// Inyección del servicio de productos y del router
     
   } 
@@ -59,5 +61,13 @@ export class ListadoProductos {
     if (this.productosSuscripcion) {
       this.productosSuscripcion.unsubscribe(); // Cancela la suscripción para evitar fugas de memoria
     }
+  }
+
+  isAutenticado(){
+    return this.loginService.isAutenticado(); // Verifica si el usuario está autenticado
+  }
+
+  salir(){
+    this.loginService.logout(); // Cierra la sesión del usuario
   }
 }

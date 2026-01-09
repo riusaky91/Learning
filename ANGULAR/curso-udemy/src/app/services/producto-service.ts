@@ -50,7 +50,7 @@ export class ProductoService {
 
     setProductos(productos: {[llave: string]: ProductoModule}) { // Método para establecer la lista de productos
       this.productos = productos;
-      alert("Productos actualizados en el servicio: " + JSON.stringify(this.productos));
+      //alert("Productos actualizados en el servicio: " + JSON.stringify(this.productos));
       this.productosActualizados.next(this.productos); // Notifica a los suscriptores sobre la actualización de productos
     }
 

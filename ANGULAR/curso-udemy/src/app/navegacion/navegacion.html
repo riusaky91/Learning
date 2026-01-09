@@ -26,10 +26,10 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tienda en Linea</a><!-- Enlace desplegable -->
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> <!-- Menú desplegable -->
-                    <li><a class="dropdown-item" [routerLink]="['/listadoProductos']" routerLinkActive="active">Listado de Productos</a></li><!-- Enlace al componente Padre con clase activa -->
-
+                    
+                    <li><a class="dropdown-item" [routerLink]="['/login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">Login</a> </li><!-- Enlace al componente Login con clase activa -->         
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Acción separada</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/listadoProductos']" routerLinkActive="active">Listado de Productos</a></li><!-- Enlace al componente Padre con clase activa -->
                 </ul>
             </li>
 
@@ -76,9 +76,7 @@
                 <a class="nav-link" [routerLink]="['/presupuesto']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">presupuesto</a> <!-- Enlace al componente Replicador con clase activa -->
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">Login</a> <!-- Enlace al componente Login con clase activa --> 
-            </li>
+            
 
         </ul>
 

@@ -1,3 +1,11 @@
+<div class="d-flex justify-content-center my-3">
+    @if (!isAutenticado()){
+        <a routerLink="/login" class="btn btn-outline-primary mx-2">Iniciar Sesión para Comprar</a> <!-- Botón para iniciar sesión -->
+    } @else {
+        <a style="cursor: pointer;" routerLink="/checkout" class="btn btn-outline-danger mx-2" (click)="salir()">salir</a> <!-- Botón para salir -->
+    }
+</div>
+
 <h2 class="text-center text-warning">Listado de Productos</h2> <!-- Título centrado y en color amarillo -->
 
 
