@@ -1,0 +1,31 @@
+<div class="container d-flex justify-content-center align-items-center my-5">
+    <div class="card p-4 shadow-sm" style="width: 25rem;">
+        <h3 class="text-center mb-4">Iniciar Sesión</h3>
+        <div class="d-flex justify-content-center my-3"> <!-- Contenedor para centrar el botón de login o logout, con margen vertical para separar del botón de iniciar sesión -->
+            @if (!isAutenticado()) { <!-- Si el usuario no está autenticado, se muestra el formulario de login -->
+                <form #f="ngForm" (ngSubmit)="f.form.valid && login(f)">
+                    <!-- Formulario con clases de Bootstrap para centrar y espaciar los elementos, con referencia local f para validar el formulario al enviar -->
+        
+                    <!-- Campo de Email -->
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" ngModel required>
+                        <!-- Campo de texto para el email del usuario, con validación de formato de email y requerido uso de two-way data binding con ngModel para enlazar el valor del campo al modelo del componente -->
+                    </div>
+                    <!-- Campo de Contraseña -->
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" ngModel
+                            required>
+                        <!-- Campo de texto para la contraseña del usuario, con validación de requerido y uso de two-way data binding con ngModel para enlazar el valor del campo al modelo del componente -->
+                    </div>
+        
+                    <!-- Botón de Login -->
+                    <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+                    <!-- Botón de submit con clase de Bootstrap para iniciar sesión, que se habilita solo si el formulario es válido -->
+        
+                </form>
+            } @else { <!-- Si el usuario está autenticado, se muestra el botón de logout -->
+                <a style="cursor: pointer" class="btn btn-outline-danger mx-2" (click)="salir()">Salir</a> 
+            }
+        </div>
+    </div>
+</div>
