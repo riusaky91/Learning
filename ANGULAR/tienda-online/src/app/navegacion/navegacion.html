@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    div class="container-fluid">
+    <!-- Marca del sitio -->
+    <a class="navbar-brand" [routerLink]="['/']">Angular App</a>
+    <!-- Botón de menú para dispositivos pequeños -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Opciones de la barra de navegación -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- Opción Inicio -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/']" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }" aria-current="page">Inicio</a> <!-- Enlace a la ruta de inicio, con routerLinkActive para resaltar la opción activa -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/alerta']" routerLinkActive="active">Ejemplo Alerta</a>
+            </li> <!-- Opción Alerta -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/replicador']" routerLinkActive="active">Ejemplo Replicador</a>
+            </li> <!-- Opción Replicador -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/calculadora']" routerLinkActive="active">Ejemplo Calculadora</a>
+            </li> <!-- Opción Calculadora -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/listado-productos']" routerLinkActive="active">Listado de Productos</a>
+            </li> <!-- Opción Listado de Productos -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/agregar']" routerLinkActive="active">Formulario de Productos</a>
+            </li> <!-- Opción Formulario de Productos -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/acerca']" routerLinkActive="active">Acerca</a>
+            </li> <!-- Opción Acerca -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login / Logout</a>
+            </li> <!-- Opción Login -->
+
+            <!-- Menú desplegable para Configuración -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Opciones
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <!-- Subopción Padre -->
+                    <li><a class="dropdown-item" [routerLink]="['/configuracion/padre']"
+                            routerLinkActive="active">Padre</a></li>
+                    <!-- Subopción Hijo -->
+                    <li><a class="dropdown-item" [routerLink]="['/configuracion/hijo']"
+                            routerLinkActive="active">Hijo</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</nav>

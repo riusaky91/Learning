@@ -1,0 +1,20 @@
+<div class="row justify-content-center text-center mt-4">
+    <h3 class="text-primary">Listado de usuarios</h3>
+    <div class="col-md-6">
+        <ul class="list-group">
+            @if(usuarios.length > 0) {
+                @for (usuario of usuarios; track usuario.id) {
+                    <li class="list-group-item">
+                        <h5>{{ usuario.name }}</h5>
+                        <p><strong>Email:</strong> {{ usuario.email }}</p>
+                        <p><strong>Teléfono:</strong> {{ usuario.phone }}</p>   
+                    </li>
+                }
+            }@else {
+                <li class="list-group   -item">No hay usuarios disponibles.</li>
+            }
+            
+        </ul>   
+
+    </div>
+</div>

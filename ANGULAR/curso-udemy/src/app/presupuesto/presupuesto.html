@@ -1,0 +1,26 @@
+
+  <div class="container my-5">
+
+    <app-cabecera 
+      [presupuestoTotal]="getPresupuestoDisponible()" 
+      [ingresoTotal]="getIngresosTotal()"
+      [egresoTotal]="getEgresosTotal()" 
+      [porcentajeEgresos]="getPorcentajeEgresos()" /> <!-- Componente: Cabecera con bindings de propiedades -->
+
+    <!-- Formulario centrado -->
+    <!-- Componente: Formulario -->
+    <app-formulario />
+
+
+    <!-- Ingresos y Egresos en columnas de igual tamaño -->
+    <div class="row mt-4">
+      <!-- Componente: Ingresos -->
+      
+      <app-ingreso />
+      <!-- Componente: Egresos -->
+      <app-egreso [ingresoTotal]="getIngresosTotal()"/>
+    </div>
+
+  </div>
+
+

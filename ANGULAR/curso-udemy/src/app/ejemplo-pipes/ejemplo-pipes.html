@@ -1,0 +1,14 @@
+
+<div class="container my-4">
+    <h3 class="text-center text-primary">Lista de Empleados</h3>
+    <ul class="list-group w-50 mx-auto">
+        @for (empleado of empleados; track empleado) {
+            <li class="list-group-item d-flex justify-content-between aling-items-center">
+                <span>{{ empleado.nombre | uppercase }}</span> <!-- Uso del pipe uppercase para convertir el nombre a mayúsculas -->
+                <span class="badge bg-primary rounded-pill">{{ empleado.edad | number:'1.0-0' }}</span> <!-- Uso del pipe number para formatear la edad -->
+                <small class="text-muted">{{ empleado.fechaNacimiento | date:'longDate' }}</small> <!-- Uso del pipe date para formatear la fecha de ingreso -->
+                <span>{{ empleado.salario | currency:'USD':'symbol':'1.2-2' }}</span> <!-- Uso del pipe currency para formatear el salario -->
+            </li>
+        }
+    </ul>
+</div>

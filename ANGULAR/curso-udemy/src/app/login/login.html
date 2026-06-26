@@ -1,0 +1,24 @@
+<div class="container d-flex justify-conten-center aling-items-center my-5">
+    <div class="card p-4 shadow-sm" style="width: 25rem;">
+        <h3 class="text-center mb-4">Iniciar Sesión</h3> <!-- Título del formulario de inicio de sesión -->
+        <form #f="ngForm" (ngSubmit)="f.form.valid && login(f)">
+            
+            <div clasd="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" ngModel required > <!-- Campo de entrada para el correo electrónico -->
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" ngModel required > <!-- Campo de entrada para la contraseña -->
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!f.form.valid">Iniciar Sesión</button> <!-- Botón de envío del formulario -->
+
+        </form>
+
+            
+
+    </div>
+        
+</div>

@@ -1,0 +1,19 @@
+<div class="col-md-6">
+  <h2 class="text-center text-danger">Egresos</h2>
+  <ul class="list-group mt-3">
+
+    @for (egreso of egresos; track $index) {
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span class="flex-grow-1">{{egreso.descripcion}}</span> <!-- Descripción del egreso -->
+      <span class="d-flex align-items-center mx-3">
+        <span class="text-danger mx-3">-${{egreso.valor | currency:'COP':'$':'1.2-2'}}</span> <!-- Valor del egreso formateado como moneda -->
+        <span class="badge bg-success ms-2">{{calcularPorcentaje(egreso.valor) | percent}}</span> <!-- Porcentaje del egreso respecto al total de ingresos -->
+      </span>
+      
+      <button class="btn btn-sm btn-danger" (click)="eliminarEgreso(egreso)">
+        <i class="bi bi-x-circle">-</i> <!-- Bootstrap Icon -->
+      </button>
+    </li>
+    }
+  </ul>
+</div>

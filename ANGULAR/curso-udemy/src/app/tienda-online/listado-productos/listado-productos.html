@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center my-3">
+    @if (!isAutenticado()){
+        <a routerLink="/login" class="btn btn-outline-primary mx-2">Iniciar Sesión para Comprar</a> <!-- Botón para iniciar sesión -->
+    } @else {
+        <a style="cursor: pointer;" routerLink="/checkout" class="btn btn-outline-danger mx-2" (click)="salir()">salir</a> <!-- Botón para salir -->
+    }
+</div>
+
+<h2 class="text-center text-warning">Listado de Productos</h2> <!-- Título centrado y en color amarillo -->
+
+
+<div>
+    <button class="btn btn-primary my-5" (click)="agregarProducto()">Agregar Productos</button> <!-- Botón para agregar un nuevo producto-->
+</div>
+
+<div class="container mg-5">
+    
+    
+    <ul class="list-group w-50 mx-auto">
+        @for (llave of obternerLlaves(); track llave) { <!-- Itera sobre la lista de productos -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                
+                <app-producto [producto]="productos[llave]" [llave]="llave"/> <!-- Componente para mostrar cada producto app-producto -->
+            </li>   
+        }
+    </ul>   
+</div>

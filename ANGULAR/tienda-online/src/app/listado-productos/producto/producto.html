@@ -1,0 +1,14 @@
+
+
+
+
+<div class="d-flex justify-content-center">
+    <div class="w-50">
+        <div class="mb-3">
+            @for (llave of obtenerLlaves(); track llave) { <!--bucle para mostrar cada producto de la lista de productos-->
+            <p >{{productos[llave].descripcion}}: {{productos[llave].precio}}</p>
+            <button class="btn btn-info" (click)="editarProducto(llave)">Editar producto</button> <!--Botón para emitir el detalle del producto seleccionado a través del servicio ProductoService-->
+            }
+        </div>
+    </div>
+</div>

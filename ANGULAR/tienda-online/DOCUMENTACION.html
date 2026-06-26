@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOCUMENTACIÓN - TIENDA ONLINE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #0dcaf0;
+        }
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0a58ca 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin: 0;
+        }
+        
+        .nav-header {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-bottom: 30px;
+        }
+        
+        .nav-header .nav-link {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-header .nav-link:hover {
+            color: #0a58ca;
+            text-decoration: underline;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .subsection-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        
+        .feature-box {
+            background: linear-gradient(135deg, #e7f3ff 0%, #f0f8ff 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--success-color);
+        }
+        
+        .feature-box i {
+            color: var(--success-color);
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .table-responsive {
+            margin: 20px 0;
+        }
+        
+        table {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #d63384;
+            font-size: 0.95rem;
+        }
+        
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            color: #abb2bf;
+            padding: 0;
+            background: none;
+        }
+        
+        .breadcrumb {
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .breadcrumb-item.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .alert {
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+        
+        .alert-info {
+            border-left-color: var(--info-color);
+            background-color: #e7f3ff;
+        }
+        
+        .alert-warning {
+            border-left-color: var(--warning-color);
+            background-color: #fff8e1;
+        }
+        
+        .alert-danger {
+            border-left-color: var(--danger-color);
+            background-color: #ffe7e7;
+        }
+        
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 80px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+        
+        .sidebar-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar a {
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 8px 0;
+        }
+        
+        .sidebar a:hover {
+            color: var(--primary-color);
+            padding-left: 10px;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .toc-box {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e7f3ff 100%);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+            margin: 30px 0;
+        }
+        
+        .toc-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .toc-box ol {
+            margin-bottom: 0;
+        }
+        
+        .toc-box a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .toc-box a:hover {
+            text-decoration: underline;
+            color: #0a58ca;
+        }
+        
+        .badge-section {
+            display: inline-block;
+            background-color: var(--info-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+        
+        .print-button:hover {
+            background: #0a58ca;
+            box-shadow: 0 6px 16px rgba(13, 110, 253, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        @media print {
+            .nav-header, .sidebar, .print-button {
+                display: none;
+            }
+            
+            .section-title {
+                page-break-before: always;
+                margin-top: 0;
+                padding-top: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list li:before {
+            content: "✓ ";
+            color: var(--success-color);
+            font-weight: 700;
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <h1><i class="fas fa-store"></i> TIENDA ONLINE</h1>
+            <p>Documentación Completa - Aplicación Web Angular</p>
+            <small>Versión 1.0 | Mayo 2026</small>
+        </div>
+    </div>
+    
+    <!-- Navigation Header -->
+    <div class="nav-header">
+        <div class="container">
+            <nav class="nav">
+                <a class="nav-link" href="#user"><i class="fas fa-user"></i> Usuario Final</a>
+                <a class="nav-link" href="#technical"><i class="fas fa-cogs"></i> Técnica</a>
+                <a class="nav-link" href="#development"><i class="fas fa-code"></i> Desarrollo</a>
+                <a class="nav-link" href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container mb-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 mb-4">
+                <div class="sidebar">
+                    <div class="sidebar-title">Navegación Rápida</div>
+                    <ul>
+                        <li><a href="#intro"><i class="fas fa-arrow-right"></i> Introducción</a></li>
+                        <li><a href="#quick-start"><i class="fas fa-arrow-right"></i> Inicio Rápido</a></li>
+                        <li><a href="#features"><i class="fas fa-arrow-right"></i> Funcionalidades</a></li>
+                        <li><a href="#auth"><i class="fas fa-arrow-right"></i> Autenticación</a></li>
+                        <li><a href="#architecture"><i class="fas fa-arrow-right"></i> Arquitectura</a></li>
+                        <li><a href="#setup"><i class="fas fa-arrow-right"></i> Setup Dev</a></li>
+                        <li><a href="#components"><i class="fas fa-arrow-right"></i> Componentes</a></li>
+                        <li><a href="#testing"><i class="fas fa-arrow-right"></i> Testing</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Tabla de Contenidos -->
+                <div class="toc-box">
+                    <h3><i class="fas fa-list"></i> TABLA DE CONTENIDOS</h3>
+                    <ol>
+                        <li><a href="#user">SECCIÓN I: Documentación para Usuario Final</a></li>
+                        <li><a href="#technical">SECCIÓN II: Documentación Técnica</a></li>
+                        <li><a href="#development">SECCIÓN III: Documentación de Desarrollo</a></li>
+                    </ol>
+                </div>
+                
+                <!-- SECCIÓN I: USUARIO FINAL -->
+                <div id="user">
+                    <h2 class="section-title"><i class="fas fa-user-tie"></i> SECCIÓN I: USUARIO FINAL</h2>
+                    
+                    <!-- Introducción -->
+                    <div id="intro" class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-lightbulb"></i> Introducción a la Aplicación</h3>
+                        <p>Tienda Online es una aplicación web moderna y segura que permite gestionar un catálogo de productos con sistema de autenticación integrado.</p>
+                        
+                        <h5 class="mt-4 mb-3"><i class="fas fa-check-circle"></i> Ventajas Principales</h5>
+                        <ul class="feature-list">
+                            <li><strong>Interfaz intuitiva:</strong> Diseño limpio y fácil de usar</li>
+                            <li><strong>Seguridad:</strong> Sistema de autenticación con credenciales personales</li>
+                            <li><strong>Acceso rápido:</strong> Carga rápida de contenidos</li>
+                            <li><strong>Responsivo:</strong> Compatible con dispositivos móviles y escritorio</li>
+                            <li><strong>Confiable:</strong> Respaldado por tecnología Firebase</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Inicio Rápido -->
+                    <div id="quick-start" class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-bolt"></i> Inicio Rápido</h3>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i> <strong>Primer Acceso:</strong> Solicita credenciales al administrador de la tienda.
+                        </div>
+                        
+                        <h5 class="mt-3 mb-2">Pasos:</h5>
+                        <ol>
+                            <li>Abre tu navegador web</li>
+                            <li>Navega a: <code>http://localhost:4200/</code></li>
+                            <li>Ingresa tus credenciales</li>
+                            <li>¡Bienvenido a Tienda Online!</li>
+                        </ol>
+                    </div>
+                    
+                    <!-- Funcionalidades -->
+                    <div id="features" class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-cogs"></i> Funcionalidades Principales</h3>
+                        
+                        <div class="feature-box">
+                            <i class="fas fa-home"></i>
+                            <strong>Panel de Inicio:</strong> Bienvenida personalizada y accesos rápidos a secciones principales
+                        </div>
+                        
+                        <div class="feature-box">
+                            <i class="fas fa-list"></i>
+                            <strong>Listado de Productos:</strong> Visualiza, busca, edita y elimina productos del catálogo
+                        </div>
+                        
+                        <div class="feature-box">
+                            <i class="fas fa-plus-circle"></i>
+                            <strong>Agregar Producto:</strong> Formulario para añadir nuevos artículos con validaciones
+                        </div>
+                        
+                        <div class="feature-box">
+                            <i class="fas fa-edit"></i>
+                            <strong>Editar Producto:</strong> Modifica información de productos existentes
+                        </div>
+                        
+                        <div class="feature-box">
+                            <i class="fas fa-info-circle"></i>
+                            <strong>Acerca De:</strong> Información sobre la tienda y contacto
+                        </div>
+                        
+                        <div class="feature-box">
+                            <i class="fas fa-calculator"></i>
+                            <strong>Utilidades:</strong> Calculadora, alertas y ejemplos interactivos
+                        </div>
+                    </div>
+                    
+                    <!-- Autenticación -->
+                    <div id="auth" class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-lock"></i> Sistema de Autenticación</h3>
+                        
+                        <h5 class="mt-3 mb-3">Login</h5>
+                        <ol>
+                            <li>Ingresa tu <strong>correo electrónico</strong></li>
+                            <li>Ingresa tu <strong>contraseña</strong></li>
+                            <li>Haz clic en <strong>"Iniciar Sesión"</strong></li>
+                            <li>Serás redirigido automáticamente al panel principal</li>
+                        </ol>
+                        
+                        <h5 class="mt-4 mb-3">Logout</h5>
+                        <ol>
+                            <li>Localiza el botón <strong>"Logout"</strong> en la barra superior</li>
+                            <li>Haz clic para cerrar tu sesión</li>
+                            <li>Serás redirigido a la página de login</li>
+                        </ol>
+                    </div>
+                    
+                    <!-- FAQ -->
+                    <div id="faq" class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h3>
+                        
+                        <div class="mb-3">
+                            <h5><strong>P: ¿Olvidé mi contraseña?</strong></h5>
+                            <p class="text-muted">R: Contacta al administrador de la tienda para resetear tu contraseña.</p>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h5><strong>P: ¿Se guardan mis productos si cierro sesión?</strong></h5>
+                            <p class="text-muted">R: Sí, todos los productos se guardan en la base de datos Firebase automáticamente.</p>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h5><strong>P: ¿Cuántos productos puedo agregar?</strong></h5>
+                            <p class="text-muted">R: No hay límite, puedes agregar tantos productos como necesites.</p>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h5><strong>P: ¿Por qué dice "Ruta no encontrada"?</strong></h5>
+                            <p class="text-muted">R: Accediste a una URL inexistente. Usa el menú de navegación para moverte por la aplicación.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SECCIÓN II: TÉCNICA -->
+                <div id="technical">
+                    <h2 class="section-title"><i class="fas fa-cogs"></i> SECCIÓN II: DOCUMENTACIÓN TÉCNICA</h2>
+                    
+                    <!-- Arquitectura -->
+                    <div id="architecture" class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-project-diagram"></i> Arquitectura General</h3>
+                        
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Componente</th>
+                                        <th>Versión</th>
+                                        <th>Propósito</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Angular</strong></td>
+                                        <td>20.2.0</td>
+                                        <td>Framework principal SPA</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>TypeScript</strong></td>
+                                        <td>5.9.2</td>
+                                        <td>Lenguaje tipado</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Bootstrap</strong></td>
+                                        <td>5.3.8</td>
+                                        <td>Diseño responsivo</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Firebase</strong></td>
+                                        <td>12.13.0</td>
+                                        <td>Backend y Autenticación</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>RxJS</strong></td>
+                                        <td>7.8.0</td>
+                                        <td>Programación reactiva</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Estructura -->
+                    <div class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-folder-tree"></i> Estructura de Proyecto</h3>
+                        
+                        <pre><code>tienda-online/
+├── src/app/
+│   ├── [componentes]/           # Componentes Angular
+│   ├── servicios/               # Servicios (Firebase, Login, etc.)
+│   ├── models/                  # Modelos de datos
+│   ├── app.routes.ts            # Definición de rutas
+│   └── app.ts                   # Componente raíz
+├── public/                      # Archivos estáticos
+├── firebase.json                # Config Firebase
+├── package.json                 # Dependencias
+└── angular.json                 # Config Angular CLI</code></pre>
+                    </div>
+                    
+                    <!-- Rutas -->
+                    <div class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-road"></i> Sistema de Rutas</h3>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Ruta</th>
+                                        <th>Componente</th>
+                                        <th>Protegida</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>/</code></td>
+                                        <td>InicioComponent</td>
+                                        <td><span class="badge bg-success">Sí</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>/login</code></td>
+                                        <td>Login</td>
+                                        <td><span class="badge bg-danger">No</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>/listado-productos</code></td>
+                                        <td>ListadoProductos</td>
+                                        <td><span class="badge bg-danger">No</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>/agregar</code></td>
+                                        <td>FormularioProducto</td>
+                                        <td><span class="badge bg-danger">No</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>/editar/:llave</code></td>
+                                        <td>FormularioProducto</td>
+                                        <td><span class="badge bg-danger">No</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicios -->
+                    <div class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-network-wired"></i> Servicios Principales</h3>
+                        
+                        <h5 class="mt-3"><i class="fab fa-js"></i> Firebase Service</h5>
+                        <p>Inicialización y configuración de Firebase. Proporciona instancias de Auth y Firestore.</p>
+                        
+                        <h5 class="mt-3"><i class="fab fa-js"></i> Login Service</h5>
+                        <p>Gestión de autenticación, tokens y estado de sesión. Métodos: <code>login()</code>, <code>logout()</code>, <code>isAuthenticated()</code></p>
+                        
+                        <h5 class="mt-3"><i class="fab fa-js"></i> Datos Service</h5>
+                        <p>Operaciones CRUD con la base de datos. Sincronización de datos en tiempo real.</p>
+                        
+                        <h5 class="mt-3"><i class="fab fa-js"></i> Guardian Service</h5>
+                        <p>Route Guard que protege rutas según estado de autenticación.</p>
+                    </div>
+                </div>
+                
+                <!-- SECCIÓN III: DESARROLLO -->
+                <div id="development">
+                    <h2 class="section-title"><i class="fas fa-code"></i> SECCIÓN III: DESARROLLO</h2>
+                    
+                    <!-- Setup -->
+                    <div id="setup" class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-wrench"></i> Configuración del Entorno</h3>
+                        
+                        <h5 class="mt-3 mb-2">Requisitos:</h5>
+                        <ul>
+                            <li>Node.js: v18.19.0 o superior</li>
+                            <li>npm: v9.0.0 o superior</li>
+                            <li>Git v2.0.0 o superior</li>
+                            <li>Visual Studio Code (recomendado)</li>
+                        </ul>
+                        
+                        <h5 class="mt-4 mb-2">Instalación:</h5>
+                        <pre><code>npm install
+npm start
+# Acceder a http://localhost:4200</code></pre>
+                    </div>
+                    
+                    <!-- Componentes -->
+                    <div id="components" class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-cube"></i> Crear Componentes</h3>
+                        
+                        <h5 class="mt-3 mb-2">Usar Angular CLI:</h5>
+                        <pre><code>ng generate component nombre-componente</code></pre>
+                        
+                        <p>Esto crea automáticamente:</p>
+                        <ul>
+                            <li><code>nombre-componente.ts</code> - Clase</li>
+                            <li><code>nombre-componente.html</code> - Template</li>
+                            <li><code>nombre-componente.css</code> - Estilos</li>
+                            <li><code>nombre-componente.spec.ts</code> - Tests</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Testing -->
+                    <div id="testing" class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-vial"></i> Testing</h3>
+                        
+                        <h5 class="mt-3 mb-2">Ejecutar Tests:</h5>
+                        <pre><code>npm test</code></pre>
+                        
+                        <p>Abre Karma en el navegador y ejecuta los tests unitarios.</p>
+                        
+                        <h5 class="mt-4 mb-2">Cobertura:</h5>
+                        <pre><code>npm test -- --code-coverage</code></pre>
+                    </div>
+                    
+                    <!-- Build -->
+                    <div class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-hammer"></i> Build y Deploy</h3>
+                        
+                        <h5 class="mt-3 mb-2">Desarrollo:</h5>
+                        <pre><code>npm start
+# Puerto: http://localhost:4200</code></pre>
+                        
+                        <h5 class="mt-4 mb-2">Producción:</h5>
+                        <pre><code>npm run build
+# Output: /dist/tienda-online/</code></pre>
+                        
+                        <h5 class="mt-4 mb-2">Deploy Firebase:</h5>
+                        <pre><code>npm run build && firebase deploy</code></pre>
+                    </div>
+                    
+                    <!-- Mejores Prácticas -->
+                    <div class="content-card">
+                        <h3 class="subsection-title"><i class="fas fa-star"></i> Mejores Prácticas</h3>
+                        
+                        <div class="alert alert-success">
+                            <strong><i class="fas fa-check"></i> HACER:</strong>
+                            <ul class="mb-0 mt-2">
+                                <li>Separar lógica en servicios, presentación en componentes</li>
+                                <li>Usar TypeScript con tipado estricto</li>
+                                <li>Reutilizar componentes y servicios (DRY)</li>
+                                <li>Escribir tests unitarios</li>
+                                <li>Documentar código complejo</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="alert alert-danger">
+                            <strong><i class="fas fa-times"></i> NO HACER:</strong>
+                            <ul class="mb-0 mt-2">
+                                <li>Lógica compleja en componentes</li>
+                                <li>Olvidar desuscribirse de Observables</li>
+                                <li>Nombres de variables no descriptivos</li>
+                                <li>Ignorar errores silenciosamente</li>
+                                <li>Hardcodear valores de configuración</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Comandos Útiles -->
+                <div class="content-card">
+                    <h3 class="subsection-title"><i class="fas fa-terminal"></i> Comandos Útiles</h3>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <h5>Setup e Instalación</h5>
+                            <pre><code>npm install
+npm start
+npm run build</code></pre>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Testing y Quality</h5>
+                            <pre><code>npm test
+npm run lint
+ng build --prod</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Soporte -->
+                <div class="content-card">
+                    <h3 class="subsection-title"><i class="fas fa-headset"></i> Soporte</h3>
+                    
+                    <div class="alert alert-info">
+                        <strong><i class="fas fa-envelope"></i> Contacto:</strong>
+                        <ul class="mb-0 mt-2">
+                            <li><strong>Email:</strong> tech-support@tiendaonline.com</li>
+                            <li><strong>Slack:</strong> #development</li>
+                            <li><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <p class="mb-2"><strong>TIENDA ONLINE - Documentación v1.0</strong></p>
+            <p class="mb-2">© 2026 Equipo de Desarrollo. Todos los derechos reservados.</p>
+            <small>Última actualización: Mayo 2026 | <i class="fas fa-check-circle"></i> Estado: Completo</small>
+        </div>
+    </div>
+    
+    <!-- Print Button -->
+    <a href="#" class="print-button" onclick="window.print(); return false;" title="Imprimir o guardar como PDF">
+        <i class="fas fa-print"></i> Imprimir / PDF
+    </a>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/']">Angular App</a> <!-- Enlace al componente ListadoUsuarios -->
+        
+    </div>
+
+    <!--Boton para dispositivos pequeños-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" aria-controls="navbarNav"><!-- Atributos de accesibilidad -->
+        <span class="navbar-toggler-icon"></span><!-- Icono del botón -->
+    </button> <!-- Cierre del botón -->
+
+    <div class="collapse navbar-collapse" id="navbarNav"> <!-- Contenedor colapsable para enlaces de navegación -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/listadoUsuarios']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">Inicio</a> <!-- Enlace al componente ListadoUsuarios con clase activa -->
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/ComponenteEnlinea']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">Componente En linea</a> <!-- Enlace al componente ComponenteEnlinea con clase activa -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/interpotacion']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">interpotacion</a> <!-- Enlace al componente ComponenteEnlinea con clase activa -->
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tienda en Linea</a><!-- Enlace desplegable -->
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> <!-- Menú desplegable -->
+                    
+                    <li><a class="dropdown-item" [routerLink]="['/login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">Login</a> </li><!-- Enlace al componente Login con clase activa -->         
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" [routerLink]="['/listadoProductos']" routerLinkActive="active">Listado de Productos</a></li><!-- Enlace al componente Padre con clase activa -->
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/mostrar-mensaje']" routerLinkActive="active" [queryParams]="{mensaje:'Nuevo-mensaje'}" >Mensaje</a> <!-- Enlace al componente MostrarMensaje con clase activa y parámetro de consulta -->
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Opciones</a><!-- Enlace desplegable -->
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> <!-- Menú desplegable -->
+                    <li><a class="dropdown-item" [routerLink]="['/configuracion/padre']" routerLinkActive="active">Padre</a></li><!-- Enlace al componente Padre con clase activa -->
+                    <li><a class="dropdown-item" [routerLink]="['/configuracion/hijo']" routerLinkActive="active">Hijo</a></li><!-- Enlace al componente Hijo con clase activa -->
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Acción separada</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/replicador']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">replicador</a> <!-- Enlace al componente Replicador con clase activa -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/saludar']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">Saludar</a> <!-- Enlace al componente Replicador con clase activa -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/calculadora']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">calculadora</a> <!-- Enlace al componente Replicador con clase activa -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/componenteIf']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">componenteIf</a> <!-- Enlace al componente Replicador con clase activa -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/agregarTarea']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">agregar Tarea</a> <!-- Enlace al componente Replicador con clase activa -->
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/componenteFor']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">componenteFor</a> <!-- Enlace al componente Replicador con clase activa -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/viewChild']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">viewChild</a> <!-- Enlace al componente Replicador con clase activa -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/ejemplo-pipes']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">Ejemplo Pipes</a> <!-- Enlace al componente Replicador con clase activa -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/presupuesto']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" aria-current="page">presupuesto</a> <!-- Enlace al componente Replicador con clase activa -->
+            </li>
+
+            
+
+        </ul>
+
+
+    </div>
+</nav>

@@ -12,8 +12,14 @@ export class Hijo  {
 
   @Output() notificarAlPadre = new EventEmitter<string>(); // Evento para notificar al componente padre
 
+  mensaje: string = 'Mensaje desde el componente hijo @View'; // Mensaje interno del componente hijo
+
   enviarMensaje() {
     this.notificarAlPadre.emit('Hola desde el componente Hijo!'); // Envía un mensaje al componente padre
   }
 
+
+  cambiarMensaje(nuevoMensaje: string){//metodo para cambiar el mensaje interno
+    this.mensaje = nuevoMensaje
+  }
 }
