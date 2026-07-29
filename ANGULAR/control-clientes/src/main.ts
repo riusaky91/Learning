@@ -9,8 +9,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 
 bootstrapApplication(App, {
-  ...appConfig,
-  providers: [
+  ...appConfig, // Desestructuramos el appConfig para pasar sus propiedades al bootstrap
+  providers: [ 
     provideHttpClient(), 
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), // Inicializa Firebase 
     provideFirestore(() => getFirestore()), // Inicializa Firestore 

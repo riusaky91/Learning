@@ -27,16 +27,18 @@
                                 <th>Acciones </th>
                             </tr>
                         </thead>
-                        <tbody> <!-- Iteración sobre la lista de clientes --> @for (cliente of clientes; track cliente)
+                        <tbody> <!-- Iteración sobre la lista de clientes --> 
+                            @for (cliente of clientes; track cliente)
                             { <tr>
                                 <td>{{cliente.nombre}} {{cliente.apellido}}</td>
                                 <td>{{cliente.saldo | currency: 'MNX':'$'}}</td>
                                 <td>
-                                    <a routerLink="/cliente/editar/{{cliente.id}}" class="btn btn-secondary">
+                                    <a routerLink="/cliente/editar/{{cliente.id}}" class="btn btn-secondary"> <!-- Enlace para editar el cliente, utilizando routerLink para navegar a la ruta de edición con el ID del cliente -->
                                         <i class="bi bi-pencil-square"></i> Editar
                                     </a>
                                 </td>
-                            </tr> } </tbody>
+                            </tr> } 
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -66,3 +68,63 @@
     </div>
     </div>
 </section>
+
+
+<!-- Modal para agregar un nuevo cliente -->
+<div class="modal fade" id="agregarClienteModal" tabindex="-1" aria-labelledby>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" bg-info text-white> <!-- Encabezado del modal con título y botón de cierre -->
+                <h5 class="modal-title">Agregar Cliente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #botonCerrar></button>
+            </div>
+            <!-- Formulario para agregar un nuevo cliente -->
+            <form #clienteForm="ngForm" (ngSubmit)="agregarCliente(clienteForm)"> <!-- Se utiliza ngForm para manejar el formulario y ngSubmit para capturar el evento de envío -->
+                <div class="modal-body">                    
+                    <div class="d-flex align-items-center mb-3">
+                        <label for="nombre" class="form-label" style="min-width: 100px" >Nombre</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nombre" name="nombre" class="form-control" required minlength="3" [(ngModel)]="cliente.nombre" #nombre="ngModel"> <!-- Campo de entrada para el nombre del cliente, con validación de longitud mínima y enlace bidireccional a la propiedad nuevoCliente.nombre -->
+                            @if(nombre.invalid && nombre.touched) { 
+                                <div class="text-danger">El nombre es requerido y debe tener al menos 3 caracteres.</div> 
+                            } <!-- Mensaje de error que se muestra si el campo de nombre es inválido y ha sido tocado -->
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <label for="apellido" class="form-label" style="min-width: 100px">Apellido</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="apellido" name="apellido" class="form-control" required minlength="3" [(ngModel)]="cliente.apellido" #apellido="ngModel">
+                            @if(apellido.invalid && apellido.touched) { 
+                                <div class="text-danger">El apellido es requerido y debe tener al menos 3 caracteres.</div> 
+                            } <!-- Mensaje de error que se muestra si el campo de apellido es inválido y ha sido tocado -->
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <label for="email" class="form-label" style="min-width: 100px">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" id="email" name="email" class="form-control" required [(ngModel)]="cliente.email" #email="ngModel">
+                            @if(email.invalid && email.touched) { 
+                                <div class="text-danger">El email es requerido y debe ser válido.</div> 
+                            } <!-- Mensaje de error que se muestra si el campo de email es inválido y ha sido tocado -->
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <label for="saldo" class="form-label" style="min-width: 100px">Saldo</label>
+                        <input type="number" id="saldo" name="saldo" class="form-control" required min="0.01" step="0.01" [(ngModel)]="cliente.saldo" #saldo="ngModel">
+                        @if(saldo.invalid && saldo.touched) { 
+                            <div class="text-danger">El saldo es requerido y debe ser un número positivo.</div> 
+                        } <!-- Mensaje de error que se muestra si el campo de saldo es inválido y ha sido tocado -->
+                    </div>                  
+                    
+                </div>
+                <div class="modal-footer"> <!-- Pie del modal con botones de acción -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="clienteForm.invalid">Agregar Cliente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

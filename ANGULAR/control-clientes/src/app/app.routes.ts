@@ -7,6 +7,6 @@ import { NoEncontrado } from './componentes/no-encontrado/no-encontrado';
 export const routes: Routes = [
     { path: '', component: Tablero }, // Ruta raíz que muestra el componente Tablero localhost:4200/
     { path: 'login', component: Login }, // Ruta para el componente Login
-    { path: 'cliente/edita/:id', component: EditarCliente }, // Ruta para editar un cliente específico
+    { path: 'cliente/edita/:id', component: EditarCliente }, // Ruta para editar un cliente específico, con un parámetro dinámico :id
     { path: '**', component: NoEncontrado } // Ruta comodín para manejar rutas no encontradas
 ];
