@@ -1,1 +1,52 @@
-<p>login works!</p>
+<header id="main-header" class="py-2 bg-info text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>
+                    <i class="bi bi-person"></i> Login
+                </h1>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- verifica si hay un mensaje de error y lo muestra en un alert -->
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            @if (mensajeError) {
+                <div class="alert alert-danger text-center" role="alert">
+                    {{ mensajeError }}
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Formulario de inicio de sesión -->
+<section id="login">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Iniciar Sesión</h4>
+                    </div>
+                    <div class="card-body">
+                        <form (submit)="login()"> <!-- Llama al método login() cuando se envía el formulario -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" id="email" [(ngModel)]="email" name="email" class="form-control"
+                                    required> <!-- [(ngModel)] vincula el valor del input con la propiedad email del componente -->
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" id="password" [(ngModel)]="password" name="password"
+                                    class="form-control" required> <!-- [(ngModel)] vincula el valor del input con la propiedad password del componente -->
+                            </div>
+                            <input type="submit" class="btn btn-primary w-100" value="Iniciar Sesión"> <!-- Botón para enviar el formulario -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
