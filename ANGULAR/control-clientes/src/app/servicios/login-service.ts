@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { Auth, authState } from '@angular/fire/auth';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +19,13 @@ export class LoginService {
           reject(error); // Rechaza la promesa con el objeto error que contiene información sobre el error ocurrido
         });
     });
+  }
+
+  getAuthState():Observable<any> { // Método para obtener el estado de autenticación del usuario
+    return authState(this.authService); // Retorna un Observable que emitirá el estado de autenticación del usuario, permitiendo suscribirse a los cambios en el estado de autenticación
+  }
+
+  logout() { // Método para cerrar sesión del usuario
+    return this.authService.signOut(); // Llama al método signOut del servicio Auth de Firebase para cerrar sesión del usuario
   }
 }

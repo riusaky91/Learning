@@ -17,6 +17,15 @@ export class Login {
 
   constructor(private router: Router, private loginService: LoginService) {} // Inyecta el servicio Router y el servicio LoginService en el constructor para poder utilizarlos en la clase
 
+  ngOnInit() {
+    this.loginService.getAuthState().subscribe((user) => { // Se suscribe al estado de autenticación del usuario utilizando el servicio LoginService
+      if (user) { // Si el usuario está autenticado
+        this.router.navigate(['/']); // Redirige al usuario a la ruta principal de la aplicación si ya está autenticado
+      }
+    });
+  }
+
+
   login() {
     if(this.email && this.password) { // Verifica si se han ingresado tanto el correo electrónico como la contraseña
       this.loginService.login(this.email, this.password) // Llama al método login del servicio LoginService pasando el correo electrónico y la contraseña ingresados
